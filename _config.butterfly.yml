@@ -11,7 +11,7 @@
 
 nav:
   # Navigation bar logo image
-  logo: https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png
+  logo: 
   display_title: true
   display_post_title: true
   # Whether to fix navigation bar
@@ -26,10 +26,11 @@ menu:
   文章: /archives/ || fas fa-archive
   标签: /tags/ || fas fa-tags
   分类: /categories/ || fas fa-folder-open
-  List||fas fa-list:
-    音乐: /music/ || fas fa-music
-    电影: /movies/ || fas fa-video
-  友链: /link/ || fas fa-link
+  # List||fas fa-list:
+  #   音乐: /music/ || fas fa-music
+  #   电影: /movies/ || fas fa-video
+  # 友链: /link/ || fas fa-link
+  作品: /works/ || fas fa-briefcase
   关于我: /about/ || fas fa-heart
 
 
@@ -39,8 +40,8 @@ menu:
 
 code_blocks:
   # Code block theme: darker / pale night / light / ocean / false
-  theme: pale night
-  macStyle: false
+  theme: darker
+  macStyle: true
   # Code block height limit (unit: px)
   height_limit: false
   word_wrap: false
@@ -56,17 +57,20 @@ code_blocks:
 # Formal:
 #   icon: link || the description || color
 social:
-  # fab fa-github: https://github.com/xxxxx || Github || '#24292e'
+  fab fa-github: https://github.com/CWH6 || Github || '#24292e'
+  fab fa-gitlab: https://gitee.com/CWH6 || Gitee || '#C71D23'
+  fab fa-bilibili: https://space.bilibili.com/362111596?spm_id_from=333.1007.0.0 || Bilibili || '#00A1D6'
+  fas fa-code: https://leetcode.cn/u/xiao-hei-bt/ || LeetCode || '#FFA116'
   # fas fa-envelope: mailto:xxxxxx@gmail.com || Email || '#4a7dbe'
 
 # --------------------------------------
 # Image Settings
 # --------------------------------------
 
-favicon: /img/favicon.png
+favicon: /img/ggboy.jpg
 
 avatar:
-  img: /img/peien.jpg
+  img: /img/ggboy.jpg
   effect: false
 
 # Disable all banner images
@@ -109,9 +113,9 @@ background: #/img/bg_city.jpg
 
 cover:
   # Disable the cover or not
-  index_enable: true
-  aside_enable: true
-  archives_enable: true
+  index_enable: false
+  aside_enable: false
+  archives_enable: false
   # When cover is not set, the default cover is displayed
   default_cover: 
     # - xxx.jpg
@@ -159,11 +163,11 @@ post_meta:
 # The position of site info, eg: 300px/300em/300rem/10%
 index_site_info_top:
 # The height of top_img, eg: 300px/300em/300rem
-index_top_img_height:
+index_top_img_height: 40vh
 
 # The subtitle on homepage
 subtitle:
-  enable: false
+  enable: true
   # Typewriter Effect
   effect: true
   # Customize typed.js
@@ -179,6 +183,8 @@ subtitle:
   source: false
   # If you close the typewriter effect, the subtitle will only show the first line of sub
   sub:
+    - 走的很慢，但从不后退
+    - 塔塔开，塔塔开，塔塔开
 
 # Article layout on the homepage
 # 1: Cover on the left, info on the right
@@ -300,13 +306,13 @@ aside:
     enable: true
     description:
     button:
-      enable: true
+      enable: false
       icon: fab fa-github
-      text: Follow Me
-      link: https://github.com/xxxxxx
+      text: To Github
+      link: https://github.com/CWH6
   card_announcement:
     enable: true
-    content: 有形的东西迟早会凋零，但只有回忆是永远不会凋零的。
+    content: <div class="bio-card"><div class="bio-item"><span class="bio-label">年龄</span><span class="bio-value" id="bio-age"></span></div><div class="bio-item"><span class="bio-label">方向</span><span class="bio-value">Java工程师 <span class="bio-arrow">&rarr;</span> AI全栈工程师</span></div><div class="bio-item"><span class="bio-label">经验</span><span class="bio-value" id="bio-exp"></span></div><div class="bio-item"><span class="bio-label">兴趣</span><span class="bio-value">跑步、爬山</span></div></div>
   card_recent_post:
     enable: true
     # If set 0 will show all
@@ -324,7 +330,7 @@ aside:
   card_categories:
     enable: true
     # If set 0 will show all
-    limit: 8
+    limit: 0
     # Choose: none / true / false
     expand: none
     sort_order:
@@ -488,8 +494,8 @@ math:
 search:
   # Choose: algolia_search / local_search / docsearch
   # leave it empty if you don't need search
-  use:
-  placeholder:
+  use: local_search
+  placeholder: 搜索...
 
   # Algolia Search
   algolia_search:
@@ -923,7 +929,7 @@ clickShowText:
 # https://github.com/francoischalifour/medium-zoom
 # https://fancyapps.com/fancybox/
 # Leave it empty if you don't need lightbox
-lightbox:
+lightbox: medium_zoom
 
 # --------------------------------------
 # Tag Plugins settings
@@ -1073,8 +1079,11 @@ css_prefix: true
 inject:
   head:
     # - <link rel="stylesheet" href="/xxx.css">
+    - <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    - <style>#recent-posts .recent-post-item{background:rgba(255,255,255,.85) url(/img/bg_city.jpg) center/cover no-repeat;background-blend-mode:overlay}#recent-posts .article-title{font-weight:700}.avatar-img{overflow:visible!important;padding:6px;border-radius:50%;background:linear-gradient(135deg,#f093fb,#f5576c,#fda085,#4facfe,#43e97b,#f6d365);background-size:300% 300%;animation:avatarBorder 4s ease infinite}.avatar-img img{border-radius:50%}@keyframes avatarBorder{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}#post,#page,.layout>div:first-child:not(#recent-posts){background:#f5f6fa}.bio-card{font-size:13px}.bio-item{display:flex;align-items:center;padding:5px 10px;margin:3px 0;border-radius:6px;background:linear-gradient(135deg,rgba(73,177,245,.06),rgba(73,177,245,.02))}.bio-item:nth-child(even){background:linear-gradient(135deg,rgba(249,110,145,.06),rgba(249,110,145,.02))}.bio-label{flex-shrink:0;width:40px;color:#49b1f5;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;text-shadow:0 1px 0 rgba(255,255,255,.5)}.bio-value{color:#4c4948;font-weight:500}.bio-value .bio-arrow{color:#f47466;margin:0 4px;font-size:16px}</style>
   bottom:
     # - <script src="xxxx"></script>
+    - <script>(function(){var bd=new Date(2000,6,23);var n=new Date();var a=n.getFullYear()-bd.getFullYear();if(n.getMonth()<bd.getMonth()||(n.getMonth()===bd.getMonth()&&n.getDate()<bd.getDate()))a--;var ae=document.getElementById('bio-age');if(ae)ae.textContent=a+'岁';var sd=new Date(2022,5,1);var m=(n.getFullYear()-sd.getFullYear())*12+n.getMonth()-sd.getMonth();var y=Math.floor(m/12);var mo=m%12;var ee=document.getElementById('bio-exp');if(ee)ee.textContent=(y>0?y+'年':'')+mo+'个月'})()</script>
 
 # CDN Settings
 # Don't modify the following settings unless you know how they work

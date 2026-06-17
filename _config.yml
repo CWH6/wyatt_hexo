@@ -8,7 +8,7 @@ subtitle: ''
 description: ''
 keywords:
 author: wyatt
-language: en
+language: zh-CN
 timezone: ''
 
 # URL
@@ -43,14 +43,16 @@ render_drafts: false
 post_asset_folder: false
 relative_link: false
 future: true
-syntax_highlighter: highlight.js
+syntax_highlighter: prismjs
 highlight:
+  enable: true
   line_number: true
-  auto_detect: false
+  auto_detect: true
   tab_replace: ''
   wrap: true
   hljs: false
 prismjs:
+  enable: true
   preprocess: true
   line_number: true
   tab_replace: ''
