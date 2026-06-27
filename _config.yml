@@ -104,4 +104,6 @@ theme: butterfly
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
-  type: ''
+  type: git
+  repo: https://github.com/CWH6/wyatt_hexo.git
+  branch: gh-pages
