@@ -70,4 +70,4 @@ wyatt_hexo/
 
 ## 部署
 
-将 `public/` 目录下的文件上传到服务器或 Pages 服务即可。
+将 `public/` 目录下的文件上传到服务器或 Pages 服务即可。 
