@@ -3,7 +3,7 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: wyatt’book
+title: wyatt'book
 subtitle: ''
 description: ''
 keywords:
@@ -13,7 +13,7 @@ timezone: ''
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: https://cwh6.github.io
+url: https://cwh6.github.io/wyatt_hexo
 root: /wyatt_hexo/
 permalink: :year/:month/:day/:title/
 permalink_defaults:
