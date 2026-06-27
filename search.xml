@@ -530,9 +530,9 @@
       
         <tags>
             
-            <tag> 日志 </tag>
-            
             <tag> MQ </tag>
+            
+            <tag> 日志 </tag>
             
         </tags>
       
@@ -1402,9 +1402,9 @@
       
         <tags>
             
-            <tag> cicd </tag>
-            
             <tag> github </tag>
+            
+            <tag> cicd </tag>
             
             <tag> vuepress2 </tag>
             
