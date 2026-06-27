@@ -40,7 +40,7 @@ npx hexo new "【分类】文章标题"
 例如：
 
 ```bash
-npx hexo new "【文档】Git 使用指南"
+npx hexo new "【文档】Git 使用指南" 
 npx hexo new "【生活】爬山日记"
 ```
 
