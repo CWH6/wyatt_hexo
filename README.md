@@ -1,10 +1,10 @@
-# Wyatt's Blog
+# Wyatt's Blog  
 
 基于 [Hexo](https://hexo.io/) + [Butterfly](https://butterfly.js.org/) 主题的个人博客。
 
 ## 环境要求
 
-- Node.js >= 18 
+- Node.js >= 18  
 - npm
 
 ## 快速开始
