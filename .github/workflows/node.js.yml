@@ -1,9 +1,10 @@
-name: GitHub Actions blog
+name: Hexo Deploy
 
 on:
   push:
     branches:
       - master
+      - main
 
 jobs:
   build-and-deploy:
@@ -12,7 +13,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          submodules: false  # 关键：禁用子模块拉取
+          submodules: false
 
       - name: Install Dependencies
         run: npm install
@@ -23,6 +24,6 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          BRANCH: main
-          FOLDER: public  # 注意：如果是 /public，写 public 就行
+          token: ${{ secrets.ACCESS_TOKEN  }}
+          branch: gh-pages
+          folder: public
