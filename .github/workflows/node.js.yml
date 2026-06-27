@@ -1,4 +1,4 @@
-name: Pages Deploy
+name: Hexo Deploy
 
 on:
   push:
@@ -7,17 +7,27 @@ on:
 
 permissions:
   contents: write
+  pages: write
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Deploy
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Show build output (debug)
+        run: ls -la public || true
+
+      - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.ACCESS_TOKEN }}    # 推荐使用内建 token
           branch: gh-pages
           folder: public
