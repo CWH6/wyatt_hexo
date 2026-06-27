@@ -19,7 +19,7 @@ category: 后端
 
 web项目, 需要在 `web/INF-WEB/lib` 下添加以下依赖包
 
-```
+```shell
 logback-classic-1.2.3.jar
 logback-core-1.2.3.jar
 slf4j-api-1.7.32.jar
@@ -29,7 +29,7 @@ slf4j-api-1.7.32.jar
 
 如果是maven
 
-```
+```xml
 <dependencies>
     <!-- Logback Classic -->
     <dependency>
@@ -53,7 +53,7 @@ slf4j-api-1.7.32.jar
 
 创建拦截器，在请求到时，先经过此处获取请求信息
 
-```
+```java
 /**
  * 日志拦截器
  */
@@ -105,7 +105,7 @@ public class GlobalLoggingInterceptor extends MethodFilterInterceptor{
 
 添加日志拦截器
 
-```
+```xml
 ....
 <package name="login" extends="struts-default">
         <!-- 用户拦截器定义在该元素下 -->
@@ -128,7 +128,7 @@ public class GlobalLoggingInterceptor extends MethodFilterInterceptor{
 
 **LogLevelColorfulConverter**
 
-```
+```java
 /**
  * 日志级别颜色类
  * @param <E>
@@ -156,7 +156,7 @@ public class LogLevelColorfulConverter<E> extends CompositeConverter<E> {
 
 **LogMDCColorfulConverter**
 
-```
+```java
 /**
  * 日志MDC 彩色转换器
  */
@@ -177,7 +177,7 @@ public class LogMDCColorfulConverter extends CompositeConverter<ILoggingEvent> {
 
 **LogOtherColorfulConverter**
 
-```
+```java
 /**
  * 日志其他信息颜色类
  */
@@ -197,7 +197,7 @@ public class LogOtherColorfulConverter extends CompositeConverter<ILoggingEvent>
 
 下面的配置：控制台会输出INFO 以上的日志（等级高到低 ERROR > WARN > INFO > DEBUG）, 日志写出只会写出INFO跟ERROR
 
-```
+```xml
 <configuration>
     <!-- 定义日志根路径变量 -->
     <property name="log.path" value="D:/logs"/>
@@ -355,7 +355,7 @@ public class LogOtherColorfulConverter extends CompositeConverter<ILoggingEvent>
 
 注意：如果是springboot项目，`上面彩色日志则使用springboot的渲染类`，如下:
 
-```
+```xml
 <!-- 彩色日志 -->
 <!-- 彩色日志依赖的渲染类 -->
 <conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter"/>
@@ -372,7 +372,7 @@ public class LogOtherColorfulConverter extends CompositeConverter<ILoggingEvent>
 
 日志写出格式
 
-```
+```shell
 D:/logs/
 ├── info
 │   └── log-info-2025-01-01.log

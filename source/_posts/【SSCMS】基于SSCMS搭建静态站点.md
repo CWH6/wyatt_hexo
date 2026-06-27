@@ -3,7 +3,10 @@ title: 【SSCMS】基于SSCMS搭建静态站点
 date: 2025-01-18 21:17:03
 tags:
   - SSCMS
-category: 前端
+  - Docker
+category: 
+  - 前端
+  - 运维
 ---
 
 ## 概述

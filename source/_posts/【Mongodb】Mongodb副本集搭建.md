@@ -2,6 +2,9 @@
 title: 【Mongodb】三节点Mongodb副本集搭建
 date: 2026-04-11 22:41:41
 tags:
+categories:
+  - 后端
+  - 运维
 ---
 
 

@@ -1,7 +1,9 @@
 ---
 title: 【Mongodb】Mongodb配置日志输出限制
 date: 2026-04-17 14:40:04
-tags:
+categories:
+  - 后端
+  - 运维
 ---
 
 

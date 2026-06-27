@@ -2,6 +2,7 @@
 title: 【Trae】skills技能创建&使用
 date: 2026-04-17 12:13:22
 tags:
+category: AI
 ---
 
 

@@ -3,8 +3,9 @@ title: 【flink】基于flink同步mysql表结构数据到doris
 date: 2026-05-10 21:00:48
 tags:
   - flink
-  - 数据同步
-category: 后端
+category: 
+  - 运维
+  - 后端
 ---
 
 
@@ -33,25 +34,25 @@ flink 需要开放的端口：8081
 
 **（1）下载安装包**
 
-```
+```shell
 https://archive.apache.org/dist/flink/flink-1.17.1/flink-1.17.1-bin-scala_2.12.tgz
 ```
 
 **（2）上传到服务器**
 
-```
+```shell
 cd /usr/local
 ```
 
 **（3）解压**
 
-```
+```shell
 tar -xzvf flink-1.17.1-bin-scala_2.12.tgz
 ```
 
 **（4）配置环境变量**
 
-```
+```shell
 vim /etc/profile.d/my_env.sh
 
 export FLINK_HOME=/usr/local/flink-1.17.1
@@ -60,7 +61,7 @@ export PATH=$PATH:$FLINK_HOME/bin
 
 **(5) 设置 Checkpoint 的触发间隔时间为 3 秒（3000 毫秒）**
 
-```
+```shell
 vim /usr/local/flink-1.19.1/conf/flink-conf.yaml
 
 # 护甲下面配置
@@ -73,7 +74,7 @@ execution.checkpointing.interval: 3000
 
 flink 1.17.1 默认只能本地访问，需要设置为外网能访问
 
-```
+```shell
 # 进入 /usr/local/flink-1.17.1/conf
 cd /usr/local/flink-1.17.1/conf
 
@@ -95,7 +96,7 @@ rest.bind-address: 0.0.0.0
 
 **(1) 使用下面的命令启动 Flink 集群**
 
-```
+```shell
 # 启动filnk服务
 /usr/local/flink-1.17.1/bin/start-cluster.sh
 
@@ -125,7 +126,7 @@ Waiting for response...
 
 **（1）需要添加mysql以及filnk cdc 的依赖：**
 
-```
+```shell
 mysql-connector-java-8.0.27.jar
 
 flink-doris-connector-1.17-1.5.0.jar
@@ -147,7 +148,7 @@ flink-sql-connector-mysql-cdc-2.4.1.jar
 
 在启动同步任务之前，多执行几次flink程序（就可以开启多个flink程序），免得任务没有分配flink程序
 
-```
+```shell
 /usr/local/flink-1.17.1/bin/start-cluster.sh
 ```
 
@@ -159,7 +160,7 @@ flink-sql-connector-mysql-cdc-2.4.1.jar
 
 以命令行方式启动脚本
 
-```
+```shell
 /usr/local/flink-1.17.1/bin/flink run \
 -Dexecution.checkpointing.interval=10s \
 -Dparallelism.default=1 \
@@ -189,7 +190,7 @@ mysql-sync-database \
 
 不需要密码登陆
 
-```
+```shell
 http://flink所在的主机IP:8081/#/overview
 ```
 

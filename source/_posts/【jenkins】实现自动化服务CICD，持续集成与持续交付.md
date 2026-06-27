@@ -3,6 +3,8 @@ title: 【Jenkins】实现自动化服务CICD，持续集成与持续交付
 date: 2026-06-17 21:34:22
 tags:
   - jenkins
+  - habor
+  - Docker
 categories:
   - 运维
 ---

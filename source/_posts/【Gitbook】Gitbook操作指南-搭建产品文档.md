@@ -3,10 +3,7 @@ title: 【Gitbook】Gitbook操作指南-搭建产品文档.md
 date: 2026-06-13 14:51:31
 tags:
   - 文档
-  - 操作指南
-  - GitBook
-  - 产品文档
-category: 技术文档
+category: 其他
 ---
 
 
@@ -26,7 +23,7 @@ category: 技术文档
 
 安装成功后，执行命令可查看 node 版本和 npm 版本。
 
-```js
+```shell
 # 查看node版本
 node -v
 
@@ -38,7 +35,7 @@ npm -v
 >
 > 使用 `nvm` 切换版本
 >
-> ```js
+> ```shell
 > nvm install 12.22.12
 > nvm use 12.22.12
 > ```
@@ -47,7 +44,7 @@ npm -v
 
 使用下面命令，安装gitbook 包
 
-```js
+```shell
 npm install -g gitbook-cli
 ```
 
@@ -57,7 +54,7 @@ Gitbook 初始化
 
 创建一个文件夹，并进入到该文件夹中，执行下面命令，初始化gitbook项目。
 
-```js
+```shell
 # 进入 d:/yisurvey-gitbook/
 
 gitbook init
@@ -65,7 +62,7 @@ gitbook init
 
 执行结果
 
-```js
+```shell
 info: create SUMMARY.md
 info: initialization is finished
 ```
@@ -78,7 +75,7 @@ info: initialization is finished
 
 执行下面命令，初始化为 npm 项目
 
-```js
+```shell
 npm init
 ```
 
@@ -92,7 +89,7 @@ npm init
 
 1. 采用 gitbook 原始命令启动
 
-```js
+```shell
 cd d:/yisurvey-gitbook/
 
 gitbook serve
@@ -100,7 +97,7 @@ gitbook serve
 
 访问链接
 
-```js
+```shell
 http://localhost:4000
 ```
 

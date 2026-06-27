@@ -3,7 +3,6 @@ title: 【RabbitMQ】延迟队列+死信队列延迟删除实现
 date: 2024-10-11 22:11:18
 tags:
   - MQ
-  - RabbitMQ
 category: 后端
 ---
 

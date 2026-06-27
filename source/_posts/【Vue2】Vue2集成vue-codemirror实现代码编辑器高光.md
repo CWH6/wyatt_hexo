@@ -2,8 +2,7 @@
 title: 【Vue2】Vue2集成vue-codemirror实现代码编辑器高光
 date: 2025-03-19 21:04:49
 tags:
-  - vue
-  - 代码编辑器
+  - vue组件
 category: 前端
 ---
 
@@ -17,7 +16,7 @@ vue-codemirror 是一个为 Vue.js 应用设计的代码编辑器组件，基于
 
 ### 2.1 安装vue-codemirror
 
-```
+```vue
 // 指定安装4.x版本
 // 目前最新版本6.x，仅支持Vue3.0
 npm i vue-codemirror@4.x --save
@@ -37,7 +36,7 @@ npm i codemirror@5.x --save
 
 在 `utils` 目录下 创建 `cm-setting.js`
 
-```
+```js
 // cm-setting.js
 // 组件样式
 import "codemirror/lib/codemirror.css";

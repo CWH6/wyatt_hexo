@@ -2,8 +2,7 @@
 title: 【Vue2】Vue2接入vue-code-highlight组合实现代码高光
 date: 2026-06-14 21:08:04
 tags:
-  - vue
-  - 代码编辑器
+  - vue组件
 category: 前端
 ---
 
@@ -17,7 +16,7 @@ category: 前端
 
 ### 2.1 安装依赖
 
-```
+```shell
 npm install vue-code-highlight --save
 ```
 
@@ -25,7 +24,7 @@ npm install vue-code-highlight --save
 
 在某个页面中
 
-```
+```js
 <template>
           ......
          <vue-code-highlight language="javascript" style="height: 400px">

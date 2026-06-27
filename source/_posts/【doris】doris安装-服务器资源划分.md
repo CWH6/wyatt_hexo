@@ -3,8 +3,9 @@ title: 【doris】doris安装&服务器资源划分
 date: 2026-05-10 20:56:41
 tags:
   - doris
-  - 安装
-category: 后端
+category: 
+  - 运维
+  - 后端
 ---
 
 

@@ -3,7 +3,7 @@ title: 【Git】苦逼开发-代码同步方案
 date: 2025-02-24 21:12:44
 tags:
   - Git
-category: 维护
+category: 其他
 ---
 
 

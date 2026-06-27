@@ -3,7 +3,7 @@ title: 【Nginx】反向代理与负载均衡
 date: 2023-05-04 22:26:35
 tags: 
   - Nginx
-category: 后端
+category: 运维
 ---
 
 

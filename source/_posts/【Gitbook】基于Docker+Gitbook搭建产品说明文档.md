@@ -3,10 +3,10 @@ title: 【Gitbook】基于Docker+Gitbook搭建产品说明文档
 date: 2026-06-13 15:02:33
 tags:
   - 文档
-  - 操作指南
-  - GitBook
-  - 产品文档
-category: 技术文档
+  - Docker
+category: 
+  - 运维
+  - 其他
 ---
 
 

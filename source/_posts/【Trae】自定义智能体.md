@@ -2,6 +2,8 @@
 title: 【Trae】自定义智能体
 date: 2026-04-17 14:12:49
 tags:
+categories:
+  - AI
 ---
 
 

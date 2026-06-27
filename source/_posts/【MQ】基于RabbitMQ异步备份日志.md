@@ -1,13 +1,11 @@
 ---
 title: 【MQ】基于RabbitMQ异步备份日志
 date: 2026-04-01 11:43:48
-categories:
-  - 技术实战
-  - 消息队列
 tags:
-  - RabbitMQ
-  - 日志系统
-  - 异步
+  - MQ
+  - 日志
+categories:
+  - 后端
 ---
 
 
