@@ -1,14 +1,18 @@
 name: GitHub Actions blog
+
 on:
   push:
     branches:
       - master
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        with:
+          submodules: false  # 关键：禁用子模块拉取
 
       - name: Install Dependencies
         run: npm install
@@ -21,4 +25,4 @@ jobs:
         with:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           BRANCH: main
-          FOLDER: /public
+          FOLDER: public  # 注意：如果是 /public，写 public 就行
