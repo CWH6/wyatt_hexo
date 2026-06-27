@@ -1,0 +1,315 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>【Nginx】反向代理与负载均衡 | wyatt'book</title><meta name="author" content="wyatt"><meta name="copyright" content="wyatt"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="NginxNginx同Apache一样都是一种WEB服务器，基于REST架构风格，以统一资源描述符(Uniform Resources Identifier)URI或者统一资源定位符(Uniform Resources Locator)URL作为沟通依据，通过HTTP协议提供各种网络服务。 　　然而，这些服务器在设计之初受到当时环境的局限，例如当时的用户规模，网络带宽，产品特点等局限并且各自的定位">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【Nginx】反向代理与负载均衡">
+<meta property="og:url" content="https://cwh6.github.io/wyatt_hexo/2023/05/04/%E3%80%90Nginx%E3%80%91%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E4%B8%8E%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/index.html">
+<meta property="og:site_name" content="wyatt&#39;book">
+<meta property="og:description" content="NginxNginx同Apache一样都是一种WEB服务器，基于REST架构风格，以统一资源描述符(Uniform Resources Identifier)URI或者统一资源定位符(Uniform Resources Locator)URL作为沟通依据，通过HTTP协议提供各种网络服务。 　　然而，这些服务器在设计之初受到当时环境的局限，例如当时的用户规模，网络带宽，产品特点等局限并且各自的定位">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cwh6.github.io/wyatt_hexo/img/bg_city.jpg">
+<meta property="article:published_time" content="2023-05-04T22:26:35.000Z">
+<meta property="article:modified_time" content="2026-06-27T09:49:32.015Z">
+<meta property="article:author" content="wyatt">
+<meta property="article:tag" content="Nginx">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cwh6.github.io/wyatt_hexo/img/bg_city.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "【Nginx】反向代理与负载均衡",
+  "url": "https://cwh6.github.io/wyatt_hexo/2023/05/04/%E3%80%90Nginx%E3%80%91%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E4%B8%8E%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/",
+  "image": "https://cwh6.github.io/wyatt_hexo/img/bg_city.jpg",
+  "datePublished": "2023-05-04T22:26:35.000Z",
+  "dateModified": "2026-06-27T09:49:32.015Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "wyatt",
+      "url": "https://cwh6.github.io/wyatt_hexo"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/wyatt_hexo/img/ggboy.jpg"><link rel="canonical" href="https://cwh6.github.io/wyatt_hexo/2023/05/04/%E3%80%90Nginx%E3%80%91%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E4%B8%8E%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/wyatt_hexo/css/index.css?v=5.5.4"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/wyatt_hexo/',
+  algolia: undefined,
+  localSearch: {"path":"/wyatt_hexo/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"prismjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'medium_zoom',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '【Nginx】反向代理与负载均衡',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css"><style>#recent-posts .recent-post-item{background:rgba(255,255,255,.85) url(/img/bg_city.jpg) center/cover no-repeat;background-blend-mode:overlay}#recent-posts .article-title{font-weight:700}.avatar-img{overflow:visible!important;padding:6px;border-radius:50%;background:linear-gradient(135deg,#f093fb,#f5576c,#fda085,#4facfe,#43e97b,#f6d365);background-size:300% 300%;animation:avatarBorder 4s ease infinite}.avatar-img img{border-radius:50%}@keyframes avatarBorder{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}#post,#page,.layout>div:first-child:not(#recent-posts){background:#f5f6fa}.bio-card{font-size:13px}.bio-item{display:flex;align-items:center;padding:5px 10px;margin:3px 0;border-radius:6px;background:linear-gradient(135deg,rgba(73,177,245,.06),rgba(73,177,245,.02))}.bio-item:nth-child(even){background:linear-gradient(135deg,rgba(249,110,145,.06),rgba(249,110,145,.02))}.bio-label{flex-shrink:0;width:40px;color:#49b1f5;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;text-shadow:0 1px 0 rgba(255,255,255,.5)}.bio-value{color:#4c4948;font-weight:500}.bio-value .bio-arrow{color:#f47466;margin:0 4px;font-size:16px}</style><meta name="generator" content="Hexo 8.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/wyatt_hexo/img/ggboy.jpg" onerror="this.onerror=null;this.src='/wyatt_hexo/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/wyatt_hexo/archives/"><div class="headline">文章</div><div class="length-num">111</div></a><a href="/wyatt_hexo/tags/"><div class="headline">标签</div><div class="length-num">95</div></a><a href="/wyatt_hexo/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/wyatt_hexo/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/wyatt_hexo/archives/"><i class="fa-fw fas fa-archive"></i><span> 文章</span></a></div><div class="menus_item"><a class="site-page" href="/wyatt_hexo/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/wyatt_hexo/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/wyatt_hexo/works/"><i class="fa-fw fas fa-briefcase"></i><span> 作品</span></a></div><div class="menus_item"><a class="site-page" href="/wyatt_hexo/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/wyatt_hexo/img/bg_city.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/wyatt_hexo/"><span class="site-name">wyatt'book</span></a><a class="nav-page-title" href="/wyatt_hexo/"><span class="site-name">【Nginx】反向代理与负载均衡</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/wyatt_hexo/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/wyatt_hexo/archives/"><i class="fa-fw fas fa-archive"></i><span> 文章</span></a></div><div class="menus_item"><a class="site-page" href="/wyatt_hexo/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/wyatt_hexo/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/wyatt_hexo/works/"><i class="fa-fw fas fa-briefcase"></i><span> 作品</span></a></div><div class="menus_item"><a class="site-page" href="/wyatt_hexo/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">【Nginx】反向代理与负载均衡</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-05-04T22:26:35.000Z" title="发表于 2023-05-04 22:26:35">2023-05-04</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-06-27T09:49:32.015Z" title="更新于 2026-06-27 09:49:32">2026-06-27</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/wyatt_hexo/categories/%E8%BF%90%E7%BB%B4/">运维</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h2><p>Nginx同Apache一样都是一种WEB服务器，基于REST架构风格，以统一资源描述符(Uniform Resources Identifier)URI或者统一资源定位符(Uniform Resources Locator)URL作为沟通依据，通过HTTP协议提供各种网络服务。</p>
+<p>　　然而，这些服务器在设计之初受到当时环境的局限，例如当时的用户规模，网络带宽，产品特点等局限并且各自的定位和发展都不尽相同。这也使得各个WEB服务器有着各自鲜明的特点。</p>
+<p>　　Apache的发展时期很长，而且是毫无争议的世界第一大服务器。它有着很多优点：稳定、开源、跨平台等等。它出现的时间太长了，它兴起的年代，互联网产业远远比不上现在。所以它被设计为一个重量级的。它是不支持高并发的服务器。在Apache上运行数以万计的并发访问，会导致服务器消耗大量内存。操作系统对其进行进程或线程间的切换也消耗了大量的CPU资源，导致HTTP请求的平均响应速度降低。</p>
+<p>　　这些都决定了Apache不可能成为高性能WEB服务器，轻量级高并发服务器Nginx就应运而生了。</p>
+<p>　　俄罗斯的工程师Igor Sysoev，他在为Rambler Media工作期间，使用C语言开发了Nginx。Nginx作为WEB服务器一直为Rambler Media提供出色而又稳定的服务。</p>
+<p>然后呢，Igor Sysoev将Nginx代码开源，并且赋予自由软件许可证。</p>
+<h3 id="Nginx的优点"><a href="#Nginx的优点" class="headerlink" title="Nginx的优点"></a>Nginx的优点</h3><ul>
+<li>Nginx使用基于事件驱动架构，使得其可以支持数以百万级别的TCP连接</li>
+<li>高度的模块化和自由软件许可证使得第三方模块层出不穷（这是个开源的时代啊~）</li>
+<li>Nginx是一个跨平台服务器，可以运行在Linux，Windows，FreeBSD，Solaris，AIX，Mac OS等操作系统上</li>
+<li>极大的稳定性</li>
+</ul>
+<h2 id="反向代理"><a href="#反向代理" class="headerlink" title="反向代理"></a>反向代理</h2><p>多个客户端给服务器发送的请求，Nginx服务器接收到之后，按照一定的规则分发给了后端的业务处理服务器进行处理了。此时~请求的来源也就是客户端是明确的，但是请求具体由哪台服务器处理的并不明确了，Nginx扮演的就是一个反向代理角色。</p>
+<p><a target="_blank" rel="noopener" href="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/bk/image-20230504182123946.png"><img src="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/bk/image-20230504182123946.png" alt="img"></a></p>
+<h3 id="反向代理的作用"><a href="#反向代理的作用" class="headerlink" title="反向代理的作用"></a>反向代理的作用</h3><p>（1）保证内网的安全，通常将反向代理作为公网访问地址，Web服务器是内网</p>
+<p>（2）负载均衡，通过反向代理服务器来优化网站的负载</p>
+<h2 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h2><p>nginx 将服务器接收到的请求按照规则分发给服务器的过程，称为负载均衡。</p>
+<h3 id="配置代理"><a href="#配置代理" class="headerlink" title="配置代理"></a>配置代理</h3><p><strong>准备</strong>：（后续有空改为docker）</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">虚拟机one：192.168.30.135:80
+
+虚拟机two：192.168.30.128:80
+
+两个虚拟机装的nginx都是：nginx version: nginx/1.18.0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>配置代理</strong></p>
+<p>在各虚拟机上的conf.d文件夹下建立nginx配置文件，名字分别为：“xuniji_one.conf”、“xuniji_two.conf”</p>
+<p>反向代理我写在了xuniji_one.conf中，如下图：</p>
+<p><a target="_blank" rel="noopener" href="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/bk/image-20230504183352473.png"><img src="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/bk/image-20230504183352473.png" alt="img"></a></p>
+<p>图中参数介绍：</p>
+<ul>
+<li>upstream后面的名称与proxy_pass后面的地址对应。（名称可以随意写）</li>
+<li>upstream中的两个server地址就是两个服务器的地址。</li>
+<li>proxy_pass：设置后端代理服务器的地址。这个地址(address)可以是一个域名或ip地址和端口，或者一个 unix-domain socket路径。</li>
+<li>proxy_set_header：就是可设置请求头-并将头信息传递到服务器端。</li>
+</ul>
+<p><strong>测试</strong></p>
+<p>打开浏览器，访问设置代理的服务器（<a target="_blank" rel="noopener" href="http://www.xuniji.one.com)./">www.xuniji.one.com）。</a> 每次访问最终都是请求不同的服务器。</p>
+<p><a target="_blank" rel="noopener" href="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/bk/image-20230504183640672.png"><img src="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/bk/image-20230504183640672.png" alt="img"></a></p>
+<h3 id="nginx的负载均衡策略"><a href="#nginx的负载均衡策略" class="headerlink" title="nginx的负载均衡策略"></a>nginx的负载均衡策略</h3><p>1、轮询（默认策略，nginx自带策略）：上面的例子就是轮询的方式，它是upstream模块默认的负载均衡默认策略。会将每个请求按时间顺序分配到不同的后端服务器。</p>
+<pre class="line-numbers language-nginx" data-language="nginx"><code class="language-nginx"><span class="token directive"><span class="token keyword">http</span></span> <span class="token punctuation">&#123;</span>
+    <span class="token directive"><span class="token keyword">upstream</span> xuniji_fuzai</span> <span class="token punctuation">&#123;</span>
+        <span class="token directive"><span class="token keyword">server</span> 192.168.30.128:80</span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">server</span> 192.168.30.135:80</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+  
+    <span class="token directive"><span class="token keyword">server</span></span> <span class="token punctuation">&#123;</span>
+        <span class="token directive"><span class="token keyword">listen</span> <span class="token number">81</span></span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">server_name</span> www.xuniji.one.com</span><span class="token punctuation">;</span>
+  
+        <span class="token directive"><span class="token keyword">location</span> /</span> <span class="token punctuation">&#123;</span>
+            <span class="token directive"><span class="token keyword">proxy_pass</span> http://xuniji_fuzai</span><span class="token punctuation">;</span>
+            <span class="token directive"><span class="token keyword">proxy_set_header</span> Host <span class="token variable">$proxy_host</span></span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>2、weight（权重，nginx自带策略）：指定轮询的访问几率，用于后端服务器性能不均时调整访问比例。权重越高，被分配的次数越多。</p>
+<pre class="line-numbers language-nginx" data-language="nginx"><code class="language-nginx"><span class="token directive"><span class="token keyword">http</span></span> <span class="token punctuation">&#123;</span>
+    <span class="token directive"><span class="token keyword">upstream</span> xuniji_fuzai</span> <span class="token punctuation">&#123;</span>
+        <span class="token directive"><span class="token keyword">server</span> 192.168.30.128:80 weight=7</span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">server</span> 192.168.30.135:80 weight=2</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+  
+    <span class="token directive"><span class="token keyword">server</span></span> <span class="token punctuation">&#123;</span>
+        <span class="token directive"><span class="token keyword">listen</span> <span class="token number">81</span></span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">server_name</span> www.xuniji.one.com</span><span class="token punctuation">;</span>
+  
+        <span class="token directive"><span class="token keyword">location</span> /</span> <span class="token punctuation">&#123;</span>
+            <span class="token directive"><span class="token keyword">proxy_pass</span> http://xuniji_fuzai</span><span class="token punctuation">;</span>
+            <span class="token directive"><span class="token keyword">proxy_set_header</span> Host <span class="token variable">$proxy_host</span></span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>3、p_hash（依据ip分配，nginx自带策略）：指定负载均衡器按照基于客户端IP的分配方式，这个方法确保了相同的客户端的请求一直发送到相同的服务器，可以解决session不能跨服务器的问题。</p>
+<pre class="line-numbers language-nginx" data-language="nginx"><code class="language-nginx"><span class="token directive"><span class="token keyword">http</span></span> <span class="token punctuation">&#123;</span>
+    <span class="token directive"><span class="token keyword">upstream</span> xuniji_fuzai</span> <span class="token punctuation">&#123;</span>
+        <span class="token directive"><span class="token keyword">ip_hash</span></span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">server</span> 192.168.30.128:80</span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">server</span> 192.168.30.135:80</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+  
+    <span class="token directive"><span class="token keyword">server</span></span> <span class="token punctuation">&#123;</span>
+        <span class="token directive"><span class="token keyword">listen</span> <span class="token number">81</span></span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">server_name</span> www.xuniji.one.com</span><span class="token punctuation">;</span>
+  
+        <span class="token directive"><span class="token keyword">location</span> /</span> <span class="token punctuation">&#123;</span>
+            <span class="token directive"><span class="token keyword">proxy_pass</span> http://xuniji_fuzai</span><span class="token punctuation">;</span>
+            <span class="token directive"><span class="token keyword">proxy_set_header</span> Host <span class="token variable">$proxy_host</span></span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>4、least_conn（最少连接，nginx自带策略）：把请求转发给连接数较少的后端服务器。</p>
+<pre class="line-numbers language-nginx" data-language="nginx"><code class="language-nginx"><span class="token directive"><span class="token keyword">http</span></span> <span class="token punctuation">&#123;</span>
+    <span class="token directive"><span class="token keyword">upstream</span> xuniji_fuzai</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">#把请求转发给连接数比较少的服务器</span>
+        <span class="token directive"><span class="token keyword">least_conn</span></span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">server</span> 192.168.30.128:80</span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">server</span> 192.168.30.135:80</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+  
+    <span class="token directive"><span class="token keyword">server</span></span> <span class="token punctuation">&#123;</span>
+        <span class="token directive"><span class="token keyword">listen</span> <span class="token number">81</span></span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">server_name</span> www.xuniji.one.com</span><span class="token punctuation">;</span>
+  
+        <span class="token directive"><span class="token keyword">location</span> /</span> <span class="token punctuation">&#123;</span>
+            <span class="token directive"><span class="token keyword">proxy_pass</span> http://xuniji_fuzai</span><span class="token punctuation">;</span>
+            <span class="token directive"><span class="token keyword">proxy_set_header</span> Host <span class="token variable">$proxy_host</span></span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>    <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>5、fair（第三方）：按照服务器端的响应时间来分配请求，响应时间短的优先分配。</p>
+<pre class="line-numbers language-nginx" data-language="nginx"><code class="language-nginx"><span class="token directive"><span class="token keyword">http</span></span> <span class="token punctuation">&#123;</span>
+    <span class="token directive"><span class="token keyword">upstream</span> xuniji_fuzai</span> <span class="token punctuation">&#123;</span>
+        <span class="token directive"><span class="token keyword">fair</span></span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">server</span> 192.168.30.128:80</span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">server</span> 192.168.30.135:80</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+  
+    <span class="token directive"><span class="token keyword">server</span></span> <span class="token punctuation">&#123;</span>
+        <span class="token directive"><span class="token keyword">listen</span> <span class="token number">81</span></span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">server_name</span> www.xuniji.one.com</span><span class="token punctuation">;</span>
+  
+        <span class="token directive"><span class="token keyword">location</span> /</span> <span class="token punctuation">&#123;</span>
+            <span class="token directive"><span class="token keyword">proxy_pass</span> http://xuniji_fuzai</span><span class="token punctuation">;</span>
+            <span class="token directive"><span class="token keyword">proxy_set_header</span> Host <span class="token variable">$proxy_host</span></span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>   <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>6、url_hash（第三方）：该策略按访问url的hash结果来分配请求，使每个url定向到同一个后端服务器，需要配合缓存用。</p>
+<pre class="line-numbers language-nginx" data-language="nginx"><code class="language-nginx"><span class="token directive"><span class="token keyword">http</span></span> <span class="token punctuation">&#123;</span>
+    <span class="token directive"><span class="token keyword">upstream</span> xuniji_fuzai</span> <span class="token punctuation">&#123;</span>
+        <span class="token directive"><span class="token keyword">hash</span> <span class="token variable">$request_uri</span></span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">server</span> 192.168.30.128:80</span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">server</span> 192.168.30.135:80</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+  
+    <span class="token directive"><span class="token keyword">server</span></span> <span class="token punctuation">&#123;</span>
+        <span class="token directive"><span class="token keyword">listen</span> <span class="token number">81</span></span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">server_name</span> www.xuniji.one.com</span><span class="token punctuation">;</span>
+  
+        <span class="token directive"><span class="token keyword">location</span> /</span> <span class="token punctuation">&#123;</span>
+            <span class="token directive"><span class="token keyword">proxy_pass</span> http://xuniji_fuzai</span><span class="token punctuation">;</span>
+            <span class="token directive"><span class="token keyword">proxy_set_header</span> Host <span class="token variable">$proxy_host</span></span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/mklblog/p/16478798.html">参考1</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/wcwnina/p/8728391.html">参考2</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://cwh6.github.io/wyatt_hexo">wyatt</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://cwh6.github.io/wyatt_hexo/2023/05/04/%E3%80%90Nginx%E3%80%91%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E4%B8%8E%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/">https://cwh6.github.io/wyatt_hexo/2023/05/04/%E3%80%90Nginx%E3%80%91%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E4%B8%8E%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://cwh6.github.io/wyatt_hexo" target="_blank">wyatt'book</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/wyatt_hexo/tags/Nginx/">Nginx</a></div><div class="post-share"><div class="social-share" data-image="/wyatt_hexo/img/bg_city.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/wyatt_hexo/2023/05/04/%E3%80%90%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E3%80%9123%E7%A7%8D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="【设计模式】23种设计模式"><img class="cover" src="/wyatt_hexo/img/bg_city.jpg" onerror="onerror=null;src='/wyatt_hexo/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">【设计模式】23种设计模式</div></div><div class="info-2"><div class="info-item-1">设置模式介绍设计模式是一套被反复使用的、多数人知晓的、经过分类编目的、代码设计经验的总结。使用设计模式是为了重用代码、让代码更容易被他人理解、保证代码可靠性。 设计模式的使用设计模式在软件开发中的两个主要用途。 1） 开发人员的共同平台 设计模式提供了一个标准的术语系统，且具体到特定的情景。例如，单例设计模式意味着使用单个对象，这样所有熟悉单例设计模式的开发人员都能使用单个对象，并且可以通过这种方式告诉对方，程序使用的是单例模式。 2）最佳的实践 设计模式已经经历了很长一段时间的发展，它们提供了软件开发过程中面临的一般问题的最佳解决方案。学习这些模式有助于经验不足的开发人员通过一种简单快捷的方式来学习软件设计。 设计模式的类型   序号 模式 &amp; 描述 包括    1 创建型模式 这些设计模式提供了一种在创建对象的同时 隐藏创建逻辑的方式，而不是使用 new 运算 符直接实例化对象。这使得程序在判断针对 某个给定实例需要创建哪些对象时更加灵活。 工厂模式（Factory Pattern） 抽象工厂模式（Abstract Factory Pattern） 单例模式（Sing...</div></div></div></a><a class="pagination-related" href="/wyatt_hexo/2023/05/03/%E3%80%90Mysql%E3%80%91%E5%B9%B6%E5%8F%91%E4%B8%8E%E4%BA%8B%E5%8A%A1/" title="【Mysql】并发与事务"><img class="cover" src="/wyatt_hexo/img/bg_city.jpg" onerror="onerror=null;src='/wyatt_hexo/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">【Mysql】并发与事务</div></div><div class="info-2"><div class="info-item-1">事务（Transaction）及其 ACID属性事务是由一组SQL语句组成的逻辑处理单元，事务具有以下4个属性，通常简称为事务的ACID属性 原子性（Atomicity）:事务是一个原子操作单元，对其数据的修改，要么全都执行，要么全都不执行 一致性（Consistent）: 在事务开始和完成时，数据必须保持一致状态。这意味着所有相关的数据都必须应用于事务的修改，以保持数据的完整性；事务结束时，所有内部数据结构（如B树索引或双向链表）也都必须是正确的。 隔离性(lsolation): 数据库系统提供一定的隔离机制，保证事务在不受外部并发操作影响的“独立”环境执行。这意味着事务处理过程中的中间状态对外部是不可见的，反之亦然。 持久性(Durable) : 事务完成之后，它对于数据的修改是永久性的，即使出现系统故障也能够保持 并发事务处理带来的问题 更新丢失(Lost Update)  当两个或多个事务选择同一行，然后基于最初选定的值更新该行时，由于每个事务都不知道其他事务的存在，就会发生丢失更新问题一一最后的更新覆盖了由其他事务所做的更新。 例如，两个程序员修改同一iava文件。每程...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/wyatt_hexo/img/ggboy.jpg" onerror="this.onerror=null;this.src='/wyatt_hexo/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">wyatt</div><div class="author-info-description"></div><div class="site-data"><a href="/wyatt_hexo/archives/"><div class="headline">文章</div><div class="length-num">111</div></a><a href="/wyatt_hexo/tags/"><div class="headline">标签</div><div class="length-num">95</div></a><a href="/wyatt_hexo/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/CWH6" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="https://gitee.com/CWH6" target="_blank" title="Gitee"><i class="fab fa-gitlab" style="color: #C71D23;"></i></a><a class="social-icon" href="https://space.bilibili.com/362111596?spm_id_from=333.1007.0.0" target="_blank" title="Bilibili"><i class="fab fa-bilibili" style="color: #00A1D6;"></i></a><a class="social-icon" href="https://leetcode.cn/u/xiao-hei-bt/" target="_blank" title="LeetCode"><i class="fas fa-code" style="color: #FFA116;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>简介</span></div><div class="announcement_content"><div class="bio-card"><div class="bio-item"><span class="bio-label">年龄</span><span class="bio-value" id="bio-age"></span></div><div class="bio-item"><span class="bio-label">方向</span><span class="bio-value">Java工程师 <span class="bio-arrow">&rarr;</span> AI全栈工程师</span></div><div class="bio-item"><span class="bio-label">经验</span><span class="bio-value" id="bio-exp"></span></div><div class="bio-item"><span class="bio-label">兴趣</span><span class="bio-value">跑步、爬山</span></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Nginx"><span class="toc-text">Nginx</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Nginx%E7%9A%84%E4%BC%98%E7%82%B9"><span class="toc-text">Nginx的优点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86"><span class="toc-text">反向代理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-text">反向代理的作用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1"><span class="toc-text">负载均衡</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E4%BB%A3%E7%90%86"><span class="toc-text">配置代理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#nginx%E7%9A%84%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E7%AD%96%E7%95%A5"><span class="toc-text">nginx的负载均衡策略</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/wyatt_hexo/2026/06/27/%E3%80%90SpringBoot%E3%80%91SpringBoot%E6%95%B4%E5%90%88Mybatis/" title="【SpringBoot】SpringBoot整合Mybatis">【SpringBoot】SpringBoot整合Mybatis</a><time datetime="2026-06-27T11:41:09.000Z" title="发表于 2026-06-27 11:41:09">2026-06-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/wyatt_hexo/2026/06/27/hello-world/" title="Hello World">Hello World</a><time datetime="2026-06-27T09:49:32.013Z" title="发表于 2026-06-27 09:49:32">2026-06-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/wyatt_hexo/2026/06/26/%E3%80%90JMeter%E3%80%91JMeter%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95/" title="【JMeter】JMeter接口测试">【JMeter】JMeter接口测试</a><time datetime="2026-06-26T23:51:57.000Z" title="发表于 2026-06-26 23:51:57">2026-06-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/wyatt_hexo/2026/06/26/%E3%80%90Spring%E3%80%91SpringIOC%E7%9A%84%E7%90%86%E8%A7%A3/" title="【Spring】SpringIOC的理解">【Spring】SpringIOC的理解</a><time datetime="2026-06-26T23:22:33.000Z" title="发表于 2026-06-26 23:22:33">2026-06-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/wyatt_hexo/2026/06/20/%E3%80%90%E7%94%9F%E6%B4%BB%E3%80%91%E9%80%9B%E5%BE%B7%E4%BA%91%E5%BA%97/" title="【生活】逛德云店">【生活】逛德云店</a><time datetime="2026-06-20T00:36:12.000Z" title="发表于 2026-06-20 00:36:12">2026-06-20</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By wyatt</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.4</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/wyatt_hexo/js/utils.js?v=5.5.4"></script><script src="/wyatt_hexo/js/main.js?v=5.5.4"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js"></script><div class="js-pjax"></div><script>(function(){var bd=new Date(2000,6,23);var n=new Date();var a=n.getFullYear()-bd.getFullYear();if(n.getMonth()<bd.getMonth()||(n.getMonth()===bd.getMonth()&&n.getDate()<bd.getDate()))a--;var ae=document.getElementById('bio-age');if(ae)ae.textContent=a+'岁';var sd=new Date(2022,5,1);var m=(n.getFullYear()-sd.getFullYear())*12+n.getMonth()-sd.getMonth();var y=Math.floor(m/12);var mo=m%12;var ee=document.getElementById('bio-exp');if(ee)ee.textContent=(y>0?y+'年':'')+mo+'个月'})()</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="搜索..." type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/wyatt_hexo/js/search/local-search.js?v=5.5.4"></script></div></div></body></html>
