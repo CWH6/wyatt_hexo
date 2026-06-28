@@ -37,6 +37,17 @@ layout: false
     padding: 48px 56px 44px;
   }
 
+  /* Back button */
+  .back-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    position: absolute; top: 16px; left: 16px;
+    color: var(--muted); text-decoration: none;
+    font-size: 13px; font-family: 'SF Mono','Fira Code','Consolas',monospace;
+    padding: 6px 14px; border: 1px solid var(--border); border-radius: 6px;
+    transition: all .2s;
+  }
+  .back-btn:hover { color: var(--accent); border-color: var(--accent); }
+
   /* Header */
   .header {
     display: flex; justify-content: space-between; align-items: flex-start;
@@ -144,9 +155,21 @@ layout: false
     .avatar-wrap { padding: 1px; background: #ddd; }
     .lightbox { display: none !important; }
   }
+
+  @media screen and (max-width: 768px) {
+    body { font-size: 13px; }
+    .page { margin: 0; border: none; border-radius: 0; padding: 32px 16px 28px; }
+    .header { flex-direction: column; align-items: flex-start; gap: 18px; }
+    .header .left-col { gap: 14px; align-items: center; }
+    .avatar-wrap .avatar { width: 60px; height: 78px; }
+    .header h1 { font-size: 22px; }
+    .header .info { text-align: left; }
+    .back-btn { top: 10px; left: 10px; font-size: 12px; padding: 5px 10px; }
+  }
 </style>
 </head>
 <body>
+<a class="back-btn" href="/wyatt_hexo/">&larr; 返回博客</a>
 <div class="page" id="page"></div>
 
 <script>
