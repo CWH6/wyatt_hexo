@@ -1,6 +1,6 @@
 ---
 title: 【Vue2】Vue2接入vue-code-highlight组合实现代码高光
-date: 2026-06-14 21:08:04
+date: 2025-06-14 21:08:04
 tags:
   - vue组件
 category: 前端
