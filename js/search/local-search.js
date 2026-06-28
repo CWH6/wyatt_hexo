@@ -482,15 +482,17 @@ window.addEventListener('load', () => {
   const $searchMask = document.getElementById('search-mask')
   const $searchDialog = document.querySelector('#local-search .search-dialog')
 
-  // fix safari - debounced to avoid resize loop on mobile keyboard
-  let resizeTimer
+  // fix safari - debounced + anti-ring to avoid resize loop on mobile keyboard
+  let resizeTimer, lastInnerHeight = 0
   const fixSafariHeight = () => {
-    if (window.innerWidth < 768) {
-      clearTimeout(resizeTimer)
-      resizeTimer = setTimeout(() => {
-        $searchDialog.style.setProperty('--search-height', window.innerHeight + 'px')
-      }, 150)
-    }
+    if (window.innerWidth >= 768) return
+    const h = window.innerHeight
+    if (Math.abs(h - lastInnerHeight) < 30) return
+    lastInnerHeight = h
+    clearTimeout(resizeTimer)
+    resizeTimer = setTimeout(() => {
+      $searchDialog.style.setProperty('--search-height', h + 'px')
+    }, 200)
   }
 
   const openSearch = () => {

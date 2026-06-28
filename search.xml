@@ -1358,9 +1358,9 @@
       
         <tags>
             
-            <tag> cicd </tag>
-            
             <tag> github </tag>
+            
+            <tag> cicd </tag>
             
             <tag> vuepress2 </tag>
             
