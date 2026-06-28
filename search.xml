@@ -4,39 +4,31 @@
   
     
     <entry>
-      <title>【JMeter】JMeter接口测试</title>
-      <link href="/wyatt_hexo/2026/06/26/%E3%80%90JMeter%E3%80%91JMeter%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95/"/>
-      <url>/wyatt_hexo/2026/06/26/%E3%80%90JMeter%E3%80%91JMeter%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95/</url>
+      <title>【生活】考驾照经历总结</title>
+      <link href="/wyatt_hexo/2026/06/28/%E3%80%90%E7%94%9F%E6%B4%BB%E3%80%91%E8%80%83%E9%A9%BE%E7%85%A7%E7%BB%8F%E5%8E%86%E6%80%BB%E7%BB%93/"/>
+      <url>/wyatt_hexo/2026/06/28/%E3%80%90%E7%94%9F%E6%B4%BB%E3%80%91%E8%80%83%E9%A9%BE%E7%85%A7%E7%BB%8F%E5%8E%86%E6%80%BB%E7%BB%93/</url>
       
-        <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p><strong>JMeter也称为“Apache JMeter”，它是一个开源的，带有图形界面,基于Java的应用程序</strong>。它旨在分析和衡量Web应用程序和各种服务的性能和负载功能行为，用于<code>分析性能指标</code> 或者<code>测试在高负载情况下服务器接口的处理能力</code></p><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><blockquote><p><a href="https://jmeter.apache.org/download_jmeter.cgi">JMeter官方下载地址</a></p></blockquote><p><a href="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/bk/image-20230928233539362.png"><img src="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/bk/image-20230928233539362.png" alt="img"></a></p><h2 id="配置中文"><a href="#配置中文" class="headerlink" title="配置中文"></a>配置中文</h2><blockquote><p><a href="https://blog.csdn.net/weixin_45272371/article/details/131608920">JMeter 配置中文参考文章</a></p></blockquote><h2 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h2><p>打开下载目录， 进入 <code>apache-jmeter-5.5\bin\</code>， 点击 <strong>jmeter.bat</strong>，启动界面</p><p><a href="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/bk/image-20230928233634294.png"><img src="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/bk/image-20230928233634294.png" alt="img"></a></p><h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><h3 id="创建线程组"><a href="#创建线程组" class="headerlink" title="创建线程组"></a>创建线程组</h3><p><strong>新建测试计划-&gt;添加-&gt;线程(用户)-&gt;线程组</strong></p><p><a href="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/bk/image-20230929002048265.png"><img src="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/bk/image-20230929002048265.png" alt="img"></a></p><h3 id="创建Http信息头管理器"><a href="#创建Http信息头管理器" class="headerlink" title="创建Http信息头管理器"></a>创建Http信息头管理器</h3><p><strong>点击线程组-&gt; 添加 -&gt; 配置元件 -&gt; Http信息头管理器</strong></p><p><a href="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/bk/image-20230929003825130.png"><img src="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/bk/image-20230929003825130.png" alt="img"></a></p><p><strong>设置请求头参数： 如Cookie &#x2F; jwt-token</strong></p><p>根据具体后端去配置</p><p><a href="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/bk/image-20230929002427181.png"><img src="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/bk/image-20230929002427181.png" alt="img"></a></p><h3 id="结果树"><a href="#结果树" class="headerlink" title="结果树"></a>结果树</h3><p><strong>点击线程组-&gt; 添加-&gt; 监听器 -&gt; 结果树</strong></p><p>执行完请求后查看</p><p><a href="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/bk/image-20230929002210542.png"><img src="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/bk/image-20230929002210542.png" alt="img"></a></p><h3 id="聚合报告"><a href="#聚合报告" class="headerlink" title="聚合报告"></a>聚合报告</h3><p><strong>点击线程组-&gt; 添加-&gt; 监听器 -&gt; 聚合报告</strong></p><p>执行完请求后查看</p><p><a href="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/bk/image-20230929002228585.png"><img src="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/bk/image-20230929002228585.png" alt="img"></a></p><h3 id="HTTP请求"><a href="#HTTP请求" class="headerlink" title="HTTP请求"></a>HTTP请求</h3><p><strong>点击线程组-&gt;添加-&gt;取样器-&gt;HTTP请求</strong></p><p><a href="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/bk/image-20230929002327339.png"><img src="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/bk/image-20230929002327339.png" alt="img"></a></p><p><strong>添加请求的路径，请求方式，参数等。</strong></p><p><a href="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/bk/image-20230929002643954.png"><img src="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/bk/image-20230929002643954.png" alt="img"></a></p><h3 id="设置参数并启动"><a href="#设置参数并启动" class="headerlink" title="设置参数并启动"></a>设置参数并启动</h3><p><strong>点击线程组-&gt;设置线程数：20000</strong></p><p><a href="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/bk/image-20230929002722028.png"><img src="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/bk/image-20230929002722028.png" alt="img"></a></p><p>右击线程组-&gt; 启动</p><p><a href="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/bk/image-20230929002756109.png"><img src="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/bk/image-20230929002756109.png" alt="img"></a></p><h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><p>结果树</p><p><a href="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/bk/image-20230929003121140.png"><img src="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/bk/image-20230929003121140.png" alt="img"></a></p><p>聚合报告</p><p><a href="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/bk/image-20230929003142695.png"><img src="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/bk/image-20230929003142695.png" alt="img"></a></p><h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><h3 id="查看结果树-响应结果"><a href="#查看结果树-响应结果" class="headerlink" title="查看结果树-响应结果"></a>查看结果树-响应结果</h3><p>Jmeter报错：java.net.BindException: Address already in use: connect</p><blockquote><p><a href="https://blog.csdn.net/cheng_jeff/article/details/120169008">参考文章</a></p></blockquote>]]></content>
-      
-      
-      <categories>
-          
-          <category> 后端 </category>
-          
-      </categories>
+        <content type="html"><![CDATA[]]></content>
       
       
-        <tags>
-            
-            <tag> JMeter </tag>
-            
-            <tag> 压测 </tag>
-            
-        </tags>
       
     </entry>
     
     
     
     <entry>
-      <title>【生活】逛德云店</title>
-      <link href="/wyatt_hexo/2026/06/20/%E3%80%90%E7%94%9F%E6%B4%BB%E3%80%91%E9%80%9B%E5%BE%B7%E4%BA%91%E5%BA%97/"/>
-      <url>/wyatt_hexo/2026/06/20/%E3%80%90%E7%94%9F%E6%B4%BB%E3%80%91%E9%80%9B%E5%BE%B7%E4%BA%91%E5%BA%97/</url>
+      <title>【生活】逛德云居</title>
+      <link href="/wyatt_hexo/2026/06/19/%E3%80%90%E7%94%9F%E6%B4%BB%E3%80%91%E9%80%9B%E5%BE%B7%E4%BA%91%E5%B1%85/"/>
+      <url>/wyatt_hexo/2026/06/19/%E3%80%90%E7%94%9F%E6%B4%BB%E3%80%91%E9%80%9B%E5%BE%B7%E4%BA%91%E5%B1%85/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<p>好久没来看了，跟 bro 过来爬个山</p><img src="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/hexo/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260628154347_234_25.jpg"/><p>晚上爬完山，吃完饭跟 bro 逛一下这边改造的景点。小时候骑单车上下学的路，改成景点了，开出一条河了</p><img src="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/hexo/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260628154348_235_25.jpg"/><p>两旁的楼还是原来的样子</p><img src="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/hexo/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260628154350_237_25.jpg"/><p>挂着德云居的经典房</p><img src="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/hexo/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260628154349_236_25.jpg"/><p>在一家叫 聚鼎私房菜 的店吃顺德菜</p><p>不知道是不是爬完山的缘故，人越来越多了，直接“坐牢”半小时</p><p>图片都是在大众找的，之前光顾吃，没拍照了（笑）</p><p>下面是 <strong>咸蛋黄大虾</strong> ： 用咸蛋黄裹着鲜活炸的虾，感觉有点偏咸，但是脆脆的，甜甜的，还挺好吃</p><img src="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/hexo/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260628203842_238_25.jpg"/><p><strong>香煎黄花鱼</strong> : 香脆黄花鱼，外皮酥嫩，里面的肉鲜嫩</p><img src="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/hexo/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260628203843_239_25.jpg"/><p><strong>客家让豆腐</strong> ： 豆腐鲜嫩，每块豆腐里面都嵌入的一块煎黄的猪肉，嫩嫩的非常可口</p><img src="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/hexo/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260628203844_240_25.jpg"/><p><strong>白切鸡</strong>： 这个皮滑肉嫩，bro的最爱。 感觉蘸料了，非常好吃非常鲜美，不是那种冷冻了很久的鸡肉</p><img src="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/hexo/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260628203845_241_25.jpg"/><p><strong>鸡骨草煲猪恒利</strong>：作为第一个上的，夏天喝一口非常可以，草药+猪舌头，相互作用，无味道很鲜甜</p><img src="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/hexo/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260628203846_242_25.jpg"/>]]></content>
       
+      
+      <categories>
+          
+          <category> 生活 </category>
+          
+      </categories>
       
       
     </entry>
@@ -91,9 +83,9 @@
       
         <tags>
             
-            <tag> Docker </tag>
-            
             <tag> 文档 </tag>
+            
+            <tag> Docker </tag>
             
         </tags>
       
@@ -395,6 +387,33 @@
         <tags>
             
             <tag> 安全 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>【JMeter】JMeter接口测试</title>
+      <link href="/wyatt_hexo/2025/06/26/%E3%80%90JMeter%E3%80%91JMeter%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95/"/>
+      <url>/wyatt_hexo/2025/06/26/%E3%80%90JMeter%E3%80%91JMeter%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95/</url>
+      
+        <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p><strong>JMeter也称为“Apache JMeter”，它是一个开源的，带有图形界面,基于Java的应用程序</strong>。它旨在分析和衡量Web应用程序和各种服务的性能和负载功能行为，用于<code>分析性能指标</code> 或者<code>测试在高负载情况下服务器接口的处理能力</code></p><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><blockquote><p><a href="https://jmeter.apache.org/download_jmeter.cgi">JMeter官方下载地址</a></p></blockquote><p><a href="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/bk/image-20230928233539362.png"><img src="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/bk/image-20230928233539362.png" alt="img"></a></p><h2 id="配置中文"><a href="#配置中文" class="headerlink" title="配置中文"></a>配置中文</h2><blockquote><p><a href="https://blog.csdn.net/weixin_45272371/article/details/131608920">JMeter 配置中文参考文章</a></p></blockquote><h2 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h2><p>打开下载目录， 进入 <code>apache-jmeter-5.5\bin\</code>， 点击 <strong>jmeter.bat</strong>，启动界面</p><p><a href="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/bk/image-20230928233634294.png"><img src="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/bk/image-20230928233634294.png" alt="img"></a></p><h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><h3 id="创建线程组"><a href="#创建线程组" class="headerlink" title="创建线程组"></a>创建线程组</h3><p><strong>新建测试计划-&gt;添加-&gt;线程(用户)-&gt;线程组</strong></p><p><a href="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/bk/image-20230929002048265.png"><img src="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/bk/image-20230929002048265.png" alt="img"></a></p><h3 id="创建Http信息头管理器"><a href="#创建Http信息头管理器" class="headerlink" title="创建Http信息头管理器"></a>创建Http信息头管理器</h3><p><strong>点击线程组-&gt; 添加 -&gt; 配置元件 -&gt; Http信息头管理器</strong></p><p><a href="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/bk/image-20230929003825130.png"><img src="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/bk/image-20230929003825130.png" alt="img"></a></p><p><strong>设置请求头参数： 如Cookie &#x2F; jwt-token</strong></p><p>根据具体后端去配置</p><p><a href="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/bk/image-20230929002427181.png"><img src="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/bk/image-20230929002427181.png" alt="img"></a></p><h3 id="结果树"><a href="#结果树" class="headerlink" title="结果树"></a>结果树</h3><p><strong>点击线程组-&gt; 添加-&gt; 监听器 -&gt; 结果树</strong></p><p>执行完请求后查看</p><p><a href="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/bk/image-20230929002210542.png"><img src="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/bk/image-20230929002210542.png" alt="img"></a></p><h3 id="聚合报告"><a href="#聚合报告" class="headerlink" title="聚合报告"></a>聚合报告</h3><p><strong>点击线程组-&gt; 添加-&gt; 监听器 -&gt; 聚合报告</strong></p><p>执行完请求后查看</p><p><a href="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/bk/image-20230929002228585.png"><img src="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/bk/image-20230929002228585.png" alt="img"></a></p><h3 id="HTTP请求"><a href="#HTTP请求" class="headerlink" title="HTTP请求"></a>HTTP请求</h3><p><strong>点击线程组-&gt;添加-&gt;取样器-&gt;HTTP请求</strong></p><p><a href="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/bk/image-20230929002327339.png"><img src="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/bk/image-20230929002327339.png" alt="img"></a></p><p><strong>添加请求的路径，请求方式，参数等。</strong></p><p><a href="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/bk/image-20230929002643954.png"><img src="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/bk/image-20230929002643954.png" alt="img"></a></p><h3 id="设置参数并启动"><a href="#设置参数并启动" class="headerlink" title="设置参数并启动"></a>设置参数并启动</h3><p><strong>点击线程组-&gt;设置线程数：20000</strong></p><p><a href="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/bk/image-20230929002722028.png"><img src="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/bk/image-20230929002722028.png" alt="img"></a></p><p>右击线程组-&gt; 启动</p><p><a href="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/bk/image-20230929002756109.png"><img src="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/bk/image-20230929002756109.png" alt="img"></a></p><h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><p>结果树</p><p><a href="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/bk/image-20230929003121140.png"><img src="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/bk/image-20230929003121140.png" alt="img"></a></p><p>聚合报告</p><p><a href="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/bk/image-20230929003142695.png"><img src="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/bk/image-20230929003142695.png" alt="img"></a></p><h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><h3 id="查看结果树-响应结果"><a href="#查看结果树-响应结果" class="headerlink" title="查看结果树-响应结果"></a>查看结果树-响应结果</h3><p>Jmeter报错：java.net.BindException: Address already in use: connect</p><blockquote><p><a href="https://blog.csdn.net/cheng_jeff/article/details/120169008">参考文章</a></p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> 后端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> JMeter </tag>
+            
+            <tag> 压测 </tag>
             
         </tags>
       
@@ -1076,7 +1095,7 @@
       
       <categories>
           
-          <category> 前端 </category>
+          <category> 后端 </category>
           
       </categories>
       
@@ -2010,14 +2029,12 @@
       
       <categories>
           
-          <category> AI </category>
+          <category> 其他 </category>
           
       </categories>
       
       
         <tags>
-            
-            <tag> AI </tag>
             
             <tag> 内网穿透 </tag>
             
