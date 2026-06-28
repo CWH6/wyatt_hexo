@@ -1,6 +1,6 @@
 ---
 title: 【SpringBoot】SpringBoot整合Mybatis
-date: 2026-06-27 11:41:09
+date: 2023-06-27 11:41:09
 tags:
   - SpringBoot
 category: 
