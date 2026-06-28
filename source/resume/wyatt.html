@@ -1,0 +1,419 @@
+---
+layout: false
+---
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>陈为汇 - AI开发工程师</title>
+<style>
+  :root {
+    --bg0: #0d1117;
+    --bg1: #161b22;
+    --bg2: #21262d;
+    --border: #30363d;
+    --text: #c9d1d9;
+    --muted: #8b949e;
+    --accent: #58a6ff;
+    --green: #3fb950;
+    --orange: #d2991d;
+    --red: #f85149;
+    --purple: #a371f7;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    color: var(--text);
+    background: #090c10;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  .page {
+    max-width: 840px; margin: 36px auto;
+    background: var(--bg0);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 48px 56px 44px;
+  }
+
+  /* Header */
+  .header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 28px; padding-bottom: 22px;
+    border-bottom: 1px solid var(--border);
+    gap: 32px;
+  }
+  .header .left-col { display: flex; align-items: flex-start; gap: 22px; }
+  .header h1 { font-size: 26px; font-weight: 600; color: #f0f6fc; letter-spacing: 2px; }
+  .header .sub { font-size: 14px; color: var(--accent); margin-top: 4px; font-weight: 500; font-family: 'SF Mono','Fira Code','Consolas',monospace; }
+  .header .info { text-align: right; font-size: 13px; color: var(--muted); line-height: 2; flex-shrink: 0; }
+  .header .info a { color: var(--accent); text-decoration: none; }
+
+  /* Avatar */
+  .avatar-wrap {
+    flex-shrink: 0; cursor: pointer; position: relative;
+    padding: 3px; background: var(--border); border-radius: 5px;
+    transition: opacity .2s;
+  }
+  .avatar-wrap:hover { opacity: .85; }
+  .avatar-wrap .avatar {
+    display: block; width: 82px; height: 105px; object-fit: cover; border-radius: 3px;
+  }
+  .avatar-wrap::after {
+    content: '🔍'; position: absolute; bottom: 4px; right: 4px;
+    font-size: 10px; opacity: .7; pointer-events: none;
+  }
+
+  /* Lightbox */
+  .lightbox {
+    display: none; position: fixed; inset: 0; z-index: 999;
+    background: rgba(0,0,0,.88); justify-content: center; align-items: center;
+    cursor: pointer;
+  }
+  .lightbox.show { display: flex; }
+  .lightbox img { max-width: 90vw; max-height: 90vh; border-radius: 6px; box-shadow: 0 0 60px rgba(0,0,0,.5); }
+
+  /* Section */
+  .section { margin-bottom: 26px; }
+  .section-title {
+    font-size: 14px; font-weight: 600; color: var(--accent);
+    padding-bottom: 6px; margin-bottom: 14px;
+    border-bottom: 1px solid #21262d;
+    font-family: 'SF Mono','Fira Code','Consolas',monospace;
+    letter-spacing: 1px;
+  }
+  .section-title .dot { color: var(--green); margin-right: 6px; }
+
+  /* Intention */
+  .intention { display: flex; gap: 36px; font-size: 14px; }
+  .intention .label { color: var(--muted); }
+
+  /* Tags */
+  .skill-cat { margin-bottom: 10px; }
+  .skill-cat .cat-name { font-size: 12px; font-weight: 600; margin-bottom: 5px; color: var(--muted); font-family: 'SF Mono','Fira Code','Consolas',monospace; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag {
+    background: var(--bg2); color: var(--text); padding: 2px 10px;
+    border-radius: 4px; font-size: 12px; border: 1px solid var(--border);
+    font-family: 'SF Mono','Fira Code','Consolas',monospace;
+  }
+  .tag:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* Timeline */
+  .tl { margin-bottom: 14px; padding-left: 16px; border-left: 1px solid var(--border); position: relative; }
+  .tl::before { content: '>'; position: absolute; left: -7px; top: 1px; font-size: 10px; color: var(--green); font-family: 'SF Mono','Fira Code','Consolas',monospace; }
+  .tl-hd { display: flex; justify-content: space-between; flex-wrap: wrap; }
+  .tl-hd .l { font-weight: 600; color: #f0f6fc; }
+  .tl-hd .r { font-size: 12px; color: var(--muted); font-family: 'SF Mono','Fira Code','Consolas',monospace; }
+  .tl-sub { font-size: 12px; color: var(--muted); margin-bottom: 4px; }
+  .tl-detail { font-size: 13px; color: var(--text); }
+  .tl-detail li { margin-bottom: 2px; list-style: none; padding-left: 14px; }
+  .tl-detail li::before { content: '-'; color: var(--muted); margin-right: 6px; }
+
+  /* Project */
+  .pj { margin-bottom: 16px; padding: 14px 16px; background: var(--bg1); border-radius: 6px; border: 1px solid var(--border); }
+  .pj-hd { display: flex; justify-content: space-between; flex-wrap: wrap; margin-bottom: 5px; }
+  .pj-hd .n { font-weight: 600; font-size: 14px; color: var(--orange); }
+  .pj-hd .d { font-size: 12px; color: var(--muted); font-family: 'SF Mono','Fira Code','Consolas',monospace; }
+  .pj-desc { font-size: 13px; color: var(--muted); margin-bottom: 8px; }
+  .pj-detail { font-size: 13px; color: var(--text); }
+  .pj-detail li { margin-bottom: 2px; list-style: none; padding-left: 14px; }
+  .pj-detail li::before { content: '▸'; color: var(--accent); margin-right: 6px; font-size: 10px; }
+
+  /* Self eval */
+  .eval { font-size: 13px; }
+  .eval li { margin-bottom: 5px; list-style: none; padding-left: 14px; }
+  .eval li::before { content: '>'; color: var(--green); margin-right: 6px; font-family: 'SF Mono','Fira Code','Consolas',monospace; }
+  .eval li strong { color: #f0f6fc; }
+
+  /* Education */
+  .edu-row { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 4px; }
+  .edu-row .school { font-weight: 600; color: #f0f6fc; }
+  .edu-row .date { font-size: 12px; color: var(--muted); font-family: 'SF Mono','Fira Code','Consolas',monospace; }
+  .edu-detail { font-size: 13px; color: var(--muted); }
+
+  .footer { text-align: center; font-size: 11px; color: #484f58; margin-top: 32px; padding-top: 18px; border-top: 1px solid #21262d; font-family: 'SF Mono','Fira Code','Consolas',monospace; }
+
+  @media print {
+    body { background: #fff; color: #222; }
+    .page { border: none; background: #fff; margin: 0; padding: 36px 44px 28px; max-width: 100%; }
+    .header h1, .tl-hd .l, .edu-row .school, .eval li strong { color: #111; }
+    .tag { background: #f0f0f0; color: #222; border: 1px solid #ccc; }
+    .pj { background: #f9f9f9; border: 1px solid #ddd; }
+    .avatar-wrap { padding: 1px; background: #ddd; }
+    .lightbox { display: none !important; }
+  }
+</style>
+</head>
+<body>
+<div class="page" id="page"></div>
+
+<script>
+// ============================================================
+//  简历数据 — 修改这里的文字即可，页面会自动渲染
+// ============================================================
+const resume = {
+  name: '陈为汇',
+  title: 'AI开发工程师',
+  gender: '男',
+  age: 26,
+  experience: '4年',
+  phone: '13652920964',
+  email: 'wyattwhitley7@outlook.com',
+  github: 'https://github.com/CWH6',
+  blog: 'https://cwh6.github.io/bk/',
+  photo: 'https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/hexo/self.jpg',
+
+  intention: {
+    post: 'AI开发工程师',
+    city: '广州 / 深圳 / 佛山',
+    salary: '面议'
+  },
+
+  skills: {
+    '后端': 'Spring SpringBoot SpringCloud SpringMVC MyBatis MyBatisPlus HuTool MySQL 瀚高 达梦 人大金仓 向量数据库 Redis RabbitMQ Kafka ElasticSearch',
+    '前端': 'Vue2 Vue3 ElementUI-Plus JavaScript CSS HTML jQuery Axios Node.js npm',
+    '部署与DevOps': 'Linux Tomcat Nginx Docker KubeSphere Jenkins CICD',
+    'AI 与 其他': 'SpringAI LangChain Git SVN Maven Gradle 设计模式'
+  },
+
+  jobs: [
+    {
+      company: '广州易察市场调研公司',
+      period: '2024.11 — 至今',
+      industry: '互联网',
+      role: 'AI开发工程师',
+      items: [
+        '参与软件架构设计与开发，根据需求进行系统搭建与模块功能开发',
+        '维护旧系统功能，对系统功能进行二次开发',
+        '搭建测试、生产环境数据库，设计业务模块数据库表',
+        '利用 Jenkins 搭建多环境自动化部署流程，提升部署效率',
+        '优化系统 MQ 创建方式，使用 MQ 解除业务模块耦合度',
+        '分析与解决生产环境问题，编写相关解决方案与技术文档'
+      ]
+    },
+    {
+      company: '佛山置迅科技公司',
+      period: '2024.07 — 2024.10',
+      industry: '互联网',
+      role: 'JAVA后端研发工程师',
+      items: [
+        '参与软件编码，根据需求文档和功能规范进行系统搭建和模块设计',
+        '整理多环境数据库，设计业务模块数据库表',
+        '利用 Docker 对多环境项目进行部署，搭建自动化部署流程',
+        '优化系统 MQ 创建方式，使用 MQ 解除业务模块耦合度',
+        '分析并解决前端与嵌入式工程师反馈的生产环境问题'
+      ]
+    },
+    {
+      company: '广东益泰达科技有限公司',
+      period: '2023.05 — 2024.06',
+      industry: '电力',
+      role: '全栈工程师',
+      items: [
+        '参与软件编码，根据需求文档进行系统搭建和模块设计',
+        '维护老系统功能，进行二次开发或重构',
+        '设计数据库表结构，海量数据分表设计',
+        '使用缓存、索引等技术优化服务性能，提高系统接口响应速度',
+        '解决现场系统测评风险警告，根据日志分析定位问题并给出解决方案'
+      ]
+    },
+    {
+      company: '广州微匠互联网科技有限公司',
+      period: '2022.04 — 2023.04',
+      industry: '互联网',
+      role: 'JAVA初级开发工程师',
+      items: [
+        '系统编码实现项目需求，确保系统高可用性、可拓展性、高复用性',
+        '参与系统模块解决方案编写',
+        '使用缓存、索引优化数据库和服务性能',
+        '参与构建项目流水线，基于云端服务实现自动化部署',
+        '对接第三方产品：阿里云OSS、短信服务、活体检测服务等'
+      ]
+    }
+  ],
+
+  projects: [
+    {
+      name: '定位数据系统 + TS监控系统',
+      period: '2024.07 — 2024.10',
+      desc: '提供高效、精准的设备定位管理解决方案。定位数据系统集成并处理来自硬件设备的实时定位数据，TS监控系统以租户方式获取设备定位信息，广泛应用于老年人跌倒监测、工业车间设备定位等场景。',
+      items: [
+        '负责后端模块编写、旧模块维护迭代与新功能研发、系统多环境部署',
+        '引入 SpringSecurity 实现 API 认证，通过 Feign 拦截器实现跨服务认证',
+        '结合 i18n 国际化技术与告警邮件模板，实现多语言告警推送',
+        '基于 RabbitMQ + EasyExcel 实现设备定位数据异步导出',
+        '通过 Spring 集成 Azure 云存储，按日期分类存储并支持 zip 下载',
+        '利用 RabbitMQ 死信队列实现租户延迟删除（5h），避免误删关键数据',
+        '基于 Docker + Azure Pipelines 实现多环境自动化部署',
+        '利用 SSE 技术实现设备上传状态实时推送至前端'
+      ]
+    },
+    {
+      name: '乌江集控调度运行系统',
+      period: '2023.12 — 2024.06',
+      desc: '电力调度和远程集控调度运行业务系统，实现乌江公司梯级电站电力调度和远程集控管理的标准化与规范化。',
+      items: [
+        '编写告警指标统计接口，通过 ECharts 实现数据可视化展示',
+        '接入第三方报表系统，采集大规模数据集进行多维度分析',
+        '设计定值单多版本管理，采用递归算法构建树状结构展示',
+        '结合 Activiti 工作流开发审批流程，接入短信服务通知流程节点人员',
+        '基于 EasyExcel 封装通用导出工具，实现 Excel 动态字段导出',
+        '集成 CAS 客户端实现多应用单点登录，运用 Kafka 对接第三方系统数据传输',
+        '结合 Redis 令牌桶 + AOP + 自定义注解实现接口限流（5次/min）',
+        '缓存预热数据添加随机过期时间，解决缓存雪崩问题'
+      ]
+    },
+    {
+      name: '贵州电网新能源可观系统',
+      period: '2023.05 — 2023.11',
+      desc: '采集新能源场站运行数据实现实时监测与数据治理，结合资源评估进行理论功率计算，通过损耗统计与归因分析量化弃电成分，提高新能源调度管理标准化和规范化。',
+      items: [
+        '负责后端模块编写，包含旧模块功能调整与重构',
+        '结合 @Scheduled + DataX 定时全量同步当日分表数据',
+        '编写全省地图新能源类型占比接口及地图下钻功能',
+        '使用 Redis 缓存高频访问页面，结合接口路径+分页参数组成 key 并设置 TTL',
+        '编写多能源装机容量环比接口，通过 POI 构建报表并导出 Excel',
+        '针对 50w+ 数据慢SQL问题，添加索引与分区字段，将响应时间从 17s 优化至 1s',
+        '基于 RBAC 模型实现用户、角色、菜单权限管理'
+      ]
+    }
+  ],
+
+  selfEval: [
+    '<strong>问题分析与解决能力：</strong>拥有较强的问题分析和解决能力，在 Java 开发中积累了丰富经验，能够独立思考并快速找到适合的解决方案，在复杂业务逻辑和技术难题中表现出较高的解决效率。',
+    '<strong>团队合作能力：</strong>具备基本的团队协作能力，能够在开发中与团队成员配合完成接口的设计和修改，有效分析客户反馈问题并提出合理解决方案。',
+    '<strong>持续学习能力：</strong>对技术有强烈的好奇心，积极跟进 Java 生态中的新特性与最佳实践，将学到的新技术应用于项目中并输出为技术文档，推动团队整体技术提升。'
+  ],
+
+  education: {
+    school: '番禺理工学院',
+    major: '计算机应用技术（专科）',
+    period: '2019 — 2022',
+    courses: 'WEB开发、JAVA程序设计、计算机网络原理、数据结构'
+  },
+
+  honors: '广东省蓝桥杯二等奖',
+
+  footer: '陈为汇 · AI开发工程师 · wyattwhitley7@outlook.com'
+};
+
+// ============================================================
+//  渲染逻辑 — 通常不需要修改
+// ============================================================
+(function render(data) {
+  const page = document.getElementById('page');
+  const h = [];
+
+  // Header
+  h.push('<div class="header">');
+  h.push('<div class="left-col">');
+  if (data.photo) h.push('<div class="avatar-wrap" onclick="document.getElementById(\'lb\').classList.add(\'show\')"><img class="avatar" src="'+esc(data.photo)+'" alt="photo"></div>');
+  h.push('<div><h1>'+esc(data.name)+'</h1><div class="sub">'+esc(data.title)+'</div></div>');
+  h.push('</div>');
+  h.push('<div class="info">');
+  h.push('<div>'+esc(data.gender)+' · '+esc(data.age)+'岁 · '+esc(data.experience)+'经验</div>');
+  h.push('<div>'+esc(data.phone)+'</div><div>'+esc(data.email)+'</div>');
+  if (data.github) h.push('<div><a href="'+esc(data.github)+'" target="_blank">'+esc(data.github)+'</a></div>');
+  if (data.blog) h.push('<div><a href="'+esc(data.blog)+'" target="_blank">'+esc(data.blog)+'</a></div>');
+  h.push('</div></div>');
+  // Lightbox
+  if (data.photo) h.push('<div class="lightbox" id="lb" onclick="this.classList.remove(\'show\')"><img src="'+esc(data.photo)+'"></div>');
+
+  // 求职意向
+  sec(h, '求职意向', function() {
+    var i = data.intention;
+    h.push('<div class="intention">');
+    h.push('<span><span class="label">意向岗位：</span>'+esc(i.post)+'</span>');
+    h.push('<span><span class="label">意向城市：</span>'+esc(i.city)+'</span>');
+    h.push('<span><span class="label">期望薪资：</span>'+esc(i.salary)+'</span>');
+    h.push('</div>');
+  });
+
+  // 技能
+  sec(h, '专业技能', function() {
+    var skills = data.skills;
+    for (var cat in skills) {
+      var tags = skills[cat].split(/\s+/);
+      h.push('<div class="skill-cat"><div class="cat-name">'+esc(cat)+'</div><div class="tags">');
+      for (var t = 0; t < tags.length; t++) {
+        h.push('<span class="tag">'+esc(tags[t])+'</span>');
+      }
+      h.push('</div></div>');
+    }
+  });
+
+  // 工作经历
+  sec(h, '工作经历', function() {
+    var jobs = data.jobs;
+    for (var i = 0; i < jobs.length; i++) {
+      var j = jobs[i];
+      h.push('<div class="tl">');
+      h.push('<div class="tl-hd"><span class="l">'+esc(j.company)+'</span><span class="r">'+esc(j.period)+'</span></div>');
+      h.push('<div class="tl-sub">'+esc(j.industry)+' · '+esc(j.role)+'</div>');
+      h.push('<ul class="tl-detail">');
+      for (var k = 0; k < j.items.length; k++) {
+        h.push('<li>'+esc(j.items[k])+'</li>');
+      }
+      h.push('</ul></div>');
+    }
+  });
+
+  // 项目经验
+  sec(h, '项目经验', function() {
+    var pjs = data.projects;
+    for (var i = 0; i < pjs.length; i++) {
+      var p = pjs[i];
+      h.push('<div class="pj">');
+      h.push('<div class="pj-hd"><span class="n">'+esc(p.name)+'</span><span class="d">'+esc(p.period)+'</span></div>');
+      h.push('<div class="pj-desc">'+esc(p.desc)+'</div>');
+      h.push('<ul class="pj-detail">');
+      for (var k = 0; k < p.items.length; k++) {
+        h.push('<li>'+esc(p.items[k])+'</li>');
+      }
+      h.push('</ul></div>');
+    }
+  });
+
+  // 自我评价
+  sec(h, '自我评价', function() {
+    h.push('<ul class="eval">');
+    var ev = data.selfEval;
+    for (var i = 0; i < ev.length; i++) {
+      h.push('<li>'+ev[i]+'</li>'); // 允许内嵌 <strong>
+    }
+    h.push('</ul>');
+  });
+
+  // 教育 & 荣誉
+  sec(h, '教育经历', function() {
+    var e = data.education;
+    h.push('<div class="edu-row">');
+    h.push('<span class="school">'+esc(e.school)+' · '+esc(e.major)+'</span>');
+    h.push('<span class="date">'+esc(e.period)+'</span>');
+    h.push('</div>');
+    h.push('<div class="edu-detail">主修课程：'+esc(e.courses)+'</div>');
+  });
+
+  sec(h, '荣誉证书', function() {
+    h.push('<div>'+esc(data.honors)+'</div>');
+  });
+
+  // Footer
+  h.push('<div class="footer">'+esc(data.footer)+'</div>');
+
+  page.innerHTML = h.join('');
+
+  function sec(buf, title, fn) {
+    buf.push('<div class="section"><div class="section-title"><span class="dot">$</span> '+esc(title)+'</div>');
+    fn();
+    buf.push('</div>');
+  }
+  function esc(s) {
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+})(resume);
+</script>
+</body>
+</html>
