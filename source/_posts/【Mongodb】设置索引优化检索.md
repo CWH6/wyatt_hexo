@@ -2,6 +2,8 @@
 title: 【Mongodb】设置索引优化检索
 date: 2026-04-17 15:21:09
 tags:
+  - MongoDB
+  - 索引  
 categories:
   - 后端
   - 运维
