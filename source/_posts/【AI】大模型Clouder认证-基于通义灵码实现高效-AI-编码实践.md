@@ -809,5 +809,434 @@ src/**/*.ts
 
 
 
+#### 阿云的开发任务
 
+作用：高层次展示系统的主要组件（前端、后端、数据库、缓存、消息队列等）及它们之间的关系。
+📌 建议开发者使用自己的工程文件，参照以下提示词完成该部分内容
+
+
+
+![img](https://scms-prod-sh-public.oss-cn-shanghai.aliyuncs.com/course_picture/uhwmkhsosjacghpsatzj.png)
+
+#### 系统架构图
+
+#####  提示词
+
+```text
+请详细分析下工程，使用plantuml语法生成这个工程的系统架构图，输出到archi.uml文件
+```
+
+#####  **登录**[**https://www.plantuml.com**](https://www.plantuml.com/) **或IDE下载插件访问**
+
+![img](https://scms-prod-sh-public.oss-cn-shanghai.aliyuncs.com/course_picture/kdobnxgpnnfsuobwfuzj.png)
+
+#### 使用Lingma生成类图 
+
+展示系统中的类、类的属性和方法，以及类与类之间的关系（如继承、关联、依赖）。
+
+##### 提示词
+
+```text
+请分析用户管理java代码（或@代码上下文），并生成一个展示xx类（或具体类名称）之间继承关系的UML类图（使用Mermaid语法）
+```
+
+##### 登陆https://www.mermaidchart.com 或IDE下载插件访问
+
+![img](https://scms-prod-sh-public.oss-cn-shanghai.aliyuncs.com/course_picture/pikqwqujoypxoioqfcnq.png)
+
+
+#### 使用Lingma生成时序图 
+
+描述系统如何工作，按时间顺序展示对象或组件之间的交互。如用户登录、下订单等完整流程。
+
+##### 提示词
+
+```text
+请详细分析下工程（或@代码上下文），使用Mermaid语法生成一个描述‘用户登陆’流程的时序图
+```
+
+
+
+![img](https://scms-prod-sh-public.oss-cn-shanghai.aliyuncs.com/course_picture/hflahhipkxixlynczvev.png)
+
+
+#### 使用Lingma生成用例图
+
+从用户（或外部系统）的视角，描述系统的功能需求，适用于项目初期进行需求分析和范围定义。
+
+#####  提示词
+
+```text
+我正在设计一个在线图书馆系统，主要用户有‘读者’和‘管理员’。请帮我生成一个包含借书、还书、查询书籍、管理书籍等功能的PlantUML用例图
+```
+
+
+
+![img](https://scms-prod-sh-public.oss-cn-shanghai.aliyuncs.com/course_picture/msiqquptajuzrfpnospi.png)
+
+
+#### 使用Lingma生成控制流图
+
+用标准化的图形符号来表示一个算法或过程的步骤和决策点。对于理解和优化复杂函数或业务逻辑非常有帮助。
+
+##### 提示词
+
+```text
+请详细分析下工程（或@代码上下文），使用Mermaid语法生成一个描述‘用户注册’的控制流图。
+```
+
+
+
+![img](https://scms-prod-sh-public.oss-cn-shanghai.aliyuncs.com/course_picture/xdqpziatqvmmlnlctchh.png)
+
+#### 使用Lingma生成ER图 
+
+专门用于数据库设计。它展示了数据实体（对应数据库的表）、实体的属性（对应表的字段）以及实体之间的关系（一对一、一对多、多对多）。
+
+
+#####  提示词
+
+```text
+我正在设计一个博客系统，需要‘用户’、‘文章’和‘评论’三个实体。一个用户可以有多篇文章和多条评论，一篇文章可以有多条评论。请为我生成这个关系的ER图（使用Mermaid语法），并附上对应的SQL DDL代码
+```
+
+
+
+![img](https://scms-prod-sh-public.oss-cn-shanghai.aliyuncs.com/course_picture/yxvcwvbbogafxaqstajs.png)
+
+
+![img](https://scms-prod-sh-public.oss-cn-shanghai.aliyuncs.com/course_picture/uyongvijbcnudbqtrnvw.png)
+
+
+
+### 三、最佳实践篇三:代码测试与调试
+
+我们在开发协作中，常常会中途接收到其他人的代码工程，由于历史开发规范更新迭代或者个人开发习惯不同，这些历史代码可能需要优化和重构。本节将用灵码帮助我们优化和重构一个历史代码。
+
+#### 阿云的开发任务：
+
+阿云接手了一个函数calculate_cart_total的源代码，发现这个代码并没有很好的遵从团队代码规范，他打算使用灵码对这个函数的代码进行重构优化。
+这个函数 calculate_cart_total 负责计算一个购物车的最终金额。业务规则如下：
+● 计算商品总价。
+● VIP 用户享受 9 折优惠。
+● 可以使用优惠券，比如 "SAVE20" 可以减 20 元。
+● 订单满 200 元包邮，否则运费 10 元。
+● 最后，在（商品价 - 优惠 + 运费）的基础上计算 8% 的税。
+
+#### 源代码 
+
+```shell
+# 待优化函数
+
+def calculate_cart_total(cart_items, customer_info):
+    """
+    一个混乱的购物车结算函数。
+    """
+    subtotal = 0
+    for item in cart_items:
+        subtotal += item['price'] * item['quantity']
+
+    # 应用VIP折扣
+    if customer_info.get('is_vip'):
+        # 9折优惠
+        subtotal = subtotal * 0.9
+
+    # 应用优惠券
+    if customer_info.get('coupon_code') == 'SAVE20':
+        # 减20元
+        subtotal = subtotal - 20
+        if subtotal < 0:
+            subtotal = 0
+    
+    # 计算运费
+    shipping_fee = 0
+    if subtotal < 200:
+        shipping_fee = 10
+    
+    # 计算总价和税费
+    total_before_tax = subtotal + shipping_fee
+    tax = total_before_tax * 0.08
+    
+    grand_total = total_before_tax + tax
+    
+    return {
+        'subtotal': subtotal,
+        'shipping_fee': shipping_fee,
+        'tax': tax,
+        'grand_total': grand_total
+    }
+
+# 示例数据
+sample_cart = [
+    {'product_id': 'p1', 'price': 150, 'quantity': 1},
+    {'product_id': 'p2', 'price': 80, 'quantity': 1}
+]
+vip_customer = {'is_vip': True, 'coupon_code': 'SAVE20'}
+
+# 运行代码，确认其原始功能
+result = calculate_cart_total(sample_cart, vip_customer)
+print(f"原始输出: {result}")
+# 预期输出: 某个计算结果，例如 {'subtotal': 187.0, 'shipping_fee': 10, 'tax': 15.76, 'grand_total': 212.76}
+```
+
+以上代码能算出结果，但问题非常多，是典型的‘代码坏味道’重灾区，存在“魔法数字多”、逻辑耦合严重、职责不单一、扩展性差等问题。我们通过Lingma逐步解决上述问题：
+
+可在IDE中新建python文件，命名为bad_ecommerce_code.py，并复制以上源代码用于后续优化实验。
+
+##### 2.1 提示词一（第一次优化）
+
+```text
+重构以下代码，提高其[可维护性]：
+[@bad_ecommerce_code.py]
+重点改进：
+1. 将所有魔法数字（如折扣率、金额门槛、优惠券代码）提取为文件顶部的具名常量。
+2. 将优惠券的逻辑用一个字典或更结构化的方式来管理，以便未来扩展。
+但保持原有的功能不变
+```
+
+
+
+```python
+# 第一次优化后
+
+# 具名常量定义
+VIP_DISCOUNT_RATE = 0.9  # VIP客户享受9折优惠
+SHIPPING_THRESHOLD = 200  # 免运费门槛金额
+SHIPPING_FEE = 10  # 默认运费
+TAX_RATE = 0.08  # 税率
+
+# 优惠券配置字典
+COUPON_CODES = {
+    'SAVE20': {
+        'discount_type': 'fixed_amount',
+        'discount_value': 20,
+        'description': '立减20元'
+    }
+}
+
+def calculate_cart_total(cart_items, customer_info):
+    """
+    计算购物车结算金额。
+    
+    Args:
+        cart_items: 购物车商品列表
+        customer_info: 客户信息
+        
+    Returns:
+        dict: 包含小计、运费、税费和总计的字典
+    """
+    subtotal = 0
+    for item in cart_items:
+        subtotal += item['price'] * item['quantity']
+
+    # 应用VIP折扣
+    if customer_info.get('is_vip'):
+        subtotal = subtotal * VIP_DISCOUNT_RATE
+
+    # 应用优惠券
+    coupon_code = customer_info.get('coupon_code')
+    if coupon_code and coupon_code in COUPON_CODES:
+        coupon = COUPON_CODES[coupon_code]
+        if coupon['discount_type'] == 'fixed_amount':
+            subtotal = subtotal - coupon['discount_value']
+            if subtotal < 0:
+                subtotal = 0
+    
+    # 计算运费
+    shipping_fee = 0
+    if subtotal < SHIPPING_THRESHOLD:
+        shipping_fee = SHIPPING_FEE
+    
+    # 计算总价和税费
+    total_before_tax = subtotal + shipping_fee
+    tax = total_before_tax * TAX_RATE
+    
+    grand_total = total_before_tax + tax
+    
+    return {
+        'subtotal': subtotal,
+        'shipping_fee': shipping_fee,
+        'tax': tax,
+        'grand_total': grand_total
+    }
+
+# 示例数据
+sample_cart = [
+    {'product_id': 'p1', 'price': 150, 'quantity': 1},
+    {'product_id': 'p2', 'price': 80, 'quantity': 1}
+]
+vip_customer = {'is_vip': True, 'coupon_code': 'SAVE20'}
+
+# 运行代码，确认其原始功能
+result = calculate_cart_total(sample_cart, vip_customer)
+print(f"重构后输出: {result}")
+```
+
+
+
+但函数本身还是‘大块头’。接下来，我们进行**拆分函数，达成职责分离**。
+
+细心的你可能会发现，同样的提示词，你优化的代码和上面不完全一致，这是由于：
+
+1、 大模型文本生成是随机性并基于概率的选择输出的
+
+2、 灵码的上下文记忆会“考虑”你的历史问题和信息，这也会影响该问题的结果输出
+
+
+##### 2.2 提示词二（第二次优化）
+
+> 重构以下代码，提高其[可读性]和[结构清晰度]：
+> [@bad_ecommerce_code.py]
+> 重点改进：
+> 1. 将商品总价计算、折扣应用、运费计算、税费计算分别拆解成独立的辅助函数。
+> 2. 主函数 `calculate_cart_total` 应作为一个清晰的协调者，按顺序调用这些辅助函数，而不是自己处理具体计算。
+>   但保持原有的功能不变。
+
+
+
+```python
+# 第二次优化后
+
+# 具名常量定义
+VIP_DISCOUNT_RATE = 0.9  # VIP客户享受9折优惠
+SHIPPING_THRESHOLD = 200  # 免运费门槛金额
+SHIPPING_FEE = 10  # 默认运费
+TAX_RATE = 0.08  # 税率
+
+# 优惠券配置字典
+COUPON_CODES = {
+    'SAVE20': {
+        'discount_type': 'fixed_amount',
+        'discount_value': 20,
+        'description': '立减20元'
+    }
+}
+
+
+def calculate_subtotal(cart_items):
+    """
+    计算商品总价（不含折扣、运费和税）。
+    
+    Args:
+        cart_items: 购物车商品列表
+        
+    Returns:
+        float: 商品总价
+    """
+    subtotal = 0
+    for item in cart_items:
+        subtotal += item['price'] * item['quantity']
+    return subtotal
+
+
+def apply_discounts(subtotal, customer_info):
+    """
+    应用各种折扣（VIP折扣和优惠券）。
+    
+    Args:
+        subtotal: 原始商品总价
+        customer_info: 客户信息
+        
+    Returns:
+        float: 折扣后的价格
+    """
+    # 应用VIP折扣
+    if customer_info.get('is_vip'):
+        subtotal = subtotal * VIP_DISCOUNT_RATE
+
+    # 应用优惠券
+    coupon_code = customer_info.get('coupon_code')
+    if coupon_code and coupon_code in COUPON_CODES:
+        coupon = COUPON_CODES[coupon_code]
+        if coupon['discount_type'] == 'fixed_amount':
+            subtotal = subtotal - coupon['discount_value']
+            if subtotal < 0:
+                subtotal = 0
+                
+    return subtotal
+
+
+def calculate_shipping_fee(subtotal):
+    """
+    计算运费。
+    
+    Args:
+        subtotal: 折扣后的价格
+        
+    Returns:
+        float: 运费
+    """
+    shipping_fee = 0
+    if subtotal < SHIPPING_THRESHOLD:
+        shipping_fee = SHIPPING_FEE
+    return shipping_fee
+
+
+def calculate_tax(total_before_tax):
+    """
+    计算税费。
+    
+    Args:
+        total_before_tax: 含运费但不含税的总额
+        
+    Returns:
+        float: 税费
+    """
+    return total_before_tax * TAX_RATE
+
+
+def calculate_cart_total(cart_items, customer_info):
+    """
+    计算购物车结算金额。
+    
+    Args:
+        cart_items: 购物车商品列表
+        customer_info: 客户信息
+        
+    Returns:
+        dict: 包含小计、运费、税费和总计的字典
+    """
+    # 计算商品总价
+    subtotal = calculate_subtotal(cart_items)
+    
+    # 应用折扣
+    discounted_subtotal = apply_discounts(subtotal, customer_info)
+    
+    # 计算运费
+    shipping_fee = calculate_shipping_fee(discounted_subtotal)
+    
+    # 计算税费
+    total_before_tax = discounted_subtotal + shipping_fee
+    tax = calculate_tax(total_before_tax)
+    
+    # 计算最终总价
+    grand_total = total_before_tax + tax
+    
+    return {
+        'subtotal': discounted_subtotal,
+        'shipping_fee': shipping_fee,
+        'tax': tax,
+        'grand_total': grand_total
+    }
+
+# 示例数据
+sample_cart = [
+    {'product_id': 'p1', 'price': 150, 'quantity': 1},
+    {'product_id': 'p2', 'price': 80, 'quantity': 1}
+]
+vip_customer = {'is_vip': True, 'coupon_code': 'SAVE20'}
+
+# 运行代码，确认其原始功能
+result = calculate_cart_total(sample_cart, vip_customer)
+print(f"最佳实践版本输出: {result}")
+```
+
+
+
+通过Lingma我们快速完成了代码重构，并达成了以下效果：
+
+- 提取常量：所有魔法数字转换为有明确含义的常量，如 VIP_DISCOUNT_RATE、SHIPPING_THRESHOLD 等
+- 结构化数据管理：采用 COUPON_CODES 字典管理优惠券信息，便于扩展不同类型的优惠券
+- 函数职责分离：将复杂的计算逻辑分解为 calculate_subtotal、apply_discounts、calculate_shipping_fee、calculate_tax 等独立函数
+- 完善文档：为每个函数添加详细的文档字符串，提高代码可读性
 
