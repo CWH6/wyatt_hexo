@@ -72,7 +72,7 @@ social:
 favicon: /img/ggboy.jpg
 
 avatar:
-  img: /img/ggboy.jpg
+  img: /img/lmz.jpg
   effect: false
 
 # Disable all banner images
@@ -1082,7 +1082,7 @@ inject:
   head:
     # - <link rel="stylesheet" href="/xxx.css">
     - <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
-    - <style>#recent-posts .recent-post-item{background:rgba(255,255,255,.85) url(./img/bg_city.jpg) center/cover no-repeat;background-blend-mode:overlay}#recent-posts .article-title{font-weight:700}.avatar-img{overflow:visible!important;padding:6px;border-radius:50%;background:linear-gradient(135deg,#f093fb,#f5576c,#fda085,#4facfe,#43e97b,#f6d365);background-size:300% 300%;animation:avatarBorder 4s ease infinite}.avatar-img img{border-radius:50%}@keyframes avatarBorder{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}#post,#page,.layout>div:first-child:not(#recent-posts){background:#f5f6fa}.bio-card{font-size:13px}.bio-item{display:flex;align-items:center;padding:5px 10px;margin:3px 0;border-radius:6px;background:linear-gradient(135deg,rgba(73,177,245,.06),rgba(73,177,245,.02))}.bio-item:nth-child(even){background:linear-gradient(135deg,rgba(249,110,145,.06),rgba(249,110,145,.02))}.bio-label{flex-shrink:0;width:40px;color:#49b1f5;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;text-shadow:0 1px 0 rgba(255,255,255,.5)}.bio-value{color:#4c4948;font-weight:500}.bio-value .bio-arrow{color:#f47466;margin:0 4px;font-size:16px}</style>
+    - <style>#recent-posts .recent-post-item{background:rgba(255,255,255,.7) url(./img/lmz_bg.jpg) center/cover no-repeat;background-blend-mode:overlay}#recent-posts .article-title{font-weight:700}.avatar-img{overflow:visible!important;padding:6px;border-radius:50%;background:linear-gradient(135deg,#f093fb,#f5576c,#fda085,#4facfe,#43e97b,#f6d365);background-size:300% 300%;animation:avatarBorder 4s ease infinite}.avatar-img img{border-radius:50%}@keyframes avatarBorder{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}#post,#page,.layout>div:first-child:not(#recent-posts){background:#f5f6fa}.bio-card{font-size:13px}.bio-item{display:flex;align-items:center;padding:5px 10px;margin:3px 0;border-radius:6px;background:linear-gradient(135deg,rgba(73,177,245,.06),rgba(73,177,245,.02))}.bio-item:nth-child(even){background:linear-gradient(135deg,rgba(249,110,145,.06),rgba(249,110,145,.02))}.bio-label{flex-shrink:0;width:40px;color:#49b1f5;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;text-shadow:0 1px 0 rgba(255,255,255,.5)}.bio-value{color:#4c4948;font-weight:500}.bio-value .bio-arrow{color:#f47466;margin:0 4px;font-size:16px}</style>
   bottom:
     # - <script src="xxxx"></script>
     - <script>(function(){var bd=new Date(2000,6,23);var n=new Date();var a=n.getFullYear()-bd.getFullYear();if(n.getMonth()<bd.getMonth()||(n.getMonth()===bd.getMonth()&&n.getDate()<bd.getDate()))a--;var ae=document.getElementById('bio-age');if(ae)ae.textContent=a+'岁';var sd=new Date(2022,5,1);var m=(n.getFullYear()-sd.getFullYear())*12+n.getMonth()-sd.getMonth();var y=Math.floor(m/12);var mo=m%12;var ee=document.getElementById('bio-exp');if(ee)ee.textContent=(y>0?y+'年':'')+mo+'个月'})()</script>
