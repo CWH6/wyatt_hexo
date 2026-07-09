@@ -353,9 +353,9 @@
       
         <tags>
             
-            <tag> Docker </tag>
-            
             <tag> 文档 </tag>
+            
+            <tag> Docker </tag>
             
         </tags>
       
@@ -637,9 +637,9 @@
       
         <tags>
             
-            <tag> MQ </tag>
-            
             <tag> 日志 </tag>
+            
+            <tag> MQ </tag>
             
         </tags>
       
@@ -920,9 +920,9 @@
       
         <tags>
             
-            <tag> 日志 </tag>
-            
             <tag> logback </tag>
+            
+            <tag> 日志 </tag>
             
         </tags>
       
