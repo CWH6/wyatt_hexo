@@ -108,11 +108,18 @@
     margin-top: auto; padding-top: 12px;
     border-top: 1px solid var(--border);
     display: flex; justify-content: space-between; align-items: center;
-    gap: 8px;
+    gap: 8px; flex-wrap: wrap;
   }
-  .cert-date {
-    font-family: 'SF Mono','Fira Code','Consolas',monospace;
+  .cert-date { font-family: 'SF Mono','Fira Code','Consolas',monospace; }
+  .cert-notes {
+    display: inline-flex; align-items: center; gap: 4px;
+    color: var(--accent); text-decoration: none;
+    font-size: 12px; padding: 3px 9px;
+    border: 1px solid var(--accent); border-radius: 4px;
+    transition: all .2s;
+    background: rgba(88,166,255,.06);
   }
+  .cert-notes:hover { background: rgba(88,166,255,.15); }
   .cert-tag {
     background: var(--bg2); color: var(--accent);
     font-size: 11px; padding: 2px 8px; border-radius: 3px;
@@ -159,8 +166,9 @@
         <div class="cert-issuer">Alibaba Cloud Certification</div>
         <div class="cert-name"><b>阿里云Apsara Clouder</b><br>大模型Clouder认证：基于通义灵码实现高效AI编码实践</div>
         <div class="cert-meta">
-          <span class="cert-date">获取时间：2026-07-09</span>
+          <span class="cert-date">2026-07-09</span>
           <span class="cert-tag">AI</span>
+          <a class="cert-notes" href="/wyatt_hexo/2026/07/01/%E3%80%90AI%E3%80%91%E5%A4%A7%E6%A8%A1%E5%9E%8BClouder%E8%AE%A4%E8%AF%81-%E5%9F%BA%E4%BA%8E%E9%80%9A%E4%B9%89%E7%81%B5%E7%A0%81%E5%AE%9E%E7%8E%B0%E9%AB%98%E6%95%88-AI-%E7%BC%96%E7%A0%81%E5%AE%9E%E8%B7%B5/" target="_blank">📝 笔记</a>
         </div>
       </div>
     </div>
