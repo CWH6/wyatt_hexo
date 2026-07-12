@@ -289,15 +289,22 @@
   }
 
   @media screen and (max-width: 768px) {
-    .page { padding: 80px 18px 40px; }
-    .hero { margin-bottom: 40px; }
+    .page { padding: 80px 20px 40px; }
+    .hero { margin-bottom: 36px; }
     .hero h1 { font-size: 34px; letter-spacing: 3px; }
-    .cert-item {
-      grid-template-columns: 1fr; gap: 18px; padding: 28px 0;
+    .hero-eyebrow { letter-spacing: 3px; }
+    .hero-sub { font-size: 13px; letter-spacing: 1px; }
+
+    /* 搜索框 */
+    .cert-search input { max-width: 100%; font-size: 12px; padding: 8px 14px 8px 34px; }
+    .cert-search-wrap { max-width: 100%; }
+
+    /* 证书方块 */
+    .cert-grid-compact {
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 14px;
     }
-    .cert-item:hover { margin: 0 -10px; padding-left: 10px; padding-right: 10px; }
-    .cert-image { aspect-ratio: 16/10; max-height: 200px; }
-    .cert-name { font-size: 17px; }
+
     .back-btn { top: 10px; left: 10px; font-size: 12px; padding: 5px 10px; }
     .cert-footer { margin-top: 40px; padding-top: 24px; }
   }
@@ -326,56 +333,56 @@
 
   <div class="cert-empty" id="certEmpty">没有匹配的证书</div>
 
-  <div class="cert-list">
+  <div class="cert-grid-compact">
 
     <!-- 阿里云认证 - RAG应用构建及优化 -->
-    <div class="cert-item">
-      <div class="cert-image" onclick="openLightbox('https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/hexo/img_56eacb7262b5db0a266f3b7679033b66.png')">
+    <div class="cert-card">
+      <div class="cert-card-img" onclick="openLightbox('https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/hexo/img_56eacb7262b5db0a266f3b7679033b66.png')">
         <img src="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/hexo/img_56eacb7262b5db0a266f3b7679033b66.png" alt="RAG应用构建及优化" loading="lazy">
       </div>
-      <div class="cert-info">
-        <div class="cert-issuer">C-Alibaba Cloud</div>
-        <div class="cert-name"><b>阿里云Apsara Clouder专项技能认证</b><span class="sub">大模型Clouder认证：RAG应用构建及优化</span></div>
-        <div class="cert-links">
+      <div class="cert-card-body">
+        <div class="cert-card-issuer">C-Alibaba Cloud</div>
+        <div class="cert-card-name"><b>阿里云Apsara Clouder专项技能认证</b> 大模型Clouder认证：RAG应用构建及优化</div>
+        <div class="cert-card-links">
           <a href="https://cwh6.github.io/wyatt_hexo/2026/07/11/%E3%80%90AI%E3%80%91%E9%98%BF%E9%87%8C%E5%A4%A7%E6%A8%A1%E5%9E%8BClouder%E8%AE%A4%E8%AF%81-%E6%9E%84%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%99%BA%E8%83%BD%E7%9A%84RAG%E5%AF%BC%E8%B4%AD%E5%BA%94%E7%94%A8/" target="_blank">导购应用</a>
           <a href="https://cwh6.github.io/wyatt_hexo/2026/07/11/%E3%80%90AI%E3%80%91%E9%98%BF%E9%87%8C%E5%A4%A7%E6%A8%A1%E5%9E%8BClouder%E8%AE%A4%E8%AF%81-RAG%E5%BA%94%E7%94%A8%E7%9A%84%E6%9E%84%E5%BB%BA%E5%92%8C%E4%BC%98%E5%8C%96/" target="_blank">构建优化</a>
           <a href="https://cwh6.github.io/wyatt_hexo/2026/07/11/%E3%80%90AI%E3%80%91%E9%98%BF%E9%87%8C%E5%A4%A7%E6%A8%A1%E5%9E%8BClouder%E8%AE%A4%E8%AF%81%E2%80%94%E8%AE%A4%E8%AF%86RAG/" target="_blank">认识RAG</a>
         </div>
-        <div class="cert-meta">
-          <span class="cert-date">2026-07-12</span>
+        <div class="cert-card-meta">
+          <span class="date">2026-07-12</span>
           <span class="cert-tag ai">AI</span>
         </div>
       </div>
     </div>
 
     <!-- 阿里云认证 - 通义灵码 -->
-    <div class="cert-item">
-      <div class="cert-image" onclick="openLightbox('https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/hexo/ScreenShot_2026-07-09_222644_230.png')">
+    <div class="cert-card">
+      <div class="cert-card-img" onclick="openLightbox('https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/hexo/ScreenShot_2026-07-09_222644_230.png')">
         <img src="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/hexo/ScreenShot_2026-07-09_222644_230.png" alt="通义灵码认证" loading="lazy">
       </div>
-      <div class="cert-info">
-        <div class="cert-issuer">Alibaba Cloud Certification</div>
-        <div class="cert-name"><b>阿里云Apsara Clouder</b><span class="sub">大模型Clouder认证：基于通义灵码实现高效AI编码实践</span></div>
-        <div class="cert-links">
+      <div class="cert-card-body">
+        <div class="cert-card-issuer">Alibaba Cloud Certification</div>
+        <div class="cert-card-name"><b>阿里云Apsara Clouder</b> 大模型Clouder认证：基于通义灵码实现高效AI编码实践</div>
+        <div class="cert-card-links">
           <a href="/wyatt_hexo/2026/07/01/%E3%80%90AI%E3%80%91%E5%A4%A7%E6%A8%A1%E5%9E%8BClouder%E8%AE%A4%E8%AF%81-%E5%9F%BA%E4%BA%8E%E9%80%9A%E4%B9%89%E7%81%B5%E7%A0%81%E5%AE%9E%E7%8E%B0%E9%AB%98%E6%95%88-AI-%E7%BC%96%E7%A0%81%E5%AE%9E%E8%B7%B5/" target="_blank">笔记</a>
         </div>
-        <div class="cert-meta">
-          <span class="cert-date">2026-07-09</span>
+        <div class="cert-card-meta">
+          <span class="date">2026-07-09</span>
           <span class="cert-tag ai">AI</span>
         </div>
       </div>
     </div>
 
     <!-- 蓝桥杯 -->
-    <div class="cert-item">
-      <div class="cert-image" onclick="openLightbox('https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/hexo/%E7%9C%81%E8%B5%9B_%E8%BD%AF%E4%BB%B6%E7%B1%BB_JavaC%E7%BB%84_%E4%BA%8C%E7%AD%89%E5%A5%96_%E9%99%88%E4%B8%BA%E6%B1%87_061200120_198845.jpg')">
+    <div class="cert-card">
+      <div class="cert-card-img" onclick="openLightbox('https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/hexo/%E7%9C%81%E8%B5%9B_%E8%BD%AF%E4%BB%B6%E7%B1%BB_JavaC%E7%BB%84_%E4%BA%8C%E7%AD%89%E5%A5%96_%E9%99%88%E4%B8%BA%E6%B1%87_061200120_198845.jpg')">
         <img src="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/hexo/%E7%9C%81%E8%B5%9B_%E8%BD%AF%E4%BB%B6%E7%B1%BB_JavaC%E7%BB%84_%E4%BA%8C%E7%AD%89%E5%A5%96_%E9%99%88%E4%B8%BA%E6%B1%87_061200120_198845.jpg" alt="蓝桥杯" loading="lazy">
       </div>
-      <div class="cert-info">
-        <div class="cert-issuer">Lanqiao Cup</div>
-        <div class="cert-name"><b>蓝桥杯</b><span class="sub">广东省蓝桥杯二等奖</span></div>
-        <div class="cert-meta">
-          <span class="cert-date">2021-05-31</span>
+      <div class="cert-card-body">
+        <div class="cert-card-issuer">Lanqiao Cup</div>
+        <div class="cert-card-name"><b>蓝桥杯</b> 广东省蓝桥杯二等奖</div>
+        <div class="cert-card-meta">
+          <span class="date">2021-05-31</span>
           <span class="cert-tag competition">竞赛</span>
         </div>
       </div>
