@@ -1,0 +1,236 @@
+---
+layout: false
+---
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>关于我 - 陈为汇</title>
+<link rel="icon" type="image/png" href="/wyatt_hexo/img/tx_circle.png">
+<style>
+  :root {
+    --bg0: #0d1117;
+    --bg1: #161b22;
+    --bg2: #21262d;
+    --border: #30363d;
+    --text: #c9d1d9;
+    --muted: #8b949e;
+    --accent: #58a6ff;
+    --green: #3fb950;
+    --orange: #d2991d;
+    --purple: #a371f7;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    color: var(--text);
+    background: linear-gradient(135deg, rgba(9,12,16,.75) 0%, rgba(13,21,32,.7) 50%, rgba(10,15,22,.75) 100%) fixed, url(/wyatt_hexo/img/lmz_bg.jpg) fixed center/cover no-repeat;
+    font-size: 14px;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+  .back-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    position: fixed; top: 16px; left: 16px; z-index: 10;
+    color: var(--muted); text-decoration: none;
+    font-size: 13px; font-family: 'SF Mono','Fira Code','Consolas',monospace;
+    padding: 6px 14px; border: 1px solid var(--border); border-radius: 6px;
+    transition: all .2s; background: var(--bg0);
+  }
+  .back-btn:hover { color: var(--accent); border-color: var(--accent); }
+
+  .page { max-width: 720px; margin: 0 auto; padding: 100px 40px 60px; }
+
+  /* Hero */
+  .hero { margin-bottom: 64px; text-align: center; }
+  .hero-eyebrow {
+    font-size: 11px; letter-spacing: 5px; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 16px;
+  }
+  .hero h1 {
+    font-family: 'Songti SC', 'SimSun', serif;
+    font-size: 52px; font-weight: 700; color: #f0f6fc;
+    letter-spacing: 6px; line-height: 1.2; margin-bottom: 12px;
+  }
+  .hero-line {
+    width: 40px; height: 3px; background: linear-gradient(90deg, var(--accent), var(--purple));
+    margin: 0 auto 20px; border-radius: 2px;
+  }
+  .hero-sub {
+    font-size: 15px; color: var(--muted); letter-spacing: 3px;
+    line-height: 2;
+  }
+
+  /* Avatar */
+  .avatar-area {
+    display: flex; justify-content: center; margin-bottom: 48px;
+  }
+  .avatar-circle {
+    width: 120px; height: 120px; border-radius: 50%;
+    border: 3px solid; border-color: var(--purple);
+    overflow: hidden; box-shadow: 0 0 40px rgba(163,113,247,.15);
+  }
+  .avatar-circle img {
+    width: 100%; height: 100%; object-fit: cover;
+  }
+
+  /* Section */
+  .section { margin-bottom: 44px; }
+  .section-title {
+    font-family: 'Songti SC', 'SimSun', serif;
+    font-size: 20px; font-weight: 700; color: #f0f6fc;
+    margin-bottom: 16px; letter-spacing: 2px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-title::before {
+    content: ''; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--purple); flex-shrink: 0;
+  }
+
+  .section p { color: var(--text); margin-bottom: 10px; font-size: 14px; }
+  .section p strong { color: #f0f6fc; }
+
+  /* Highlight quote */
+  .highlight-box {
+    border-left: 3px solid var(--purple);
+    padding: 14px 20px; margin: 20px 0;
+    background: rgba(163,113,247,.05);
+    border-radius: 0 6px 6px 0;
+    font-family: 'Songti SC', 'SimSun', serif;
+    font-size: 16px; color: var(--muted); letter-spacing: 1px;
+  }
+
+  /* Info table */
+  .info-table { width: 100%; border-collapse: collapse; }
+  .info-table td {
+    padding: 10px 0; border-bottom: 1px solid var(--border);
+    font-size: 14px;
+  }
+  .info-table td:first-child {
+    color: var(--muted); width: 80px;
+    font-family: 'SF Mono','Fira Code','Consolas',monospace;
+    font-size: 12px; letter-spacing: 1px;
+  }
+  .info-table td:last-child { color: #f0f6fc; }
+
+  /* Tags */
+  .tag-row { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag-pill {
+    font-size: 12px; padding: 4px 14px; border-radius: 4px;
+    border: 1px solid var(--border); color: var(--muted);
+    font-family: 'SF Mono','Fira Code','Consolas',monospace;
+  }
+  .tag-pill.hl { color: var(--accent); border-color: rgba(88,166,255,.35); background: rgba(88,166,255,.06); }
+
+  /* Contact */
+  .contact-links { display: flex; flex-wrap: wrap; gap: 12px; }
+  .contact-links a {
+    display: inline-flex; align-items: center; gap: 6px;
+    color: var(--accent); text-decoration: none;
+    font-size: 13px; padding: 6px 14px;
+    border: 1px solid rgba(88,166,255,.25); border-radius: 6px;
+    transition: all .2s; background: rgba(88,166,255,.03);
+  }
+  .contact-links a:hover { background: rgba(88,166,255,.1); border-color: var(--accent); }
+
+  .footer {
+    text-align: center; margin-top: 64px; padding-top: 24px;
+    border-top: 1px solid var(--border);
+    font-size: 11px; color: var(--muted); letter-spacing: 2px;
+    font-family: 'SF Mono','Fira Code','Consolas',monospace;
+  }
+
+  @media screen and (max-width: 768px) {
+    .page { padding: 80px 20px 40px; }
+    .hero h1 { font-size: 34px; letter-spacing: 3px; }
+    .hero-sub { font-size: 13px; letter-spacing: 1px; }
+    .avatar-circle { width: 90px; height: 90px; }
+    .section-title { font-size: 17px; }
+    .back-btn { top: 10px; left: 10px; font-size: 12px; padding: 5px 10px; }
+    .highlight-box { font-size: 14px; }
+  }
+</style>
+</head>
+<body>
+<a class="back-btn" href="/wyatt_hexo/">&larr; 返回博客</a>
+
+<div class="page">
+
+  <div class="hero">
+    <div class="hero-eyebrow">About Me</div>
+    <h1>关于我</h1>
+    <div class="hero-line"></div>
+    <div class="hero-sub">
+      走的很慢，但从不后退
+    </div>
+  </div>
+
+  <div class="avatar-area">
+    <div class="avatar-circle">
+      <img src="/wyatt_hexo/img/tx.jpg" alt="头像" loading="lazy">
+    </div>
+  </div>
+
+  <!-- 简介 -->
+  <div class="section">
+    <div class="section-title">简介</div>
+    <p>你好，我是 <strong>Wyatt / 陈为汇</strong>，一名从 Java 后端转型的 <strong>AI 全栈工程师</strong>。</p>
+    <p>2022 年入行至今，经历互联网、电力等多个行业，从初级开发一路走到独立负责系统架构设计与全链路交付。目前专注于大模型应用落地，将 AI 能力融入实际业务场景。</p>
+    <div class="highlight-box">「最硬核的代码，最终是为了最柔软的触碰。」</div>
+  </div>
+
+  <!-- 技术栈 -->
+  <div class="section">
+    <div class="section-title">技术栈</div>
+    <div class="tag-row">
+      <span class="tag-pill hl">Java</span>
+      <span class="tag-pill hl">Spring Boot</span>
+      <span class="tag-pill hl">Spring Cloud</span>
+      <span class="tag-pill hl">MySQL</span>
+      <span class="tag-pill">Redis</span>
+      <span class="tag-pill">RabbitMQ</span>
+      <span class="tag-pill">Kafka</span>
+      <span class="tag-pill">ElasticSearch</span>
+      <span class="tag-pill">Docker</span>
+      <span class="tag-pill">KubeSphere</span>
+      <span class="tag-pill">Jenkins</span>
+      <span class="tag-pill">Linux</span>
+      <span class="tag-pill">Nginx</span>
+      <span class="tag-pill hl">Spring AI</span>
+      <span class="tag-pill hl">LangChain</span>
+      <span class="tag-pill">RAG</span>
+      <span class="tag-pill">Vue</span>
+      <span class="tag-pill">JavaScript</span>
+    </div>
+  </div>
+
+  <!-- 基本信息 -->
+  <div class="section">
+    <div class="section-title">基本信息</div>
+    <table class="info-table">
+      <tr><td>姓名</td><td>陈为汇</td></tr>
+      <tr><td>英文名</td><td>Wyatt</td></tr>
+      <tr><td>方向</td><td>Java 后端 → AI 全栈工程师</td></tr>
+      <tr><td>经验</td><td>2022 年入行，4 年开发经验</td></tr>
+      <tr><td>城市</td><td>广州 / 佛山</td></tr>
+    </table>
+  </div>
+
+  <!-- 联系方式 -->
+  <div class="section">
+    <div class="section-title">联系方式</div>
+    <div class="contact-links">
+      <a href="https://github.com/CWH6" target="_blank">GitHub</a>
+      <a href="https://gitee.com/CWH6" target="_blank">Gitee</a>
+      <a href="https://leetcode.cn/u/xiao-hei-bt/" target="_blank">LeetCode</a>
+      <a href="https://space.bilibili.com/362111596" target="_blank">Bilibili</a>
+      <a href="mailto:wyattwhitley7@outlook.com">Email</a>
+    </div>
+  </div>
+
+  <div class="footer">THANKS FOR VISITING</div>
+
+</div>
+</body>
+</html>

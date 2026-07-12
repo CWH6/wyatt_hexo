@@ -23,7 +23,7 @@ menu:
   #   Music: /music/ || fas fa-music
   #   Movie: /movies/ || fas fa-video
   首页: / || fas fa-home
-  文章: /archives/ || fas fa-archive
+  文章: /blog/ || fas fa-archive
   标签: /tags/ || fas fa-tags
   分类: /categories/ || fas fa-folder-open
   # List||fas fa-list:
@@ -82,7 +82,7 @@ disable_top_img: false
 default_top_img:
 
 # The banner image of index page
-index_img: /img/bg_city.jpg
+index_img: /img/lmz_bg.jpg
 
 # The banner image of archive page
 archive_img:
@@ -109,9 +109,9 @@ footer_img: false
 # Website Background
 # Can set it to color, image URL or an array containing colors and/or image URLs
 # If an array is provided, a random background will be selected from the array on each load
-background: #/img/bg_city.jpg
-  # # 背景图片
-  # url: /img/bg_city.jpg
+background: #/img/lmz_bg.jpg
+  # 背景图片
+  # url: /img/lmz_bg.jpg
 
 cover:
   # Disable the cover or not
@@ -121,7 +121,7 @@ cover:
   # When cover is not set, the default cover is displayed
   default_cover: 
     # - xxx.jpg
-    - /img/bg_city.jpg
+    - /img/lmz_bg.jpg
     
 
 # Replace Broken Images
