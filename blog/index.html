@@ -1,0 +1,280 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>wyatt'book</title><meta name="author" content="wyatt"><meta name="copyright" content="wyatt"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta property="og:type" content="website">
+<meta property="og:title" content="wyatt&#39;book">
+<meta property="og:url" content="https://cwh6.github.io/wyatt_hexo/blog/index.html">
+<meta property="og:site_name" content="wyatt&#39;book">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cwh6.github.io/wyatt_hexo/img/tx.jpg">
+<meta property="article:author" content="wyatt">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cwh6.github.io/wyatt_hexo/img/tx.jpg"><script type="application/ld+json"></script><link rel="shortcut icon" href="/wyatt_hexo/img/tx_circle.png"><link rel="canonical" href="https://cwh6.github.io/wyatt_hexo/blog/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/wyatt_hexo/css/index.css?v=5.5.4"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/wyatt_hexo/',
+  algolia: undefined,
+  localSearch: {"path":"/wyatt_hexo/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"prismjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'medium_zoom',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'wyatt\'book',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'home'
+}</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css"><style>#recent-posts .recent-post-item{background:rgba(255,255,255,.7) url(./img/lmz_bg.jpg) center/cover no-repeat;background-blend-mode:overlay}#recent-posts .article-title{font-weight:700}.avatar-img{overflow:visible!important;padding:6px;border-radius:50%;background:linear-gradient(135deg,#f093fb,#f5576c,#fda085,#4facfe,#43e97b,#f6d365);background-size:300% 300%;animation:avatarBorder 4s ease infinite}.avatar-img img{border-radius:50%}@keyframes avatarBorder{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}#post,#page,.layout>div:first-child:not(#recent-posts){background:#f5f6fa}.bio-card{font-size:13px}.bio-item{display:flex;align-items:center;padding:5px 10px;margin:3px 0;border-radius:6px;background:linear-gradient(135deg,rgba(73,177,245,.06),rgba(73,177,245,.02))}.bio-item:nth-child(even){background:linear-gradient(135deg,rgba(249,110,145,.06),rgba(249,110,145,.02))}.bio-label{flex-shrink:0;width:40px;color:#49b1f5;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;text-shadow:0 1px 0 rgba(255,255,255,.5)}.bio-value{color:#4c4948;font-weight:500}.bio-value .bio-arrow{color:#f47466;margin:0 4px;font-size:16px}</style><meta name="generator" content="Hexo 8.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/wyatt_hexo/img/tx.jpg" onerror="this.onerror=null;this.src='/wyatt_hexo/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/wyatt_hexo/archives/"><div class="headline">文章</div><div class="length-num">124</div></a><a href="/wyatt_hexo/tags/"><div class="headline">标签</div><div class="length-num">102</div></a><a href="/wyatt_hexo/categories/"><div class="headline">分类</div><div class="length-num">18</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/wyatt_hexo/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/wyatt_hexo/blog/"><i class="fa-fw fas fa-archive"></i><span> 文章</span></a></div><div class="menus_item"><a class="site-page" href="/wyatt_hexo/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/wyatt_hexo/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/wyatt_hexo/works/"><i class="fa-fw fas fa-briefcase"></i><span> 作品</span></a></div><div class="menus_item"><a class="site-page" href="/wyatt_hexo/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div><div class="menus_item"><a class="site-page" href="/wyatt_hexo/resume/wyatt.html"><i class="fa-fw fas fa-id-card"></i><span> 简历</span></a></div><div class="menus_item"><a class="site-page" href="/wyatt_hexo/cert/"><i class="fa-fw fas fa-certificate"></i><span> 证书</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url(/wyatt_hexo/img/lmz_bg.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/wyatt_hexo/blog/"><span class="site-name">wyatt'book</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/wyatt_hexo/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/wyatt_hexo/blog/"><i class="fa-fw fas fa-archive"></i><span> 文章</span></a></div><div class="menus_item"><a class="site-page" href="/wyatt_hexo/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/wyatt_hexo/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/wyatt_hexo/works/"><i class="fa-fw fas fa-briefcase"></i><span> 作品</span></a></div><div class="menus_item"><a class="site-page" href="/wyatt_hexo/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div><div class="menus_item"><a class="site-page" href="/wyatt_hexo/resume/wyatt.html"><i class="fa-fw fas fa-id-card"></i><span> 简历</span></a></div><div class="menus_item"><a class="site-page" href="/wyatt_hexo/cert/"><i class="fa-fw fas fa-certificate"></i><span> 证书</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="site-info"><h1 id="site-title">wyatt'book</h1><div id="site-subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://github.com/CWH6" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="https://gitee.com/CWH6" target="_blank" title="Gitee"><i class="fab fa-gitlab" style="color: #C71D23;"></i></a><a class="social-icon" href="https://space.bilibili.com/362111596?spm_id_from=333.1007.0.0" target="_blank" title="Bilibili"><i class="fab fa-bilibili" style="color: #00A1D6;"></i></a><a class="social-icon" href="https://leetcode.cn/u/xiao-hei-bt/" target="_blank" title="LeetCode"><i class="fas fa-code" style="color: #FFA116;"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/wyatt_hexo/2026/07/11/%E3%80%90AI%E3%80%91%E9%98%BF%E9%87%8C%E5%A4%A7%E6%A8%A1%E5%9E%8BClouder%E8%AE%A4%E8%AF%81-%E6%9E%84%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%99%BA%E8%83%BD%E7%9A%84RAG%E5%AF%BC%E8%B4%AD%E5%BA%94%E7%94%A8/" title="【AI】阿里大模型Clouder认证-构建一个智能的RAG导购应用">【AI】阿里大模型Clouder认证-构建一个智能的RAG导购应用</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-07-11T15:42:37.000Z" title="发表于 2026-07-11 15:42:37">2026-07-11</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/wyatt_hexo/categories/AI/">AI</a></span></div><div class="content">前言在前面的课程中，我们了解了RAG的基本概念，学习了如何构建和优化RAG应用。本节课程将详细介绍如何在购物商城网站上构建一个基于 RAG（检索增强生成）的大模型应用，实现与用户主动提问，搜集必要信息的智能导购。 学完本节课程后，你将能够： → 了解如何通过百炼的Assistant API 构建一个 Multi-Agent 架构的大模型应用实现智能导购 本节目标学完本节课程后，你将能够： → 了解如何通过百炼的Assistant API 构建一个 Multi-Agent 架构的大模型应用实现智能导购 1、方案概览您的商城有顾客来购买冰箱，下面是一个常规流程：  前台会询问顾客希望购买什么，并将顾客带到商店售卖冰箱区域，并有对应商品导购来服务。 导购向顾客询问想要什么样的冰箱，以及相关预算。 导购根据信息将合适的冰箱推荐给顾客，并促成购买。  类似的，您可以通过百炼的Assistant API 构建一个 Multi-Agent 架构的大模型应用，实现与用户主动提问，搜集必要信息的智能导购。   规划助理（Router Agent）：它会参考对话历史与用户（智能导购应用的用户，商城的...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/wyatt_hexo/2026/07/11/%E3%80%90AI%E3%80%91%E9%98%BF%E9%87%8C%E5%A4%A7%E6%A8%A1%E5%9E%8BClouder%E8%AE%A4%E8%AF%81-RAG%E5%BA%94%E7%94%A8%E7%9A%84%E6%9E%84%E5%BB%BA%E5%92%8C%E4%BC%98%E5%8C%96/" title="【AI】阿里大模型Clouder认证-RAG应用的构建和优化">【AI】阿里大模型Clouder认证-RAG应用的构建和优化</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-07-11T11:43:25.000Z" title="发表于 2026-07-11 11:43:25">2026-07-11</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/wyatt_hexo/categories/AI/">AI</a></span></div><div class="content">前言前面的小节我们学习了RAG的概念和实现原理。在本小节中，我们的目标是帮助你在百炼平台上构建一个可以调用的RAG应用，并了解如何通过优化策略，克服RAG可能带来的挑战，从而提升其在实际应用中的效果和可靠性。通过本小节的学习，你将获得实用的技能和方法，以便在多种场景下高效地构建和优化RAG模型。 本节目标学完本节课程后，你将能够： → 了解如何构建RAG应用。 → 了解如何改进RAG应用的效果。 1、快速构建RAG应用通过对前面课程的学习，我们学习了RAG的概念和优势，接下来我们通过阿里云百炼的应用中心快速创建一个RAG应用。 1.1 数据管理-导入数据首先，我们先进入百炼控制台，在左侧导航栏中，选择数据管理。在非****结构化数据页签，选择“默认类目”后，点击“导入数据”，然后通过“本地上传”的方式导入数据。导入数据需要花费一定的时间，需要耐心等待数据转为“导入完成”的状态（通过手动点击刷新按钮）。  1.2 创建知识索引 在左侧导航栏中，选择数据应用 &gt; 知识索引。点击创建知识库，输入知识库名称，保持默认配置，点击下一步。   2、选择相关文件，点击下一步。  3、保持...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/wyatt_hexo/2026/07/11/%E3%80%90AI%E3%80%91%E9%98%BF%E9%87%8C%E5%A4%A7%E6%A8%A1%E5%9E%8BClouder%E8%AE%A4%E8%AF%81%E2%80%94%E8%AE%A4%E8%AF%86RAG/" title="【AI】阿里大模型Clouder认证—认识RAG">【AI】阿里大模型Clouder认证—认识RAG</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-07-11T09:22:35.000Z" title="发表于 2026-07-11 09:22:35">2026-07-11</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/wyatt_hexo/categories/AI/">AI</a></span></div><div class="content">认识RAG前言在人工智能快速发展的今天，传统的生成模型在处理复杂查询和提供准确信息方面仍面临诸多挑战，如知识更新滞后和上下文理解不足。为了解决这些问题，检索增强生成（RAG）技术应运而生。本课程介绍了RAG的基本概念及其工作原理，包括RAG配合大模型在提升内容生成准确性和相关性方面的独特优势，并展望其未来的发展趋势。本课程为你提供深入的理论知识和实用的应用指导，帮助你在RAG技术的学习和实践中迈出坚实的一步。 本节目标学完本节课程后，你将能够： → 了解什么是检索增强生成（RAG）。 → 了解检索增强生成（RAG）的实现原理。 → 了解检索增强生成（RAG）的优势。 1、什么是检索增强生成（RAG）1.1 检索增强生成的概念**检索增强生成（Retrieval-Augmented Generation, RAG）**是一种结合了信息检索和文本生成技术的新型自然语言处理方法。这种方法增强了模型的理解和生成能力。 相比于传统的生成模型，检索增强生成可以通过添加来自其他数据源的上下文并通过培训补充大模型的原始知识库来提高搜索体验的相关性。 这增强了大型语言模型的输出，而无需重新训练模型...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/wyatt_hexo/2026/07/01/%E3%80%90AI%E3%80%91%E5%A4%A7%E6%A8%A1%E5%9E%8BClouder%E8%AE%A4%E8%AF%81-%E5%9F%BA%E4%BA%8E%E9%80%9A%E4%B9%89%E7%81%B5%E7%A0%81%E5%AE%9E%E7%8E%B0%E9%AB%98%E6%95%88-AI-%E7%BC%96%E7%A0%81%E5%AE%9E%E8%B7%B5/" title="【AI】大模型Clouder认证: 基于通义灵码实现高效 AI 编码实践">【AI】大模型Clouder认证: 基于通义灵码实现高效 AI 编码实践</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-07-01T22:27:46.000Z" title="发表于 2026-07-01 22:27:46">2026-07-01</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/wyatt_hexo/categories/AI/">AI</a></span></div><div class="content">课程章节第一章一、课程说明本课程为通义灵码（AI Coding）企业级入门课程，聚焦企业落地场景中常用的功能与工具，采用线上讲解结合动手实操的方式进行。 适用人群 企业内的开发人员、对 AI Coding 技术感兴趣的从业者； 希望了解并尝试在实际项目中使用通义灵码提升研发效率的团队成员  预期收益 建立对 AI Coding 在企业应用场景及边界的基础认知； 初步掌握通义灵码在企业级开发中的常用功能与工具的使用方法  二、AICoding的演进AI Coding 时代已开启并快速演进。在开发者的规划与监督下，AI 自动协助完成编码的场景正逐步成为日常。 阶段演进 阶段一：LLM + Copilot（辅助完成任务） AI 充当“副驾驶”，提供补全、解释与建议，提升个人效率但不主导流程。   阶段二：LLM + Agent（自主完成任务） AI 具备任务拆解、工具调用与执行能力，可在约束内完成小型端到端任务。   阶段三：LLM + Multi-Agents（协同处理复杂任务） 多个角色的 Agent 组成“团队”，相互沟通与制衡，处理系统级复杂工作。    当前进展我们已从阶段一...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/wyatt_hexo/2026/06/30/%E3%80%90AI%E3%80%91Trae%E9%9B%86%E6%88%90%E6%89%AB%E6%8F%8F%E4%BB%A3%E7%A0%81Skill%E6%A3%80%E6%B5%8B%E4%BB%A3%E7%A0%81%E8%B4%A8%E9%87%8F/" title="【AI】Trae集成扫描代码Skill检测代码质量">【AI】Trae集成扫描代码Skill检测代码质量</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-06-30T11:41:09.000Z" title="发表于 2026-06-30 11:41:09">2026-06-30</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/wyatt_hexo/categories/AI/">AI</a></span></div><div class="content"> 借助 Trae 内置的 bug-scanner Skill，一键扫描项目中的硬编码路径、异常处理缺失、代码规范问题，输出结构化质量报告。  💡 背景以前代码 review 靠人肉，吃力不讨好。现在可以直接让 Trae 用 bug-scanner Skill 扫一遍项目，自动揪出三类”烂代码”：路径问题、健壮性缺陷、规范违规。几分钟跑完一份报告，比人眼扫快 10 倍，而且不会漏。 Skill 定义name: bug-scanner（项目代码进行深度质量扫描） description:  name: bug-scanner description: 对项目代码进行深度质量扫描，重点检查路径问题、健壮性缺陷和代码规范违规，输出结构化报告。   # 代码质量深度扫描技能  ## 任务目标 对当前项目进行全面的代码质量扫描，重点覆盖以下三类问题： 1. **路径与资源问题**：文件路径引用、模块导入、资源加载 2. **健壮性问题**：异常处理、边界条件、并发安全、内存管理 3. **代码规范问题**：命名、注释、代码风格、复杂度过高  扫描完成后，将结果汇总到项目的test/代码质量...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/wyatt_hexo/2026/06/30/%E3%80%90SpringBoot%E3%80%91SpringBoot%E9%9B%86%E6%88%90Mongodb/" title="【SpringBoot】SpringBoot集成Mongodb">【SpringBoot】SpringBoot集成Mongodb</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-06-30T11:41:09.000Z" title="发表于 2026-06-30 11:41:09">2026-06-30</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/wyatt_hexo/categories/%E5%90%8E%E7%AB%AF/">后端</a></span></div><div class="content"> 从依赖引入到实体声明，从 MongoTemplate 基础 CRUD 到 Aggregation Pipeline 更新，覆盖 ys-survey 模块 MongoDB 集成的完整实践。  💡 背景问卷系统的答案数据量大、结构灵活（嵌套数组、动态字段），不适合传统关系型数据库。选择 MongoDB 的理由：  答卷数据是典型的文档模型（一次答题一条文档，内含嵌套 answers 数组） 项目备份、外部导入数据也是天然的文档型结构 无需 DDL，新增字段零成本 支持 Aggregation Pipeline，复杂查询不需要 JOIN  📦 Maven 依赖在父 pom.xml 中统一管理版本，ys-common 模块引入： &lt;dependency>     &lt;groupId>org.springframework.boot&lt;/groupId>     &lt;artifactId>spring-boot-starter-data-mongodb&lt;/artifactId> &lt;/dependency>   版本由 Spring Boot 父 POM ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/wyatt_hexo/2026/06/30/%E3%80%90linux%E3%80%91Linux%E6%8E%92%E6%9F%A5%E7%A3%81%E7%9B%98%E5%8D%A0%E7%94%A8-%E5%91%BD%E4%BB%A4%E9%80%9F%E6%9F%A5/" title="【Linux】Linux排查磁盘占用-命令速查">【Linux】Linux排查磁盘占用-命令速查</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-06-30T11:41:09.000Z" title="发表于 2026-06-30 11:41:09">2026-06-30</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/wyatt_hexo/categories/%E8%BF%90%E7%BB%B4/">运维</a></span></div><div class="content"> 从线上服务器实战日志提取，直接复制的命令和输出，一目了然。  第 1 把：整体看谁满了df -h  Filesystem      Size  Used Avail Use% Mounted on &#x2F;dev&#x2F;sda1        50G   45G  2.1G  96% &#x2F;            ← 🔴 根分区 96%，快满了！    第 2 把：根目录下谁最肥du -sh /* 2>/dev/null | sort -hr  39G     &#x2F;var          ← 🔴 头号嫌疑 39G 12G     &#x2F;home         ← 🟡 二号嫌疑 12G 3.8G    &#x2F;usr 1.4G    &#x2F;snap 489M    &#x2F;opt 305M    &#x2F;root 68M     &#x2F;boot 6.5M    &#x2F;etc 1.7M    &#x2F;run 68K     &#x2F;tmp 24K     &#x2F;mnt 16K     &#x2F;lo...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/wyatt_hexo/2026/06/30/%E3%80%90%E8%AE%BE%E8%AE%A1%E3%80%91OSS%E6%A8%A1%E5%9D%97%E5%B0%81%E8%A3%85/" title="【设计】OSS模块封装">【设计】OSS模块封装</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-06-30T11:41:09.000Z" title="发表于 2026-06-30 11:41:09">2026-06-30</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/wyatt_hexo/categories/%E8%AE%BE%E8%AE%A1/">设计</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/wyatt_hexo/categories/%E8%AE%BE%E8%AE%A1/%E5%90%8E%E7%AB%AF/">后端</a></span></div><div class="content"> 基于策略模式封装的多云对象存储模块，一行配置切换云厂商，业务代码零感知。  💡 背景问卷系统涉及大量图片上传场景（题目配图、答卷附件、用户头像等），需要对象存储来承载。面临的问题：  不同项目可能用不同云厂商（阿里云 OSS &#x2F; Azure Blob） 切换云厂商时，不想每个业务调用方都改代码 上传路径需要统一规范，避免文件散落各处 需要一个简单到 @Autowired 就能用的 Helper  🏗️ 整体架构┌─────────────────────────────────────────────┐ │                OssHelper                     │  ← 业务唯一入口 │  @Autowired → 根据 oss.primary 自动选实现     │ │  upload(in, name) &#x2F; delete(name)             │ └──────────────────┬──────────────────────────┘                    │ implement...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/wyatt_hexo/2026/06/30/%E3%80%90%E8%AE%BE%E8%AE%A1%E3%80%91%E9%82%AE%E4%BB%B6%E6%8E%A8%E9%80%81%E8%AE%BE%E8%AE%A1/" title="【设计】邮件推送设计">【设计】邮件推送设计</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-06-30T11:41:09.000Z" title="发表于 2026-06-30 11:41:09">2026-06-30</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/wyatt_hexo/categories/%E8%AE%BE%E8%AE%A1/">设计</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/wyatt_hexo/categories/%E8%AE%BE%E8%AE%A1/%E5%90%8E%E7%AB%AF/">后端</a></span></div><div class="content"> 一套支持模板变量、个性化正文、定时发送、逐条追踪的问卷邮件推送系统。  💡 背景问卷系统需要向答题者推送邀请邮件。核心需求：  支持多个 SMTP 发送人（不同项目用不同发件箱） 邮件正文支持模板 + 变量替换（姓名、链接等） 支持定时发送，到点自动推送 每条邮件发送结果可追踪（成功&#x2F;失败&#x2F;错误原因） 收件人可分组建  🏗️ 整体架构┌──────────────────────────────────────────────┐ │                ProjectsEmailController        │  ← REST API │   &#x2F;email&#x2F;sender  &#x2F;template  &#x2F;group  &#x2F;user     │ │   &#x2F;email&#x2F;send&#x2F;list  &#x2F;send&#x2F;detail  &#x2F;send&#x2F;execute│ └────────────────────┬──────────────────────...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/wyatt_hexo/2026/06/30/%E3%80%90%E8%AE%BE%E8%AE%A1%E3%80%91%E9%97%AE%E5%8D%B7%E6%96%AD%E7%82%B9%E8%AE%BE%E8%AE%A1/" title="【设计】问卷断点设计">【设计】问卷断点设计</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-06-30T11:41:09.000Z" title="发表于 2026-06-30 11:41:09">2026-06-30</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/wyatt_hexo/categories/%E8%AE%BE%E8%AE%A1/">设计</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/wyatt_hexo/categories/%E8%AE%BE%E8%AE%A1/%E5%90%8E%E7%AB%AF/">后端</a></span></div><div class="content">   答卷过程中每答一题自动存盘，刷新&#x2F;断网&#x2F;换设备后恢复进度，支持设备指纹 + GUID + 问卷编号三种身份识别。  💡 背景在线问卷答题时间可能长达 30 分钟以上，期间可能发生：浏览器刷新、网络断开、手机息屏、甚至换设备继续答。断点机制的核心价值：  答到一半不丢数据，刷新后恢复到上次答到的题目 支持多种身份识别方式（设备指纹、GUID、问卷编号） 每答一题自动存盘，无需用户手动保存 断点 7 天有效，过期自动清理  🏗️ 整体流程答题页面加载   │   ├─ ① 前端调用 &#x2F;checkBreakpoint   │    → 是否找到断点？   │       ├─ 有 → 加载断点数据，跳到上次答到的题目   │       └─ 无 → 走 initAnswer 初始化新答卷   │   ├─ ② 每答一题，前端调用 &#x2F;saveAnswer   │    → 后端更新 MongoDB + 同步更新 Redis 断点缓存   │   ├─ ③ 答题完成（status&#x3D;done&#x2F;out&#x2F;stop）...</div></div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/wyatt_hexo/blog/page/2/#content-inner">2</a><span class="space">&hellip;</span><a class="page-number" href="/wyatt_hexo/blog/page/13/#content-inner">13</a><a class="extend next" rel="next" href="/wyatt_hexo/blog/page/2/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/wyatt_hexo/img/tx.jpg" onerror="this.onerror=null;this.src='/wyatt_hexo/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">wyatt</div><div class="author-info-description"></div><div class="site-data"><a href="/wyatt_hexo/archives/"><div class="headline">文章</div><div class="length-num">124</div></a><a href="/wyatt_hexo/tags/"><div class="headline">标签</div><div class="length-num">102</div></a><a href="/wyatt_hexo/categories/"><div class="headline">分类</div><div class="length-num">18</div></a></div><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/CWH6" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="https://gitee.com/CWH6" target="_blank" title="Gitee"><i class="fab fa-gitlab" style="color: #C71D23;"></i></a><a class="social-icon" href="https://space.bilibili.com/362111596?spm_id_from=333.1007.0.0" target="_blank" title="Bilibili"><i class="fab fa-bilibili" style="color: #00A1D6;"></i></a><a class="social-icon" href="https://leetcode.cn/u/xiao-hei-bt/" target="_blank" title="LeetCode"><i class="fas fa-code" style="color: #FFA116;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>简介</span></div><div class="announcement_content"><div class="bio-card"><div class="bio-item"><span class="bio-label">年龄</span><span class="bio-value" id="bio-age"></span></div><div class="bio-item"><span class="bio-label">方向</span><span class="bio-value">Java工程师 <span class="bio-arrow">&rarr;</span> AI全栈工程师</span></div><div class="bio-item"><span class="bio-label">经验</span><span class="bio-value" id="bio-exp"></span></div><div class="bio-item"><span class="bio-label">兴趣</span><span class="bio-value">跑步、爬山</span></div></div></div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/wyatt_hexo/2026/07/11/%E3%80%90AI%E3%80%91%E9%98%BF%E9%87%8C%E5%A4%A7%E6%A8%A1%E5%9E%8BClouder%E8%AE%A4%E8%AF%81-%E6%9E%84%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%99%BA%E8%83%BD%E7%9A%84RAG%E5%AF%BC%E8%B4%AD%E5%BA%94%E7%94%A8/" title="【AI】阿里大模型Clouder认证-构建一个智能的RAG导购应用">【AI】阿里大模型Clouder认证-构建一个智能的RAG导购应用</a><time datetime="2026-07-11T15:42:37.000Z" title="发表于 2026-07-11 15:42:37">2026-07-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/wyatt_hexo/2026/07/11/%E3%80%90AI%E3%80%91%E9%98%BF%E9%87%8C%E5%A4%A7%E6%A8%A1%E5%9E%8BClouder%E8%AE%A4%E8%AF%81-RAG%E5%BA%94%E7%94%A8%E7%9A%84%E6%9E%84%E5%BB%BA%E5%92%8C%E4%BC%98%E5%8C%96/" title="【AI】阿里大模型Clouder认证-RAG应用的构建和优化">【AI】阿里大模型Clouder认证-RAG应用的构建和优化</a><time datetime="2026-07-11T11:43:25.000Z" title="发表于 2026-07-11 11:43:25">2026-07-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/wyatt_hexo/2026/07/11/%E3%80%90AI%E3%80%91%E9%98%BF%E9%87%8C%E5%A4%A7%E6%A8%A1%E5%9E%8BClouder%E8%AE%A4%E8%AF%81%E2%80%94%E8%AE%A4%E8%AF%86RAG/" title="【AI】阿里大模型Clouder认证—认识RAG">【AI】阿里大模型Clouder认证—认识RAG</a><time datetime="2026-07-11T09:22:35.000Z" title="发表于 2026-07-11 09:22:35">2026-07-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/wyatt_hexo/2026/07/01/%E3%80%90AI%E3%80%91%E5%A4%A7%E6%A8%A1%E5%9E%8BClouder%E8%AE%A4%E8%AF%81-%E5%9F%BA%E4%BA%8E%E9%80%9A%E4%B9%89%E7%81%B5%E7%A0%81%E5%AE%9E%E7%8E%B0%E9%AB%98%E6%95%88-AI-%E7%BC%96%E7%A0%81%E5%AE%9E%E8%B7%B5/" title="【AI】大模型Clouder认证: 基于通义灵码实现高效 AI 编码实践">【AI】大模型Clouder认证: 基于通义灵码实现高效 AI 编码实践</a><time datetime="2026-07-01T22:27:46.000Z" title="发表于 2026-07-01 22:27:46">2026-07-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/wyatt_hexo/2026/06/30/%E3%80%90AI%E3%80%91Trae%E9%9B%86%E6%88%90%E6%89%AB%E6%8F%8F%E4%BB%A3%E7%A0%81Skill%E6%A3%80%E6%B5%8B%E4%BB%A3%E7%A0%81%E8%B4%A8%E9%87%8F/" title="【AI】Trae集成扫描代码Skill检测代码质量">【AI】Trae集成扫描代码Skill检测代码质量</a><time datetime="2026-06-30T11:41:09.000Z" title="发表于 2026-06-30 11:41:09">2026-06-30</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            
+          </div>
+          <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/wyatt_hexo/categories/AI/"><span class="card-category-list-name">AI</span><span class="card-category-list-count">10</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/wyatt_hexo/categories/%E4%BD%9C%E5%93%81/"><span class="card-category-list-name">作品</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/wyatt_hexo/categories/%E5%85%B6%E4%BB%96/"><span class="card-category-list-name">其他</span><span class="card-category-list-count">15</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/wyatt_hexo/categories/%E5%89%8D%E7%AB%AF/"><span class="card-category-list-name">前端</span><span class="card-category-list-count">8</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/wyatt_hexo/categories/%E5%89%8D%E7%AB%AF/%E8%BF%90%E7%BB%B4/"><span class="card-category-list-name">运维</span><span class="card-category-list-count">1</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/wyatt_hexo/categories/%E5%90%8E%E7%AB%AF/"><span class="card-category-list-name">后端</span><span class="card-category-list-count">56</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/wyatt_hexo/categories/%E5%90%8E%E7%AB%AF/%E8%BF%90%E7%BB%B4/"><span class="card-category-list-name">运维</span><span class="card-category-list-count">5</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/wyatt_hexo/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F/"><span class="card-category-list-name">嵌入式</span><span class="card-category-list-count">2</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/wyatt_hexo/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F/%E5%90%8E%E7%AB%AF/"><span class="card-category-list-name">后端</span><span class="card-category-list-count">1</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/wyatt_hexo/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F/%E5%90%8E%E7%AB%AF/%E8%BF%90%E7%BB%B4/"><span class="card-category-list-name">运维</span><span class="card-category-list-count">1</span></a></li></ul></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/wyatt_hexo/categories/%E6%9E%B6%E6%9E%84/"><span class="card-category-list-name">架构</span><span class="card-category-list-count">5</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/wyatt_hexo/categories/%E6%B5%8B%E8%AF%95/"><span class="card-category-list-name">测试</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/wyatt_hexo/categories/%E7%94%9F%E6%B4%BB/"><span class="card-category-list-name">生活</span><span class="card-category-list-count">5</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/wyatt_hexo/categories/%E8%AE%BE%E8%AE%A1/"><span class="card-category-list-name">设计</span><span class="card-category-list-count">5</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/wyatt_hexo/categories/%E8%AE%BE%E8%AE%A1/%E5%90%8E%E7%AB%AF/"><span class="card-category-list-name">后端</span><span class="card-category-list-count">4</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/wyatt_hexo/categories/%E8%BF%90%E7%BB%B4/"><span class="card-category-list-name">运维</span><span class="card-category-list-count">15</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/wyatt_hexo/categories/%E8%BF%90%E7%BB%B4/%E5%85%B6%E4%BB%96/"><span class="card-category-list-name">其他</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/wyatt_hexo/categories/%E8%BF%90%E7%BB%B4/%E5%90%8E%E7%AB%AF/"><span class="card-category-list-name">后端</span><span class="card-category-list-count">2</span></a></li></ul></li>
+          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/wyatt_hexo/tags/MQ/" style="font-size: 1.5em; color: #99a9bf">MQ</a> <a href="/wyatt_hexo/tags/spring-Cache/" style="font-size: 1.1em; color: #999">spring Cache</a> <a href="/wyatt_hexo/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" style="font-size: 1.1em; color: #999">内网穿透</a> <a href="/wyatt_hexo/tags/logback/" style="font-size: 1.1em; color: #999">logback</a> <a href="/wyatt_hexo/tags/CICD/" style="font-size: 1.1em; color: #999">CICD</a> <a href="/wyatt_hexo/tags/http%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%A1%86%E6%9E%B6/" style="font-size: 1.1em; color: #999">http客户端框架</a> <a href="/wyatt_hexo/tags/Forest/" style="font-size: 1.1em; color: #999">Forest</a> <a href="/wyatt_hexo/tags/%E9%99%90%E6%B5%81/" style="font-size: 1.1em; color: #999">限流</a> <a href="/wyatt_hexo/tags/MapStruct/" style="font-size: 1.1em; color: #999">MapStruct</a> <a href="/wyatt_hexo/tags/FreeMarker/" style="font-size: 1.1em; color: #999">FreeMarker</a> <a href="/wyatt_hexo/tags/pageHelper/" style="font-size: 1.1em; color: #999">pageHelper</a> <a href="/wyatt_hexo/tags/STM32/" style="font-size: 1.1em; color: #999">STM32</a> <a href="/wyatt_hexo/tags/%E5%8E%8B%E6%B5%8B/" style="font-size: 1.1em; color: #999">压测</a> <a href="/wyatt_hexo/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 1.1em; color: #999">事务</a> <a href="/wyatt_hexo/tags/Annotation/" style="font-size: 1.1em; color: #999">Annotation</a> <a href="/wyatt_hexo/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/" style="font-size: 1.1em; color: #999">大数据</a> <a href="/wyatt_hexo/tags/cas/" style="font-size: 1.1em; color: #999">cas</a> <a href="/wyatt_hexo/tags/Gradle/" style="font-size: 1.1em; color: #999">Gradle</a> <a href="/wyatt_hexo/tags/smart-doc/" style="font-size: 1.1em; color: #999">smart-doc</a> <a href="/wyatt_hexo/tags/Prometheus/" style="font-size: 1.1em; color: #999">Prometheus</a> <a href="/wyatt_hexo/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 1.3em; color: #99a1ac">数据库</a> <a href="/wyatt_hexo/tags/SpringCloud/" style="font-size: 1.1em; color: #999">SpringCloud</a> <a href="/wyatt_hexo/tags/webstock/" style="font-size: 1.1em; color: #999">webstock</a> <a href="/wyatt_hexo/tags/ES6/" style="font-size: 1.1em; color: #999">ES6</a> <a href="/wyatt_hexo/tags/%E9%80%9A%E4%B9%89%E7%81%B5%E7%A0%81/" style="font-size: 1.1em; color: #999">通义灵码</a> <a href="/wyatt_hexo/tags/POI/" style="font-size: 1.1em; color: #999">POI</a> <a href="/wyatt_hexo/tags/habor/" style="font-size: 1.1em; color: #999">habor</a> <a href="/wyatt_hexo/tags/cicd/" style="font-size: 1.1em; color: #999">cicd</a> <a href="/wyatt_hexo/tags/%E7%B4%A2%E5%BC%95/" style="font-size: 1.1em; color: #999">索引</a> <a href="/wyatt_hexo/tags/SSCMS/" style="font-size: 1.1em; color: #999">SSCMS</a> <a href="/wyatt_hexo/tags/flink/" style="font-size: 1.1em; color: #999">flink</a> <a href="/wyatt_hexo/tags/macOs/" style="font-size: 1.1em; color: #999">macOs</a> <a href="/wyatt_hexo/tags/Swagger2/" style="font-size: 1.1em; color: #999">Swagger2</a> <a href="/wyatt_hexo/tags/Ajax/" style="font-size: 1.1em; color: #999">Ajax</a> <a href="/wyatt_hexo/tags/%E8%AE%BE%E8%AE%A1/" style="font-size: 1.5em; color: #99a9bf">设计</a> <a href="/wyatt_hexo/tags/uniPush/" style="font-size: 1.1em; color: #999">uniPush</a> <a href="/wyatt_hexo/tags/RSA/" style="font-size: 1.1em; color: #999">RSA</a> <a href="/wyatt_hexo/tags/Mongodb/" style="font-size: 1.1em; color: #999">Mongodb</a> <a href="/wyatt_hexo/tags/spring-security/" style="font-size: 1.1em; color: #999">spring security</a> <a href="/wyatt_hexo/tags/PageHelper/" style="font-size: 1.1em; color: #999">PageHelper</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>归档</span>
+      <a class="card-more-btn" href="/wyatt_hexo/archives/"
+            title="查看更多">
+            <i class="fas fa-angle-right"></i>
+          </a>
+    </div>
+  
+    <ul class="card-archive-list">
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/wyatt_hexo/archives/2026/07/">
+            <span class="card-archive-list-date">
+              七月 2026
+            </span>
+            <span class="card-archive-list-count">4</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/wyatt_hexo/archives/2026/06/">
+            <span class="card-archive-list-date">
+              六月 2026
+            </span>
+            <span class="card-archive-list-count">15</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/wyatt_hexo/archives/2026/05/">
+            <span class="card-archive-list-date">
+              五月 2026
+            </span>
+            <span class="card-archive-list-count">2</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/wyatt_hexo/archives/2026/04/">
+            <span class="card-archive-list-date">
+              四月 2026
+            </span>
+            <span class="card-archive-list-count">8</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/wyatt_hexo/archives/2025/06/">
+            <span class="card-archive-list-date">
+              六月 2025
+            </span>
+            <span class="card-archive-list-count">6</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/wyatt_hexo/archives/2025/03/">
+            <span class="card-archive-list-date">
+              三月 2025
+            </span>
+            <span class="card-archive-list-count">2</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/wyatt_hexo/archives/2025/02/">
+            <span class="card-archive-list-date">
+              二月 2025
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/wyatt_hexo/archives/2025/01/">
+            <span class="card-archive-list-date">
+              一月 2025
+            </span>
+            <span class="card-archive-list-count">2</span>
+          </a>
+        </li>
+      
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">124</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2026-07-12T17:33:04.696Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By wyatt</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.4</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/wyatt_hexo/js/utils.js?v=5.5.4"></script><script src="/wyatt_hexo/js/main.js?v=5.5.4"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js"></script><div class="js-pjax"><script>window.typedJSFn = {
+  init: str => {
+    window.typed = new Typed('#subtitle', Object.assign({
+      strings: str,
+      startDelay: 300,
+      typeSpeed: 150,
+      loop: true,
+      backSpeed: 50,
+    }, null))
+  },
+  run: subtitleType => {
+    if (true) {
+      if (typeof Typed === 'function') {
+        subtitleType()
+      } else {
+        btf.getScript('https://cdn.jsdelivr.net/npm/typed.js@3.0.0/dist/typed.umd.min.js').then(subtitleType)
+      }
+    } else {
+      subtitleType()
+    }
+  },
+  processSubtitle: (content, extraContents = []) => {
+    if (true) {
+      const sub = ["走的很慢，但从不后退","最硬核的代码，最终是为了最柔软的触碰"].slice()
+
+      if (extraContents.length > 0) {
+        sub.unshift(...extraContents)
+      }
+
+      if (typeof content === 'string') {
+        sub.unshift(content)
+      } else if (Array.isArray(content)) {
+        sub.unshift(...content)
+      }
+
+      sub.length > 0 && typedJSFn.init(sub)
+    } else {
+      document.getElementById('subtitle').textContent = typeof content === 'string' ? content :
+        (Array.isArray(content) && content.length > 0 ? content[0] : '')
+    }
+  }
+}
+btf.addGlobalFn('pjaxSendOnce', () => { typed.destroy() }, 'typedDestroy')
+</script><script>function subtitleType () {
+  typedJSFn.processSubtitle(["走的很慢，但从不后退","最硬核的代码，最终是为了最柔软的触碰"])
+}
+typedJSFn.run(subtitleType)</script></div><script>(function(){var bd=new Date(2000,6,23);var n=new Date();var a=n.getFullYear()-bd.getFullYear();if(n.getMonth()<bd.getMonth()||(n.getMonth()===bd.getMonth()&&n.getDate()<bd.getDate()))a--;var ae=document.getElementById('bio-age');if(ae)ae.textContent=a+'岁';var sd=new Date(2022,5,1);var m=(n.getFullYear()-sd.getFullYear())*12+n.getMonth()-sd.getMonth();var y=Math.floor(m/12);var mo=m%12;var ee=document.getElementById('bio-exp');if(ee)ee.textContent=(y>0?y+'年':'')+mo+'个月'})()</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="搜索..." type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/wyatt_hexo/js/search/local-search.js?v=5.5.4"></script></div></div></body></html>
