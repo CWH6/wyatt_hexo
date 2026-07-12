@@ -69,10 +69,10 @@ social:
 # Image Settings
 # --------------------------------------
 
-favicon: /img/ggboy.jpg
+favicon: /img/tx_circle.png
 
 avatar:
-  img: /img/lmz.jpg
+  img: /img/tx.jpg
   effect: false
 
 # Disable all banner images
