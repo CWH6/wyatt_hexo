@@ -49,7 +49,7 @@ Advisors 就是解决这个问题的。如果你用过 Spring AOP，这个概念
 
 
 
-<img src="https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/pLdn55XRN0595no8/img/eb879d49-bf9d-4a6d-beab-37eae2c5e6c2.png" alt="img" style="zoom:67%;" />
+<img src="https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/pLdn55XRN0595no8/img/eb879d49-bf9d-4a6d-beab-37eae2c5e6c2.png" alt="img" style="zoom: 50%;" />
 
 
 
@@ -113,7 +113,7 @@ ChatClient、Advisors、ChatMemory 这三个概念贯穿后面所有实战代码
 
 用 IntelliJ IDEA 新建项目，选择 Spring Boot 模板，Server URL 填 https://start.spring.io/\，Java 版本选 21。
 
-![img](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/pLdn55XRN0595no8/img/e87a2600-a4ce-4b57-9a95-d21ae27a9756.png)
+<img src="https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/pLdn55XRN0595no8/img/e87a2600-a4ce-4b57-9a95-d21ae27a9756.png" alt="img" style="zoom:67%;" />
 
 1. **添加依赖**
 
@@ -142,7 +142,7 @@ Spring Boot 版本建议选择 3.5.10 或更高兼容版本，同时选上 Sprin
 
 登录阿里云百炼平台，申请并获取 API Key。
 
-![img](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/pLdn55XRN0595no8/img/148980b8-bb27-453c-a114-417141435b04.png)
+<img src="https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/pLdn55XRN0595no8/img/148980b8-bb27-453c-a114-417141435b04.png" alt="img" style="zoom:67%;" />
 
 3、**写配置**
 
@@ -191,7 +191,7 @@ public class SpringAiAiInvoke implements CommandLineRunner {
 
 启动项目，看到模型回复，说明模型接入成功。
 
-![img](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/pLdn55XRN0595no8/img/08ae3031-4dc0-4883-ba25-96aa7a3cbd84.jpg)
+<img src="https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/pLdn55XRN0595no8/img/08ae3031-4dc0-4883-ba25-96aa7a3cbd84.jpg" alt="img" style="zoom:67%;" />
 
 模型能对话了，但现在它只知道训练数据里的内容，不了解你的业务、你的产品、你的私有数据。下一步，用 RAG 解决这个问题。
 
@@ -220,7 +220,7 @@ Spring AI 的 RetrievalAugmentationAdvisor 把第 3、4 步封装好了，你只
 
 
 
-![img](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/pLdn55XRN0595no8/img/6f17ff0f-7ba7-4236-8e62-b6e582d3552b.png)
+<img src="https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/pLdn55XRN0595no8/img/6f17ff0f-7ba7-4236-8e62-b6e582d3552b.png" alt="img" style="zoom:67%;" />
 
 #### **接入阿里云百炼知识库**
 
@@ -230,27 +230,27 @@ Spring AI 的 RetrievalAugmentationAdvisor 把第 3、4 步封装好了，你只
 
 1. 进入“应用数据”模块，上传原始文档（PDF、Word、TXT 均可），平台自动解析内容和结构。
 
-![img](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/pLdn55XRN0595no8/img/f2cfed1d-9686-49a3-bcde-39e018653429.png#398)
+<img src="https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/pLdn55XRN0595no8/img/f2cfed1d-9686-49a3-bcde-39e018653429.png#398" alt="img" style="zoom:67%;" />
 
 
 
-![img](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/pLdn55XRN0595no8/img/33dac617-ee4b-492a-8a6f-faee7b822aa2.png)
+<img src="https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/pLdn55XRN0595no8/img/33dac617-ee4b-492a-8a6f-faee7b822aa2.png" alt="img" style="zoom:67%;" />
 
 2、进入“知识库”模块，创建新知识库，选择推荐配置
 
-![img](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/pLdn55XRN0595no8/img/b7e913e6-fe01-4794-a24c-ff4238eafc67.jpg)
+<img src="https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/pLdn55XRN0595no8/img/b7e913e6-fe01-4794-a24c-ff4238eafc67.jpg" alt="img" style="zoom:67%;" />
 
 3、将上传的数据导入知识库（示例文件为近期股市投资建议）。
 
-![img](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/pLdn55XRN0595no8/img/5655630a-4ede-4cec-ae7d-a350648de378.jpg)
+<img src="https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/pLdn55XRN0595no8/img/5655630a-4ede-4cec-ae7d-a350648de378.jpg" alt="img" style="zoom:67%;" />
 
 4、完成索引配置。
 
-![img](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/pLdn55XRN0595no8/img/461e8714-df22-4a9d-bc70-0fba70fb95b0.jpg)
+<img src="https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/pLdn55XRN0595no8/img/461e8714-df22-4a9d-bc70-0fba70fb95b0.jpg" alt="img" style="zoom:67%;" />
 
 5、知识库创建成功。
 
-![img](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/pLdn55XRN0595no8/img/8f33f00c-63a0-4453-866a-fbf6f9cc289f.jpg)
+<img src="https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/pLdn55XRN0595no8/img/8f33f00c-63a0-4453-866a-fbf6f9cc289f.jpg" alt="img" style="zoom:67%;" />
 
 
 
@@ -332,15 +332,15 @@ public class TestApp {
 
 1. 启用知识库后，模型返回的是基于你上传文档的最新内容：
 
-![img](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/pLdn55XRN0595no8/img/5ffcc00c-3858-402e-8040-036b8c879950.jpg)
+<img src="https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/pLdn55XRN0595no8/img/5ffcc00c-3858-402e-8040-036b8c879950.jpg" alt="img" style="zoom:67%;" />
 
 2、关闭 ragCloudAdvisor 后，模型只能依赖训练数据，返回的是过时内容：
 
-![img](https://scms-prod-sh-public.oss-cn-shanghai.aliyuncs.com/course_picture/gzfbjemyqvdjmlksdawr.png)
+<img src="https://scms-prod-sh-public.oss-cn-shanghai.aliyuncs.com/course_picture/gzfbjemyqvdjmlksdawr.png" alt="img" style="zoom:67%;" />
 
 
 
-![img](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/pLdn55XRN0595no8/img/1997727b-00f2-40ec-83c2-e024a6f188b7.jpg)
+<img src="https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/pLdn55XRN0595no8/img/1997727b-00f2-40ec-83c2-e024a6f188b7.jpg" alt="img" style="zoom:67%;" />
 
 RAG 接好了，现在你的 AI 能回答业务问题了。但它还有一个局限：不能查实时数据，也不能调你的业务接口。这就是工具调用要解决的事。
 
@@ -365,7 +365,7 @@ Spring AI 把第 2～5 步自动处理了，你只需要写工具函数、然后
 
 
 
-![img](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/pLdn55XRN0595no8/img/0f1030ac-c17f-4228-a2bf-4f492d0e3103.png)
+<img src="https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/pLdn55XRN0595no8/img/0f1030ac-c17f-4228-a2bf-4f492d0e3103.png" alt="img" style="zoom:67%;" />
 
 **定义工具**
 
