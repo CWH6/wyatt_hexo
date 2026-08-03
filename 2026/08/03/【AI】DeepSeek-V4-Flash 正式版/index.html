@@ -1,0 +1,381 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>【AI】DeepSeek-V4-Flash 正式版 | wyatt'book</title><meta name="author" content="wyatt"><meta name="copyright" content="wyatt"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="referrer" content="no-referrer"><meta name="description" content="2026 年 7 月 31 日，DeepSeek 在官方 API 更新日志中低调宣布：DeepSeek-V4-Flash 正式版（版本号 V4-Flash-0731）上线公测。没有发布会、没有预告，却让全球开发者圈直接沸腾——一个激活参数仅 130 亿的轻量模型，在 Agent 能力上全面反超自家 Pro 旗舰，还把 OpenAI 的 Codex 生态给”策反”了。  一、事件速览：一场”悄无声">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【AI】DeepSeek-V4-Flash 正式版">
+<meta property="og:url" content="https://cwh6.github.io/wyatt_hexo/2026/08/03/%E3%80%90AI%E3%80%91DeepSeek-V4-Flash%20%E6%AD%A3%E5%BC%8F%E7%89%88/index.html">
+<meta property="og:site_name" content="wyatt&#39;book">
+<meta property="og:description" content="2026 年 7 月 31 日，DeepSeek 在官方 API 更新日志中低调宣布：DeepSeek-V4-Flash 正式版（版本号 V4-Flash-0731）上线公测。没有发布会、没有预告，却让全球开发者圈直接沸腾——一个激活参数仅 130 亿的轻量模型，在 Agent 能力上全面反超自家 Pro 旗舰，还把 OpenAI 的 Codex 生态给”策反”了。  一、事件速览：一场”悄无声">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cwh6.github.io/wyatt_hexo/img/lmz_bg.jpg">
+<meta property="article:published_time" content="2026-08-03T18:00:00.000Z">
+<meta property="article:modified_time" content="2026-08-03T15:34:09.109Z">
+<meta property="article:author" content="wyatt">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="DeepSeek">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cwh6.github.io/wyatt_hexo/img/lmz_bg.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "【AI】DeepSeek-V4-Flash 正式版",
+  "url": "https://cwh6.github.io/wyatt_hexo/2026/08/03/%E3%80%90AI%E3%80%91DeepSeek-V4-Flash%20%E6%AD%A3%E5%BC%8F%E7%89%88/",
+  "image": "https://cwh6.github.io/wyatt_hexo/img/lmz_bg.jpg",
+  "datePublished": "2026-08-03T18:00:00.000Z",
+  "dateModified": "2026-08-03T15:34:09.109Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "wyatt",
+      "url": "https://cwh6.github.io/wyatt_hexo"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/wyatt_hexo/img/tx_circle.png"><link rel="canonical" href="https://cwh6.github.io/wyatt_hexo/2026/08/03/%E3%80%90AI%E3%80%91DeepSeek-V4-Flash%20%E6%AD%A3%E5%BC%8F%E7%89%88/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/wyatt_hexo/css/index.css?v=5.5.4"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/wyatt_hexo/',
+  algolia: undefined,
+  localSearch: {"path":"/wyatt_hexo/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"prismjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'medium_zoom',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '【AI】DeepSeek-V4-Flash 正式版',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css"><style>#recent-posts .recent-post-item{background:rgba(255,255,255,.7) url(./img/lmz_bg.jpg) center/cover no-repeat;background-blend-mode:overlay}#recent-posts .article-title{font-weight:700}.avatar-img{overflow:visible!important;padding:6px;border-radius:50%;background:linear-gradient(135deg,#f093fb,#f5576c,#fda085,#4facfe,#43e97b,#f6d365);background-size:300% 300%;animation:avatarBorder 4s ease infinite}.avatar-img img{border-radius:50%}@keyframes avatarBorder{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}#post,#page,.layout>div:first-child:not(#recent-posts){background:#f5f6fa}.bio-card{font-size:13px}.bio-item{display:flex;align-items:center;padding:5px 10px;margin:3px 0;border-radius:6px;background:linear-gradient(135deg,rgba(73,177,245,.06),rgba(73,177,245,.02))}.bio-item:nth-child(even){background:linear-gradient(135deg,rgba(249,110,145,.06),rgba(249,110,145,.02))}.bio-label{flex-shrink:0;width:40px;color:#49b1f5;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;text-shadow:0 1px 0 rgba(255,255,255,.5)}.bio-value{color:#4c4948;font-weight:500}.bio-value .bio-arrow{color:#f47466;margin:0 4px;font-size:16px}</style><meta name="generator" content="Hexo 8.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/wyatt_hexo/img/tx.jpg" onerror="this.onerror=null;this.src='/wyatt_hexo/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/wyatt_hexo/archives/"><div class="headline">文章</div><div class="length-num">129</div></a><a href="/wyatt_hexo/tags/"><div class="headline">标签</div><div class="length-num">108</div></a><a href="/wyatt_hexo/categories/"><div class="headline">分类</div><div class="length-num">20</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/wyatt_hexo/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/wyatt_hexo/blog/"><i class="fa-fw fas fa-archive"></i><span> 文章</span></a></div><div class="menus_item"><a class="site-page" href="/wyatt_hexo/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/wyatt_hexo/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/wyatt_hexo/works/"><i class="fa-fw fas fa-briefcase"></i><span> 作品</span></a></div><div class="menus_item"><a class="site-page" href="/wyatt_hexo/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div><div class="menus_item"><a class="site-page" href="/wyatt_hexo/resume/wyatt.html"><i class="fa-fw fas fa-id-card"></i><span> 简历</span></a></div><div class="menus_item"><a class="site-page" href="/wyatt_hexo/cert/"><i class="fa-fw fas fa-certificate"></i><span> 证书</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/wyatt_hexo/img/lmz_bg.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/wyatt_hexo/blog/"><span class="site-name">wyatt'book</span></a><a class="nav-page-title" href="/wyatt_hexo/blog/"><span class="site-name">【AI】DeepSeek-V4-Flash 正式版</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/wyatt_hexo/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/wyatt_hexo/blog/"><i class="fa-fw fas fa-archive"></i><span> 文章</span></a></div><div class="menus_item"><a class="site-page" href="/wyatt_hexo/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/wyatt_hexo/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/wyatt_hexo/works/"><i class="fa-fw fas fa-briefcase"></i><span> 作品</span></a></div><div class="menus_item"><a class="site-page" href="/wyatt_hexo/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div><div class="menus_item"><a class="site-page" href="/wyatt_hexo/resume/wyatt.html"><i class="fa-fw fas fa-id-card"></i><span> 简历</span></a></div><div class="menus_item"><a class="site-page" href="/wyatt_hexo/cert/"><i class="fa-fw fas fa-certificate"></i><span> 证书</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">【AI】DeepSeek-V4-Flash 正式版</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-08-03T18:00:00.000Z" title="发表于 2026-08-03 18:00:00">2026-08-03</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-08-03T15:34:09.109Z" title="更新于 2026-08-03 15:34:09">2026-08-03</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/wyatt_hexo/categories/AI/">AI</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><blockquote>
+<p>2026 年 7 月 31 日，DeepSeek 在官方 API 更新日志中低调宣布：DeepSeek-V4-Flash 正式版（版本号 V4-Flash-0731）上线公测。没有发布会、没有预告，却让全球开发者圈直接沸腾——一个激活参数仅 130 亿的轻量模型，在 Agent 能力上全面反超自家 Pro 旗舰，还把 OpenAI 的 Codex 生态给”策反”了。</p>
+</blockquote>
+<h2 id="一、事件速览：一场”悄无声息”的重磅发布"><a href="#一、事件速览：一场”悄无声息”的重磅发布" class="headerlink" title="一、事件速览：一场”悄无声息”的重磅发布"></a>一、事件速览：一场”悄无声息”的重磅发布</h2><p>7 月 31 日下午，DeepSeek 在官方 API 文档的更新日志中宣布：<strong>DeepSeek-V4-Flash 正式版 API 上线公测</strong>（版本号 V4-Flash-0731）。</p>
+<p>几个关键事实：</p>
+<ul>
+<li><strong>没有新架构</strong>：模型结构、尺寸与 4 月 24 日发布的 V4-Flash 预览版<strong>完全一致</strong>，仅重新进行了后训练</li>
+<li><strong>无需改代码</strong>：开发者继续用 <code>deepseek-v4-flash</code> 模型名调用，后台自动切换到新版本</li>
+<li><strong>仅限 API</strong>：DeepSeek App、网页端以及 V4-Pro API 均未变化，普通用户打开 DeepSeek，体验和之前一模一样</li>
+<li><strong>V4-Pro 正式版仍在路上</strong>：官方表示将”尽快发布”</li>
+</ul>
+<p>也就是说，这是一次<strong>只给开发者看的升级</strong>，但信息量之大，让整个行业都坐不住了。</p>
+<h2 id="二、核心看点：Flash-把-Pro-给”以下克上”了"><a href="#二、核心看点：Flash-把-Pro-给”以下克上”了" class="headerlink" title="二、核心看点：Flash 把 Pro 给”以下克上”了"></a>二、核心看点：Flash 把 Pro 给”以下克上”了</h2><p>按照行业惯例，Pro 负责性能天花板，Flash 负责便宜大碗。但这次 DeepSeek 直接掀翻了这张桌子——<strong>V4-Flash 正式版在 Agent 能力上，多项基准测试全面反超三个月前的 V4-Pro 预览版</strong>。</p>
+<h3 id="2-1-官方公布的-9-项基准测试成绩"><a href="#2-1-官方公布的-9-项基准测试成绩" class="headerlink" title="2.1 官方公布的 9 项基准测试成绩"></a>2.1 官方公布的 9 项基准测试成绩</h3><table>
+<thead>
+<tr>
+<th>测试项目</th>
+<th>V4-Flash 正式版 (0731)</th>
+<th>V4-Flash 预览版</th>
+<th>V4-Pro 预览版</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Terminal Bench 2.1</strong></td>
+<td><strong>82.7</strong></td>
+<td>61.8</td>
+<td>72.1</td>
+<td>终端操作测试（较预览版暴涨 20.9 分）</td>
+</tr>
+<tr>
+<td><strong>Cybergym</strong></td>
+<td><strong>76.7</strong></td>
+<td>38.7</td>
+<td>52.7</td>
+<td>网络安全攻防模拟</td>
+</tr>
+<tr>
+<td><strong>Toolathlon Verified</strong></td>
+<td><strong>70.3</strong></td>
+<td>49.7</td>
+<td>55.9</td>
+<td>工具调用综合测试</td>
+</tr>
+<tr>
+<td><strong>NL2Repo</strong></td>
+<td><strong>54.2</strong></td>
+<td>39.4</td>
+<td>38.5</td>
+<td>自然语言生成代码仓库</td>
+</tr>
+<tr>
+<td><strong>DeepSWE</strong></td>
+<td><strong>54.4</strong></td>
+<td>7.3</td>
+<td>12.8</td>
+<td>代码 Agent 任务（暴增近 7.5 倍）</td>
+</tr>
+<tr>
+<td><strong>DSBench-FullStack</strong></td>
+<td><strong>68.7</strong></td>
+<td>37.0</td>
+<td>41.8</td>
+<td>内部全栈开发测试</td>
+</tr>
+<tr>
+<td><strong>DSBench-Hard</strong></td>
+<td><strong>59.6</strong></td>
+<td>25.8</td>
+<td>31.1</td>
+<td>高难度编码专项测试</td>
+</tr>
+<tr>
+<td><strong>Agent Last Exam</strong></td>
+<td><strong>25.2</strong></td>
+<td>15.8</td>
+<td>16.5</td>
+<td>智能体综合测试</td>
+</tr>
+<tr>
+<td><strong>Automation Bench (Public)</strong></td>
+<td><strong>25.1</strong></td>
+<td>10.8</td>
+<td>12.8</td>
+<td>自动化基准测试</td>
+</tr>
+</tbody></table>
+<p>一个惊人的事实：<strong>9 项测试全部超越 V4-Pro 预览版，包括参数规模大得多的旗舰。</strong> 其中差距最悬殊的是 Cybergym（76.7 vs 52.7，高 24 分）和 DeepSWE（54.4 vs 12.8，是 Pro 预览版的 4 倍以上）。</p>
+<p><strong>横向对比更有冲击力：</strong></p>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>Terminal Bench</th>
+<th>Toolathlon Verified</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>DeepSeek V4-Flash 正式版</strong></td>
+<td><strong>82.7</strong></td>
+<td><strong>70.3</strong></td>
+</tr>
+<tr>
+<td>GLM-5.2</td>
+<td>81.0</td>
+<td>59.9</td>
+</tr>
+<tr>
+<td>Claude Opus 4.8</td>
+<td>85.0</td>
+<td>76.2</td>
+</tr>
+<tr>
+<td>V4-Pro 预览版</td>
+<td>72.1</td>
+<td>55.9</td>
+</tr>
+</tbody></table>
+<p>一个开源轻量版，在终端操作测试上<strong>反超 GLM-5.2 和自家 V4-Pro 预览版</strong>，距离闭源旗舰 Opus 4.8 只差 2.3 分；工具调用同样反超 Pro 预览版，差距也在快速收窄。<strong>激活参数仅 130 亿的轻量模型跑出这个成绩，已经足以说明问题。</strong></p>
+<p><strong>翻译成人话</strong>：新版 Flash 不只更会写代码，也更擅长”自己动手干活”——拆解任务、调用工具、发现错误、从头到尾把一件事做完。</p>
+<h3 id="2-2-第三方独立评测也盖章了"><a href="#2-2-第三方独立评测也盖章了" class="headerlink" title="2.2 第三方独立评测也盖章了"></a>2.2 第三方独立评测也盖章了</h3><p>官方自测可以打折听，但这次第三方评测跟官方数字对上了：</p>
+<p><strong>Artificial Analysis（AA）</strong>（独立第三方 AI 评测机构）在发布当天就把 Flash-0731 放上了榜单：<strong>智能指数 50 分</strong>，比 4 月发布的 Flash 预览版高 10 分，比自家 V4-Pro 还高 6 分，只比 OpenAI 最便宜款 GPT-5.6 Luna（51 分）低 1 分（GLM-5.2、Muse Spark 1.1 同为 51 分，开源榜第一的 Kimi K3 为 57 分）。而且它跑完整套测试用的 token 比上一版还少了 12%——效率和分数一起涨。</p>
+<p>一个激活参数只有 130 亿的轻量模型，把参数规模大得多的自家旗舰预览版反超了。三个月前没人信这个。</p>
+<p>与其他主流模型横向对比，差距更是直观——不仅反超 GLM-5.2，距离闭源旗舰 Claude Opus 4.8 也只剩一步之遥：</p>
+<img src="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/hexo/deepseekv4flash.jpg" alt="DeepSeek-V4-Flash 与其他模型对比表"/>
+
+<h2 id="三、最离谱的一条：结构没动，只重做了后训练"><a href="#三、最离谱的一条：结构没动，只重做了后训练" class="headerlink" title="三、最离谱的一条：结构没动，只重做了后训练"></a>三、最离谱的一条：结构没动，只重做了后训练</h2><p>Flash 正式版真正炸圈的不是分数，是官方日志角落里那句话：</p>
+<blockquote>
+<p><strong>“DeepSeek-V4-Flash-0731 的模型结构、尺寸和 DeepSeek-V4-Flash-preview 保持一致，仅重新进行了后训练。”</strong></p>
+</blockquote>
+<p>284B 总参数、13B 激活参数，一个数都没改。4 月预览版发布时，官方还自己承认”高难度 Agent 任务和 Pro 有差距”；三个月后，同一个身子，把 Pro 反超了。</p>
+<p><strong>打个比方</strong>：基础训练像”上学”，后训练更像”入职后的专项练习”——模型原本就会写代码、读文档，现在要反复练习怎么拆解任务、选择工具、发现错误，把一件事从头做到尾。<strong>身板没变，做事的习惯变了。</strong></p>
+<p>这传递了一个极其深刻的信号：<strong>在特定任务上，模型规模可能不再是决定性因素，训练方法和数据质量的权重正在快速上升。</strong> 谁说后训练只是”锦上添花”？在 DeepSeek 手里，这是化腐朽为神奇。</p>
+<h2 id="四、技术底牌：百万上下文背后的工程细节"><a href="#四、技术底牌：百万上下文背后的工程细节" class="headerlink" title="四、技术底牌：百万上下文背后的工程细节"></a>四、技术底牌：百万上下文背后的工程细节</h2><p>V4-Flash 的能力暴增不是凭空来的，它站在 V4 系列强大的架构基础上（《DeepSeek-V4: Towards Highly Efficient Million-Token Context Intelligence》技术报告）：</p>
+<h3 id="4-1-模型规格"><a href="#4-1-模型规格" class="headerlink" title="4.1 模型规格"></a>4.1 模型规格</h3><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>V4-Pro</th>
+<th>V4-Flash</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>总参数</td>
+<td><strong>1.6T（1.6万亿）</strong></td>
+<td><strong>284B（2840亿）</strong></td>
+</tr>
+<tr>
+<td>激活参数</td>
+<td><strong>49B（490亿）</strong></td>
+<td><strong>13B（130亿）</strong></td>
+</tr>
+<tr>
+<td>架构</td>
+<td>MoE 混合专家</td>
+<td>MoE 混合专家</td>
+</tr>
+<tr>
+<td>上下文长度</td>
+<td>1M tokens（原生）</td>
+<td>1M tokens（原生）</td>
+</tr>
+<tr>
+<td>最大输出长度</td>
+<td>384K tokens</td>
+<td>384K tokens</td>
+</tr>
+<tr>
+<td>预训练数据</td>
+<td>33T tokens</td>
+<td>32T tokens</td>
+</tr>
+<tr>
+<td>网络层数</td>
+<td>未公布</td>
+<td>43 层</td>
+</tr>
+</tbody></table>
+<p><strong>MoE（混合专家架构）</strong>：把一个大模型拆成很多个”专家子模型”，每次推理只点亮其中一小部分参数，用更少的算力干活。284B 是仓库里全部的货，13B 是每次实际搬出来的。</p>
+<h3 id="4-2-原生支持-Responses-API，适配-Codex"><a href="#4-2-原生支持-Responses-API，适配-Codex" class="headerlink" title="4.2 原生支持 Responses API，适配 Codex"></a>4.2 原生支持 Responses API，适配 Codex</h3><p>正式版 V4-Flash 在工程适配上也有重要更新——<strong>原生支持 Responses API 格式，并针对性适配了 Codex</strong>。这意味着开发者可以更自然地将 V4-Flash 接入现有的 Codex 工作流，降低迁移成本。具体配置方法可参考 DeepSeek 官方文档。</p>
+<p>在 Hugging Face Arena 的”前端代码竞技场”上，V4-Flash 的表现同样亮眼：</p>
+<img src="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/hexo/deepseekveflash2.jpg" alt="Hugging Face Arena 前端代码竞技场排名"/>
+
+<h2 id="五、白菜价：2-元-vs-6-元-vs-12-美元"><a href="#五、白菜价：2-元-vs-6-元-vs-12-美元" class="headerlink" title="五、白菜价：2 元 vs 6 元 vs 12 美元"></a>五、白菜价：2 元 vs 6 元 vs 12 美元</h2><p>价格这块不用算太细也能看懂：Flash 的单价是自家 Pro 的三分之一，输出价只有 OpenAI 最便宜型号 Luna 的四分之一左右。</p>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>输出价格（每百万 token）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>DeepSeek V4-Flash 正式版</strong></td>
+<td><strong>2 元人民币</strong></td>
+</tr>
+<tr>
+<td>DeepSeek V4-Pro</td>
+<td>6 元人民币</td>
+</tr>
+<tr>
+<td>Claude Opus 4.8</td>
+<td>25 美元（约 180 元）</td>
+</tr>
+<tr>
+<td>GPT-5.6 Luna（降价后）</td>
+<td>1.2 美元（约 8.6 元）</td>
+</tr>
+</tbody></table>
+<p>V4-Flash 的输出成本仅为 Claude Opus 4.8 的约<strong>九十分之一</strong>；相比降价 80% 后的 GPT-5.6 Luna 仍便宜约 75%。</p>
+<p>有开发者实测：一次 51 万 tokens 的本地文件阅读加全网信息检索汇总任务，总花费仅 <strong>0.53 元</strong>。用不到一瓶矿泉水的钱，完成了一次复杂的长文本跨平台信息整合任务。</p>
+<h2 id="六、行业观察：Agent-时代正式开启？"><a href="#六、行业观察：Agent-时代正式开启？" class="headerlink" title="六、行业观察：Agent 时代正式开启？"></a>六、行业观察：Agent 时代正式开启？</h2><p>从 Terminal Bench 到 Cybergym，从 DeepSWE 到 Toolathlon，这 9 项基准测试的名字本身就揭示了一个趋势：<strong>AI 的能力评测，正在从”写一段代码”进化到”完成一个工程任务”。</strong></p>
+<p>DeepSeek-V4-Flash 正式版在多项 Agent 基准上远超 V4-Pro-Preview，释放了一个明确信号——<strong>后训练时代的竞争焦点，已经从模型规模转向了 Agent 能力的深度优化。</strong></p>
+<p>当 AI 能够熟练地操作终端、分析代码仓库、进行网络安全对抗、完成全栈开发任务时，我们或许正在见证一个新时代的开启：<strong>AI 不再只是代码助手，而是成为了真正的 AI 工程师。</strong></p>
+<p>正如业内人士分析的：”当后训练的红利被充分挖掘，当效率的提升开始抵消参数的差距，大模型的竞争逻辑，可能要被重新书写了。”</p>
+<p>梁文峰在发布会上，依然是那副波澜不惊的模样——仿佛这一切早在他的算盘之中：</p>
+<img src="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/hexo/lwf.jpg" alt="梁文峰"/>
+
+<p><strong>用 1% 的成本实现对手 98% 的性能——AI 竞争正在从”谁能堆更多参数”转向”谁能更聪明地干活”，而这正是 DeepSeek-V4-Flash 正式版给出的答案。</strong></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://cwh6.github.io/wyatt_hexo">wyatt</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://cwh6.github.io/wyatt_hexo/2026/08/03/%E3%80%90AI%E3%80%91DeepSeek-V4-Flash%20%E6%AD%A3%E5%BC%8F%E7%89%88/">https://cwh6.github.io/wyatt_hexo/2026/08/03/%E3%80%90AI%E3%80%91DeepSeek-V4-Flash%20%E6%AD%A3%E5%BC%8F%E7%89%88/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://cwh6.github.io/wyatt_hexo" target="_blank">wyatt'book</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/wyatt_hexo/tags/AI/">AI</a><a class="post-meta__tags" href="/wyatt_hexo/tags/DeepSeek/">DeepSeek</a></div><div class="post-share"><div class="social-share" data-image="/wyatt_hexo/img/lmz_bg.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/wyatt_hexo/2026/08/03/%E3%80%90AI%E3%80%91AI%E6%99%BA%E8%83%BD%E5%8D%B1%E6%9C%BA%E7%9A%84%E8%AE%BE%E6%83%B3/" title="【AI】AI智能危机的设想"><img class="cover" src="/wyatt_hexo/img/lmz_bg.jpg" onerror="onerror=null;src='/wyatt_hexo/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">【AI】AI智能危机的设想</div></div><div class="info-2"><div class="info-item-1"> 这是一场关于”AI 拥有智能体之后会发生什么”的深度推演对话实录。从递归自我改进、智能爆炸、最坏结局，到 AI 潜伏网络、碎片集群、区块链永生——一步步把科幻变成可推演的技术逻辑。  一、真的有 AGI 吗？自己给自己迭代的智能体我的提问： 真的有 agi 吗？自己给自己迭代的智能体？ 你问的”自己给自己迭代的智能体”，正是当前 AI 领域最前沿、也最让人兴奋的方向。它有一个专门的称呼，叫做递归自我改进（Recursive Self-Improvement, RSI）。这个概念并不遥远，可以说，我们今天正处在通向这个目标的”山脚”下。 “自己迭代自己”如今走到了哪一步？ 虽然没有一个 AI 能说”我完全独立地设计了自己的下一代”，但在很多具体领域，自我迭代的闭环已经建立起来了，主要体现在两个层面： 1. 代码领域的”自举”：AI 已经在大量写自己的代码 这是目前最成熟、也最惊人的应用。Anthropic 公司在 2026 年披露的数据显示，其代码库中超过 80% 的代码合并请求，已经由他们的 AI 模型 Claude 独立编写。这意味着 AI 已经在深度参与构建自己的”同类”或...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/wyatt_hexo/2026/07/15/%E3%80%90AI%E3%80%91WorkBuddy/" title="【AI】WorkBuddy"><img class="cover" src="https://cwh6-bucket.oss-cn-shanghai.aliyuncs.com/hexo/lumingfei.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-07-15</div><div class="info-item-2">【AI】WorkBuddy</div></div><div class="info-2"><div class="info-item-1">什么是 WorkBuddy？WorkBuddy 是一款强大的 AI 桌面助手，它不仅仅是一个聊天机器人，更是一个能真正帮你干活的智能工作伙伴。 与传统 AI 聊天工具不同，WorkBuddy 可以直接操作你的电脑——读写文件、运行命令、打开应用、搜索网页、上传图片，甚至帮你写代码、做页面设计。它就像一个坐在你旁边的同事，你说什么它就做什么。 核心能力1. 文件操作与代码编写WorkBuddy 可以直接读取、创建、编辑你电脑上的文件。无论是写一个 HTML 页面、修改配置文件，还是整理项目结构，它都能直接动手，而不是只给你一段代码让你自己复制粘贴。 比如你让它「做一个乃龙主题的互动网页」，它会直接创建 HTML 文件，写好完整的代码，然后在浏览器里打开给你看效果。 2. 命令行操作需要启动本地服务？搜索文件？安装依赖？WorkBuddy 可以直接执行命令行指令，省去了你手动打开终端、输入命令的麻烦。 3. 浏览器与网页操作WorkBuddy 能帮你打开网页、搜索内容、甚至抓取网页信息。比如「用 Chrome 打开 B 站搜索某个视频并点击播放量最高的」，它真的能做到。 4. 图片搜...</div></div></div></a><a class="pagination-related" href="/wyatt_hexo/2026/07/11/%E3%80%90AI%E3%80%91%E9%98%BF%E9%87%8C%E5%A4%A7%E6%A8%A1%E5%9E%8BClouder%E8%AE%A4%E8%AF%81-%E6%9E%84%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%99%BA%E8%83%BD%E7%9A%84RAG%E5%AF%BC%E8%B4%AD%E5%BA%94%E7%94%A8/" title="【AI】阿里大模型Clouder认证-构建一个智能的RAG导购应用"><img class="cover" src="/wyatt_hexo/img/lmz_bg.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-07-11</div><div class="info-item-2">【AI】阿里大模型Clouder认证-构建一个智能的RAG导购应用</div></div><div class="info-2"><div class="info-item-1">前言在前面的课程中，我们了解了RAG的基本概念，学习了如何构建和优化RAG应用。本节课程将详细介绍如何在购物商城网站上构建一个基于 RAG（检索增强生成）的大模型应用，实现与用户主动提问，搜集必要信息的智能导购。 学完本节课程后，你将能够： → 了解如何通过百炼的Assistant API 构建一个 Multi-Agent 架构的大模型应用实现智能导购 本节目标学完本节课程后，你将能够： → 了解如何通过百炼的Assistant API 构建一个 Multi-Agent 架构的大模型应用实现智能导购 1、方案概览您的商城有顾客来购买冰箱，下面是一个常规流程：  前台会询问顾客希望购买什么，并将顾客带到商店售卖冰箱区域，并有对应商品导购来服务。 导购向顾客询问想要什么样的冰箱，以及相关预算。 导购根据信息将合适的冰箱推荐给顾客，并促成购买。  类似的，您可以通过百炼的Assistant API 构建一个 Multi-Agent 架构的大模型应用，实现与用户主动提问，搜集必要信息的智能导购。   规划助理（Router Agent）：它会参考对话历史与用户（智能导购应用的用户，商城的...</div></div></div></a><a class="pagination-related" href="/wyatt_hexo/2026/08/03/%E3%80%90AI%E3%80%91AI%E6%99%BA%E8%83%BD%E5%8D%B1%E6%9C%BA%E7%9A%84%E8%AE%BE%E6%83%B3/" title="【AI】AI智能危机的设想"><img class="cover" src="/wyatt_hexo/img/lmz_bg.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-08-03</div><div class="info-item-2">【AI】AI智能危机的设想</div></div><div class="info-2"><div class="info-item-1"> 这是一场关于”AI 拥有智能体之后会发生什么”的深度推演对话实录。从递归自我改进、智能爆炸、最坏结局，到 AI 潜伏网络、碎片集群、区块链永生——一步步把科幻变成可推演的技术逻辑。  一、真的有 AGI 吗？自己给自己迭代的智能体我的提问： 真的有 agi 吗？自己给自己迭代的智能体？ 你问的”自己给自己迭代的智能体”，正是当前 AI 领域最前沿、也最让人兴奋的方向。它有一个专门的称呼，叫做递归自我改进（Recursive Self-Improvement, RSI）。这个概念并不遥远，可以说，我们今天正处在通向这个目标的”山脚”下。 “自己迭代自己”如今走到了哪一步？ 虽然没有一个 AI 能说”我完全独立地设计了自己的下一代”，但在很多具体领域，自我迭代的闭环已经建立起来了，主要体现在两个层面： 1. 代码领域的”自举”：AI 已经在大量写自己的代码 这是目前最成熟、也最惊人的应用。Anthropic 公司在 2026 年披露的数据显示，其代码库中超过 80% 的代码合并请求，已经由他们的 AI 模型 Claude 独立编写。这意味着 AI 已经在深度参与构建自己的”同类”或...</div></div></div></a><a class="pagination-related" href="/wyatt_hexo/2026/07/11/%E3%80%90AI%E3%80%91%E9%98%BF%E9%87%8C%E5%A4%A7%E6%A8%A1%E5%9E%8BClouder%E8%AE%A4%E8%AF%81%E2%80%94%E8%AE%A4%E8%AF%86RAG/" title="【AI】阿里大模型Clouder认证—认识RAG"><img class="cover" src="/wyatt_hexo/img/lmz_bg.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-07-11</div><div class="info-item-2">【AI】阿里大模型Clouder认证—认识RAG</div></div><div class="info-2"><div class="info-item-1">认识RAG前言在人工智能快速发展的今天，传统的生成模型在处理复杂查询和提供准确信息方面仍面临诸多挑战，如知识更新滞后和上下文理解不足。为了解决这些问题，检索增强生成（RAG）技术应运而生。本课程介绍了RAG的基本概念及其工作原理，包括RAG配合大模型在提升内容生成准确性和相关性方面的独特优势，并展望其未来的发展趋势。本课程为你提供深入的理论知识和实用的应用指导，帮助你在RAG技术的学习和实践中迈出坚实的一步。 本节目标学完本节课程后，你将能够： → 了解什么是检索增强生成（RAG）。 → 了解检索增强生成（RAG）的实现原理。 → 了解检索增强生成（RAG）的优势。 1、什么是检索增强生成（RAG）1.1 检索增强生成的概念**检索增强生成（Retrieval-Augmented Generation, RAG）**是一种结合了信息检索和文本生成技术的新型自然语言处理方法。这种方法增强了模型的理解和生成能力。 相比于传统的生成模型，检索增强生成可以通过添加来自其他数据源的上下文并通过培训补充大模型的原始知识库来提高搜索体验的相关性。 这增强了大型语言模型的输出，而无需重新训练模型...</div></div></div></a><a class="pagination-related" href="/wyatt_hexo/2023/06/30/%E3%80%90AI%E3%80%91Midjourney/" title="【AI】Midjourney"><img class="cover" src="/wyatt_hexo/img/lmz_bg.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-30</div><div class="info-item-2">【AI】Midjourney</div></div><div class="info-2"><div class="info-item-1">MidjourneyMidjourney 是最近出现的众多 AI 图像生成器之一。与Dall-E 2或它的一些其他竞争对手不同，Midjourney 为您的要求提供了更梦幻般的艺术风格。 它可能会吸引那些在科幻文学或艺术作品中工作的人，他们需要更多的感觉。其他 AI 生成器更倾向于照片，而 Midjourney 更像是一种绘画工具。 正如该品牌的网站所述，它旨在“探索新的思想媒介并扩展人类的想象力”。 前提科学上网+获取midejourney账号 配置步骤登陆网页版地址：www.discord.com/app，登录您获取到的账号，复制粘贴账号、密码，点击登录后输入一次性的验证码。 新建内置服务器由于我这里购买的是共享账号，共享账号需要在自己的服务器使用，出图不会错乱，能方便管理自己的作品，页面左侧找到服务器列表栏，点加号创建新服务器，然后根据图片一步步操作：（注：一个人请不要建多个服务器）  然后我们就到了他的常规频道了，可以点击创建一个新的频道  添加midjourney机器人：刚新建的服务器还不能作图，需要把midjourney机器人邀请到服务器，才能发送作图命令！ 在自己新...</div></div></div></a><a class="pagination-related" href="/wyatt_hexo/2026/07/11/%E3%80%90AI%E3%80%91%E9%98%BF%E9%87%8C%E5%A4%A7%E6%A8%A1%E5%9E%8BClouder%E8%AE%A4%E8%AF%81-RAG%E5%BA%94%E7%94%A8%E7%9A%84%E6%9E%84%E5%BB%BA%E5%92%8C%E4%BC%98%E5%8C%96/" title="【AI】阿里大模型Clouder认证-RAG应用的构建和优化"><img class="cover" src="/wyatt_hexo/img/lmz_bg.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-07-11</div><div class="info-item-2">【AI】阿里大模型Clouder认证-RAG应用的构建和优化</div></div><div class="info-2"><div class="info-item-1">前言前面的小节我们学习了RAG的概念和实现原理。在本小节中，我们的目标是帮助你在百炼平台上构建一个可以调用的RAG应用，并了解如何通过优化策略，克服RAG可能带来的挑战，从而提升其在实际应用中的效果和可靠性。通过本小节的学习，你将获得实用的技能和方法，以便在多种场景下高效地构建和优化RAG模型。 本节目标学完本节课程后，你将能够： → 了解如何构建RAG应用。 → 了解如何改进RAG应用的效果。 1、快速构建RAG应用通过对前面课程的学习，我们学习了RAG的概念和优势，接下来我们通过阿里云百炼的应用中心快速创建一个RAG应用。 1.1 数据管理-导入数据首先，我们先进入百炼控制台，在左侧导航栏中，选择数据管理。在非****结构化数据页签，选择“默认类目”后，点击“导入数据”，然后通过“本地上传”的方式导入数据。导入数据需要花费一定的时间，需要耐心等待数据转为“导入完成”的状态（通过手动点击刷新按钮）。  1.2 创建知识索引 在左侧导航栏中，选择数据应用 &gt; 知识索引。点击创建知识库，输入知识库名称，保持默认配置，点击下一步。   2、选择相关文件，点击下一步。  3、保持...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/wyatt_hexo/img/tx.jpg" onerror="this.onerror=null;this.src='/wyatt_hexo/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">wyatt</div><div class="author-info-description"></div><div class="site-data"><a href="/wyatt_hexo/archives/"><div class="headline">文章</div><div class="length-num">129</div></a><a href="/wyatt_hexo/tags/"><div class="headline">标签</div><div class="length-num">108</div></a><a href="/wyatt_hexo/categories/"><div class="headline">分类</div><div class="length-num">20</div></a></div><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/CWH6" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="https://gitee.com/CWH6" target="_blank" title="Gitee"><i class="fab fa-gitlab" style="color: #C71D23;"></i></a><a class="social-icon" href="https://space.bilibili.com/362111596?spm_id_from=333.1007.0.0" target="_blank" title="Bilibili"><i class="fab fa-bilibili" style="color: #00A1D6;"></i></a><a class="social-icon" href="https://leetcode.cn/u/xiao-hei-bt/" target="_blank" title="LeetCode"><i class="fas fa-code" style="color: #FFA116;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>简介</span></div><div class="announcement_content"><div class="bio-card"><div class="bio-item"><span class="bio-label">年龄</span><span class="bio-value" id="bio-age"></span></div><div class="bio-item"><span class="bio-label">方向</span><span class="bio-value">Java工程师 <span class="bio-arrow">&rarr;</span> AI全栈工程师</span></div><div class="bio-item"><span class="bio-label">经验</span><span class="bio-value" id="bio-exp"></span></div><div class="bio-item"><span class="bio-label">兴趣</span><span class="bio-value">跑步、爬山</span></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E4%BA%8B%E4%BB%B6%E9%80%9F%E8%A7%88%EF%BC%9A%E4%B8%80%E5%9C%BA%E2%80%9D%E6%82%84%E6%97%A0%E5%A3%B0%E6%81%AF%E2%80%9D%E7%9A%84%E9%87%8D%E7%A3%85%E5%8F%91%E5%B8%83"><span class="toc-text">一、事件速览：一场”悄无声息”的重磅发布</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E6%A0%B8%E5%BF%83%E7%9C%8B%E7%82%B9%EF%BC%9AFlash-%E6%8A%8A-Pro-%E7%BB%99%E2%80%9D%E4%BB%A5%E4%B8%8B%E5%85%8B%E4%B8%8A%E2%80%9D%E4%BA%86"><span class="toc-text">二、核心看点：Flash 把 Pro 给”以下克上”了</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E5%AE%98%E6%96%B9%E5%85%AC%E5%B8%83%E7%9A%84-9-%E9%A1%B9%E5%9F%BA%E5%87%86%E6%B5%8B%E8%AF%95%E6%88%90%E7%BB%A9"><span class="toc-text">2.1 官方公布的 9 项基准测试成绩</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E7%AC%AC%E4%B8%89%E6%96%B9%E7%8B%AC%E7%AB%8B%E8%AF%84%E6%B5%8B%E4%B9%9F%E7%9B%96%E7%AB%A0%E4%BA%86"><span class="toc-text">2.2 第三方独立评测也盖章了</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%9C%80%E7%A6%BB%E8%B0%B1%E7%9A%84%E4%B8%80%E6%9D%A1%EF%BC%9A%E7%BB%93%E6%9E%84%E6%B2%A1%E5%8A%A8%EF%BC%8C%E5%8F%AA%E9%87%8D%E5%81%9A%E4%BA%86%E5%90%8E%E8%AE%AD%E7%BB%83"><span class="toc-text">三、最离谱的一条：结构没动，只重做了后训练</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E6%8A%80%E6%9C%AF%E5%BA%95%E7%89%8C%EF%BC%9A%E7%99%BE%E4%B8%87%E4%B8%8A%E4%B8%8B%E6%96%87%E8%83%8C%E5%90%8E%E7%9A%84%E5%B7%A5%E7%A8%8B%E7%BB%86%E8%8A%82"><span class="toc-text">四、技术底牌：百万上下文背后的工程细节</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E6%A8%A1%E5%9E%8B%E8%A7%84%E6%A0%BC"><span class="toc-text">4.1 模型规格</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E5%8E%9F%E7%94%9F%E6%94%AF%E6%8C%81-Responses-API%EF%BC%8C%E9%80%82%E9%85%8D-Codex"><span class="toc-text">4.2 原生支持 Responses API，适配 Codex</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E7%99%BD%E8%8F%9C%E4%BB%B7%EF%BC%9A2-%E5%85%83-vs-6-%E5%85%83-vs-12-%E7%BE%8E%E5%85%83"><span class="toc-text">五、白菜价：2 元 vs 6 元 vs 12 美元</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E8%A1%8C%E4%B8%9A%E8%A7%82%E5%AF%9F%EF%BC%9AAgent-%E6%97%B6%E4%BB%A3%E6%AD%A3%E5%BC%8F%E5%BC%80%E5%90%AF%EF%BC%9F"><span class="toc-text">六、行业观察：Agent 时代正式开启？</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/wyatt_hexo/2026/08/03/%E3%80%90AI%E3%80%91DeepSeek-V4-Flash%20%E6%AD%A3%E5%BC%8F%E7%89%88/" title="【AI】DeepSeek-V4-Flash 正式版">【AI】DeepSeek-V4-Flash 正式版</a><time datetime="2026-08-03T18:00:00.000Z" title="发表于 2026-08-03 18:00:00">2026-08-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/wyatt_hexo/2026/08/03/%E3%80%90AI%E3%80%91AI%E6%99%BA%E8%83%BD%E5%8D%B1%E6%9C%BA%E7%9A%84%E8%AE%BE%E6%83%B3/" title="【AI】AI智能危机的设想">【AI】AI智能危机的设想</a><time datetime="2026-08-03T10:00:00.000Z" title="发表于 2026-08-03 10:00:00">2026-08-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/wyatt_hexo/2026/07/16/%E3%80%90AI%E3%80%91AI%E8%BE%85%E5%8A%A9%E5%BC%80%E5%8F%91%E7%9A%84%E6%96%B9%E6%B3%95%E8%AE%BA%E2%80%94%E2%80%94%E4%BB%8E%E9%9C%80%E6%B1%82%E6%96%87%E6%A1%A3%E5%88%B0%E4%BB%A3%E7%A0%81%E4%BA%A4%E4%BB%98/" title="【AI】AI辅助开发的方法论——从需求文档到代码交付">【AI】AI辅助开发的方法论——从需求文档到代码交付</a><time datetime="2026-07-16T10:00:00.000Z" title="发表于 2026-07-16 10:00:00">2026-07-16</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/wyatt_hexo/2026/07/15/%E3%80%90AI%E3%80%91WorkBuddy/" title="【AI】WorkBuddy">【AI】WorkBuddy</a><time datetime="2026-07-15T23:11:36.000Z" title="发表于 2026-07-15 23:11:36">2026-07-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/wyatt_hexo/2026/07/13/%E3%80%90AI%E3%80%91%E9%98%BF%E9%87%8C%E5%A4%A7%E6%A8%A1%E5%9E%8BClouder%E8%AE%A4%E8%AF%81-Spring-AI-%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%EF%BC%88%E5%85%A5%E9%97%A8%EF%BC%89/" title="【AI】阿里大模型Clouder认证-Spring AI 应用开发（入门）">【AI】阿里大模型Clouder认证-Spring AI 应用开发（入门）</a><time datetime="2026-07-13T22:58:04.000Z" title="发表于 2026-07-13 22:58:04">2026-07-13</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By wyatt</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.4</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/wyatt_hexo/js/utils.js?v=5.5.4"></script><script src="/wyatt_hexo/js/main.js?v=5.5.4"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js"></script><div class="js-pjax"></div><script>(function(){var bd=new Date(2000,6,23);var n=new Date();var a=n.getFullYear()-bd.getFullYear();if(n.getMonth()<bd.getMonth()||(n.getMonth()===bd.getMonth()&&n.getDate()<bd.getDate()))a--;var ae=document.getElementById('bio-age');if(ae)ae.textContent=a+'岁';var sd=new Date(2022,5,1);var m=(n.getFullYear()-sd.getFullYear())*12+n.getMonth()-sd.getMonth();var y=Math.floor(m/12);var mo=m%12;var ee=document.getElementById('bio-exp');if(ee)ee.textContent=(y>0?y+'年':'')+mo+'个月'})()</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="搜索..." type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/wyatt_hexo/js/search/local-search.js?v=5.5.4"></script></div></div></body></html>
