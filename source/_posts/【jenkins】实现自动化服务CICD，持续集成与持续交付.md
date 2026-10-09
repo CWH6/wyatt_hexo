@@ -221,6 +221,15 @@ docker exec jenkins java -version
 
 
 
+### Git
+
+```shell
+
+
+# 查看git版本
+docker exec jenkins git version
+
+```
 
 
 
